@@ -94,7 +94,7 @@ public class CharacterControl : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKey(KeyCode.Q))
             {
                 Debug.Log("attack");
                 m_animator.SetBool("attack", true);
@@ -108,7 +108,6 @@ public class CharacterControl : MonoBehaviour
             {
                 m_animator.SetBool("attack", false);
                 isAttacking = false;
-
             }
 
 
