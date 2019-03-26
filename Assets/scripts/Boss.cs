@@ -5,11 +5,15 @@ using Anima2D; //加上命名空间
 
 public class Boss : MonoBehaviour
 {
+
+   
     public BossFeather[] Features;
     public GameObject[] Alphas;
     public GameObject DarkSmoke;
-    public GameObject Boss1;
+	public GameObject Boss1;
     public GameObject Boss2;
+
+    public GameObject Hp;
 
     public float Duration1;
     public Transform Boss1DiveStartPoint;
@@ -54,12 +58,11 @@ public class Boss : MonoBehaviour
     public Animator m_Animator;
 
     public int loopTime;//每阶段循环次数
-
+  
     //Use this for initialization
     void Start()
     {
         m_Duration = 0;
-
         foreach (var feature in Features)
         {
             feature.gameObject.SetActive(true);
@@ -71,9 +74,7 @@ public class Boss : MonoBehaviour
         if (m_ChangeAlpha == true)
         {
             if (m_Alpha < 1)
-            {
                 m_Alpha += 1f * Time.deltaTime;
-            }
         }
         else
         {
@@ -88,6 +89,7 @@ public class Boss : MonoBehaviour
 
         if (m_EnterStage == true)
         {
+            Hp.SetActive(true);
             switch (m_Index)
             {
                 case 1:
@@ -189,16 +191,16 @@ public class Boss : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, m_Points_end_1, m_Speed * Time.deltaTime);
         m_Animator.SetBool("Dive", true);
-          
+
         if (m_Index == 1)
         {
-            Boss1.transform.localEulerAngles = new Vector3(90, 0, 0);
-            Boss2.transform.localEulerAngles = new Vector3(90, 0, 0);
+               Boss1.transform.localEulerAngles = new Vector3(90, -90, -90);
+               Boss2.transform.localEulerAngles = new Vector3(90, 90, -90);
         }
         if (m_Index == 2)
         {
-            Boss1.transform.localEulerAngles = new Vector3(0, 90, 90);
-            Boss2.transform.localEulerAngles = new Vector3(0, -90, 90);
+               Boss1.transform.localEulerAngles = new Vector3(180, -90, -90);
+               Boss2.transform.localEulerAngles = new Vector3(180, 90, -90);
         }
         if (Vector3.Distance(transform.position, m_Points_end_1) <= 0.00001f)
         {
@@ -231,8 +233,8 @@ public class Boss : MonoBehaviour
     {
         m_Animator.SetBool("Dive", true);
         transform.position = Vector3.MoveTowards(transform.position, m_Points_end_2, m_Speed * Time.deltaTime);
-        Boss1.transform.localEulerAngles = new Vector3(90, 0, 0);
-        Boss2.transform.localEulerAngles = new Vector3(90, 0, 0);
+        Boss1.transform.localEulerAngles = new Vector3(90, -90, -90);
+        Boss2.transform.localEulerAngles = new Vector3(90, 90, -90);
 
         if (Vector3.Distance(transform.position, m_Points_end_2) <= 0.00001f) //
         {
@@ -298,38 +300,38 @@ public class Boss : MonoBehaviour
     }
     void Stage3()
     {
-        switch (m_Index2)
-        {
-            case 6:
-                Invoke("Stage3_1", 1.0f);
-                break;
-            case 7:
-                Invoke("Stage3_2", 1.0f);
-                break;
-            case 8:
-                Invoke("Stage1_3", 1.0f);
-                break;
-            case 4:
-                Invoke("Stage1_4", 1.0f);
-                break;
-            case 5:
-                Invoke("DelayIncrease3", 1f);
-                break;
-        }
+            switch (m_Index2)
+            {
+                case 6:
+                    Invoke("Stage3_1", 1.0f);
+                    break;
+                case 7:
+                    Invoke("Stage3_2", 1.0f);
+                    break;
+                case 8:
+                    Invoke("Stage1_3", 1.0f);
+                    break;
+                case 4:
+                    Invoke("Stage1_4", 1.0f);
+                    break;
+                case 5:
+                    Invoke("DelayIncrease3", 1f);
+                    break;
+            }
     }
-    void Stage3_1()
-    {
-        transform.position = BossBezierPoint1.position;
-        if (m_Smoke == false)
-        {
-            ChangeAlpha();
-            GameObject a = Instantiate(DarkSmoke, transform.position, transform.rotation) as GameObject;
-            m_Smoke = true;
-            Destroy(a, 1.6f);
-        }
+     void Stage3_1()
+     {
+         transform.position = BossBezierPoint1.position;
+         if (m_Smoke == false)
+         {
+             ChangeAlpha();
+             GameObject a = Instantiate(DarkSmoke, transform.position, transform.rotation) as GameObject;
+             m_Smoke = true;
+             Destroy(a, 1.6f);
+         }
         m_Duration = 0;
         m_Index2 = 7;
-    }
+     }
     void Stage3_2()
     {
         m_Dive = false;
@@ -378,9 +380,10 @@ public class Boss : MonoBehaviour
             m_ChangeAlpha = false;
     }
 
-    void Smoke()
+	    void Smoke()
     {
         GameObject a = Instantiate(DarkSmoke, transform.position, transform.rotation) as GameObject;
         Destroy(a, 1.6f);
     }
+
 }

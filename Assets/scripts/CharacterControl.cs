@@ -13,13 +13,15 @@ public class CharacterControl : MonoBehaviour
     public Rigidbody2D m_rigid;
     //获取 animator组件
     private Animator m_animator;
+		private AnimatorStateInfo stateInfo;
     private float horizontal = 0;
-    public float move = 0;
     bool isJump = false;
     bool isDoubleJump = false;
     public bool isAttacking;
-    public bool Movement = true; //主角是否可以移动
-
+    [HideInInspector]
+    public float move = 0;
+	[HideInInspector]
+	public bool Movement = true;
     public int life;
     public List<GameObject> lifeImg;
 
@@ -122,20 +124,22 @@ public class CharacterControl : MonoBehaviour
 
             }
 
-            if (Input.GetKey(KeyCode.Q))
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("attack");
+            m_animator.SetBool("attack", true);
+            isAttacking = true;
+            if (Vector2.Distance(transform.position,bos1.transform.position)<=2.3f|| Vector2.Distance(transform.position, bos2.transform.position)<=2.3f)
             {
-                Debug.Log("attack");
-                m_animator.SetBool("attack", true);
-                isAttacking = true;
-                if (Vector2.Distance(transform.position, bos1.transform.position) <= 2.3f || Vector2.Distance(transform.position, bos2.transform.position) <= 2.3f)
-                {
-                    BossAI.instance.LifeChange();
-                }
+                BossAI.instance.LifeChange();
             }
-            else
+        }
+
+		stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
+            if (stateInfo.normalizedTime >= 0.95f && stateInfo.IsName("attack"))
             {
                 m_animator.SetBool("attack", false);
-                isAttacking = false;
+				isAttacking = false;
             }
 
 
@@ -161,6 +165,21 @@ public class CharacterControl : MonoBehaviour
 
         }
 
+            if (move != 0)
+            {
+                int dir = move > 0 ? 1 : -1;
+
+                this.transform.localScale = new Vector3(Mathf.Abs(this.transform.localScale.x) * dir,
+                                      this.transform.localScale.y,
+                                      this.transform.localScale.z);
+
+                m_rigid.velocity = new Vector2(dir * MoveSpeed, m_rigid.velocity.y);
+
+            }
+            else {
+                m_rigid.velocity = new Vector2(0, m_rigid.velocity.y);
+
+            }
         //取移动速度的绝对值，>0.1  播放move动画    <0.1 播放Idle动画 
         m_animator.SetFloat("move", Mathf.Abs(move));
 
@@ -173,7 +192,7 @@ public class CharacterControl : MonoBehaviour
             lifeImg[life].SetActive(true);
             life++;
         }
-        else
+        if(!aa)
         {
             life--;
             lifeImg[life].SetActive(false);
@@ -185,4 +204,3 @@ public class CharacterControl : MonoBehaviour
         }
     }
 }
-

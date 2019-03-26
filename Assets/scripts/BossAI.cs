@@ -5,8 +5,6 @@ using UnityEngine;
 public class BossAI : MonoBehaviour
 {
     public static BossAI instance;
-    public Boss Boss1;
-    public Boss Boss2;
     public UnityEngine.UI.Image LifeImage;
     private int m_Life;
 
@@ -35,19 +33,6 @@ public class BossAI : MonoBehaviour
         //}
     }
 
-    //碰撞检测
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.tag == "Player")
-        {//开始第一阶段
-            Boss1.m_EnterStage = true;
-            Boss2.m_EnterStage = true;
-            Boss1.m_Index = 1;
-            Boss1.m_Index2 = 1;
-            Boss2.m_Index = 1;
-            Boss2.m_Index2 = 1;
-        }
-    }
 
     public void LifeChange()
     {
