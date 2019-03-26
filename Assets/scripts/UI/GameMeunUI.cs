@@ -1,44 +1,58 @@
 ﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameMeunUI : MonoBehaviour {
 
     [SerializeField]
     private GameObject GameMenuPanel;
+    private GameManager gameManager;
 
-	// Use this for initialization
-	void Start () {
-        HideAllPanel();
+
+    // Use this for initialization
+    void Start () {
+        //  HideAllPanel();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ShowGameMenuPanel();
+            if (!gameManager.backPackPanel.gameObject.activeSelf)
+                ShowGameMenuPanel();
+
         }
 	}
 
-    private void HideAllPanel()
+
+    public void OnHidePanelBtnClick()
     {
+        Time.timeScale = 1;
         GameMenuPanel.SetActive(false);
     }
 
-    public void ShowGameMenuPanel()
+    private void ShowGameMenuPanel()
     {
+
+        Time.timeScale = 0;
         GameMenuPanel.SetActive(true);
     }
 
-    public void OnBackBtnDown()
+    public void OnBackHomeBtnClick()
     {
-        Application.LoadLevel("Start");
+        Time.timeScale = 1;
+        // Application.LoadLevel("Start");
+        SceneManager.LoadScene("cover");
     }
 
-    public void OnReStartBtnDown()
+    public void OnReStartBtnClick()
     {
-        Application.LoadLevel("Game");
+        Time.timeScale = 1;
+        //Application.LoadLevel("Game");
+        SceneManager.LoadScene("Game");
     }
 
     

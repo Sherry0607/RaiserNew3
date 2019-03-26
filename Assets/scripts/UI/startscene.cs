@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 
 public class startscene : MonoBehaviour {
@@ -32,9 +31,8 @@ public class startscene : MonoBehaviour {
 
     //开始游戏
     public void PlayGame() {
-        // Debug.Log("play game");
-        //Application.LoadLevel("game");
-        SceneManager.LoadScene("game");
+       // Debug.Log("play game");
+        Application.LoadLevel("game");
        
     }
 
