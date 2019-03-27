@@ -30,28 +30,32 @@ public class GameMeunUI : MonoBehaviour {
 
     public void OnHidePanelBtnClick()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
+        GameManager.Instence.isPlay = true;
         GameMenuPanel.SetActive(false);
     }
 
     private void ShowGameMenuPanel()
     {
 
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        GameManager.Instence.isPlay = false;
         GameMenuPanel.SetActive(true);
     }
 
     public void OnBackHomeBtnClick()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         // Application.LoadLevel("Start");
+        GameManager.Instence.isPlay = true;
         SceneManager.LoadScene("cover");
     }
 
     public void OnReStartBtnClick()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         //Application.LoadLevel("Game");
+        GameManager.Instence.isPlay = true;
         SceneManager.LoadScene("Game");
     }
 

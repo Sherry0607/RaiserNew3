@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
@@ -77,7 +78,8 @@ public class CharacterControl : MonoBehaviour
 
     void Update()
     {
-        if (Movement == true)
+        move = 0;
+        if (Movement && GameManager.Instence.isPlay)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -124,18 +126,18 @@ public class CharacterControl : MonoBehaviour
 
             }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("attack");
-            m_animator.SetBool("attack", true);
-            isAttacking = true;
-            if (Vector2.Distance(transform.position,bos1.transform.position)<=2.3f|| Vector2.Distance(transform.position, bos2.transform.position)<=2.3f)
+            if (!IsTouchedUI() && Input.GetMouseButtonDown(0))
             {
-                BossAI.instance.LifeChange();
+                Debug.Log("attack");
+                m_animator.SetBool("attack", true);
+                isAttacking = true;
+                if (Vector2.Distance(transform.position,bos1.transform.position)<=2.3f|| Vector2.Distance(transform.position, bos2.transform.position)<=2.3f)
+                {
+                    BossAI.instance.LifeChange();
+                }
             }
-        }
 
-		stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
+		    stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
             if (stateInfo.normalizedTime >= 0.95f && stateInfo.IsName("attack"))
             {
                 m_animator.SetBool("attack", false);
@@ -165,21 +167,21 @@ public class CharacterControl : MonoBehaviour
 
         }
 
-            if (move != 0)
-            {
-                int dir = move > 0 ? 1 : -1;
+        if (move != 0)
+        {
+            int dir = move > 0 ? 1 : -1;
 
-                this.transform.localScale = new Vector3(Mathf.Abs(this.transform.localScale.x) * dir,
-                                      this.transform.localScale.y,
-                                      this.transform.localScale.z);
+            this.transform.localScale = new Vector3(Mathf.Abs(this.transform.localScale.x) * dir,
+                                    this.transform.localScale.y,
+                                    this.transform.localScale.z);
 
-                m_rigid.velocity = new Vector2(dir * MoveSpeed, m_rigid.velocity.y);
+            m_rigid.velocity = new Vector2(dir * MoveSpeed, m_rigid.velocity.y);
 
-            }
-            else {
-                m_rigid.velocity = new Vector2(0, m_rigid.velocity.y);
+        }
+        else {
+            m_rigid.velocity = new Vector2(0, m_rigid.velocity.y);
 
-            }
+        }
         //取移动速度的绝对值，>0.1  播放move动画    <0.1 播放Idle动画 
         m_animator.SetFloat("move", Mathf.Abs(move));
 
@@ -203,4 +205,24 @@ public class CharacterControl : MonoBehaviour
             }
         }
     }
+
+
+
+
+    /// <summary>
+    /// 是否鼠标放在 UI上
+    /// </summary>
+    /// <returns></returns>
+    private bool IsTouchedUI()
+    {
+    #if UNITY_ANDROID || UNITY_IPHONE
+                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+    #else
+            if (EventSystem.current.IsPointerOverGameObject())
+    #endif
+            return true;
+        
+        return false;
+    }
+
 }

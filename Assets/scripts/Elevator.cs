@@ -24,28 +24,37 @@ public class Elevator : MonoBehaviour {
     public bool OnElevator;
     Vector3 ElevatorPos;
 
+    private CharacterControl characterCtr;
+    private Rigidbody2D playerRigidbody2D;
+    private Rigidbody2D elevatorRigidbody2D;
+
+
+
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         PosY = transform.position.y;
         length = rod.transform.localScale.y;
-		PlayerGravity=player.GetComponent<Rigidbody2D>().gravityScale;
+        characterCtr = player.GetComponent<CharacterControl>();
+        elevatorRigidbody2D = GetComponent<Rigidbody2D>();
+        playerRigidbody2D = player.GetComponent<Rigidbody2D>();
+		PlayerGravity= playerRigidbody2D.gravityScale;
     }
 
     // Update is called once per frame
     void FixedUpdate () {
         Lighting.transform.parent = gameObject.transform;
-        if (staySecond >= waitingTime && moveUp == true && atTop == false && OnElevator == true) //停留一定时间后电梯开始向上运动
+        if (staySecond >= waitingTime && moveUp && !atTop && OnElevator && GameManager.Instence.isPlay) //停留一定时间后电梯开始向上运动
         {
             TopPosition.SetActive(true);
             MoveUp();
         }
-
-        if (staySecond >= waitingTime && moveUp == false  && atTop == true && OnElevator == true) //向下
+        else if (staySecond >= waitingTime && !moveUp && atTop && OnElevator && GameManager.Instence.isPlay) //向下
         {
             BottomPosition.SetActive(true);
             MoveDown();
         }
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -53,7 +62,7 @@ public class Elevator : MonoBehaviour {
         if (collision.tag == "Player")
         {
             staySecond += Time.deltaTime; //计算玩家停留在电梯上的时间
-            if (moveUp == false && atTop == true)
+            if (!moveUp && atTop)
             {
                 player.transform.parent = gameObject.transform;
             }
@@ -64,29 +73,29 @@ public class Elevator : MonoBehaviour {
     {
         if (collision.name == "电梯顶端") //电梯到达终点位置
         {
-            player.GetComponent<CharacterControl>().Movement = true;
-            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            characterCtr.Movement = true;
+            playerRigidbody2D.bodyType = RigidbodyType2D.Static;
             moveUp = false;
-            player.GetComponent<Rigidbody2D>().gravityScale = PlayerGravity;
+            playerRigidbody2D.gravityScale = PlayerGravity;
             StopMovement();
             collision.gameObject.SetActive(false);
         }
 
         if (collision.name == "电梯底端") //电梯到达起始位置
         {
-            player.GetComponent<CharacterControl>().Movement = true;
+            characterCtr.Movement = true;
             transform.DetachChildren();
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            elevatorRigidbody2D.bodyType = RigidbodyType2D.Static;
             moveUp = true;
-            player.GetComponent<Rigidbody2D>().gravityScale = PlayerGravity;
+            playerRigidbody2D.gravityScale = PlayerGravity;
             collision.gameObject.SetActive(false);
         }
 
         if (collision.tag == "Player")
         {
-            player.GetComponent<CharacterControl>().move = 0;
-            player.GetComponent<CharacterControl>().m_rigid.velocity = new Vector2(0, 0);
-            player.GetComponent<Rigidbody2D>().gravityScale = 0;
+            characterCtr.move = 0;
+            characterCtr.m_rigid.velocity = Vector2.zero;
+            playerRigidbody2D.gravityScale = 0;
             OnElevator = true;
             Lighting.SetActive(false);
         }
@@ -98,35 +107,31 @@ public class Elevator : MonoBehaviour {
         {
             Lighting.SetActive(true);
             length = rod.transform.localScale.y;
-            player.GetComponent<Rigidbody2D>().gravityScale = PlayerGravity;
+            playerRigidbody2D.gravityScale = PlayerGravity;
             OnElevator = false;
             staySecond = 0;
-            if (moveUp == false)
-            {
-                atTop = true;
-            }
-            else
-            {
-                atTop = false;
-            }
+            atTop = !moveUp;
+
         }
     }
 
     void StopMovement() //抵消上升惯性
     {
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        playerRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        elevatorRigidbody2D.bodyType = RigidbodyType2D.Static;
     }
 
     void MoveUp()
     {
-        player.GetComponent<CharacterControl>().Movement = false; //不让主角移动
-        player.GetComponent<CharacterControl>().move = 0;
+        characterCtr.Movement = false; //不让主角移动
+        characterCtr.move = 0;
         length -= Time.deltaTime * RodSpeed; //杆伸缩
         PosY += Time.deltaTime * ElevatorSpeed;
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation; //冻结旋转
+        playerRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+
+        elevatorRigidbody2D.gravityScale = 0;
+        elevatorRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        elevatorRigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation; //冻结旋转
         rod.transform.localScale = new Vector3(1, length, 1);
         transform.position = new Vector3(transform.position.x, PosY, transform.position.z);
         //TopPosition.SetActive(true);
@@ -134,14 +139,14 @@ public class Elevator : MonoBehaviour {
 
     void MoveDown()
     {
-        player.GetComponent<CharacterControl>().move = 0;
-        player.GetComponent<CharacterControl>().Movement = false;
+        characterCtr.move = 0;
+        characterCtr.Movement = false;
         length += Time.deltaTime * RodSpeed;
         PosY -= Time.deltaTime * ElevatorSpeed;
-        GetComponent<Rigidbody2D>().gravityScale = 0;
+        elevatorRigidbody2D.gravityScale = 0;
 
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        elevatorRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        elevatorRigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         rod.transform.localScale = new Vector3(1, length, 1);
         transform.position = new Vector3(transform.position.x, PosY, transform.position.z);
         //BottomPosition.SetActive(true);

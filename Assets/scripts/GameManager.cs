@@ -7,9 +7,8 @@ public class GameManager : MonoBehaviour {
     public BackPackPanel backPackPanel;
     public DialogueController dialogueCtr;
 
-
     [HideInInspector]
-    public bool isDialogue = false;//是否在进行对话
+    public bool isPlay = true;//控制player的行为状态，对话、打开背包、打开菜单时，置知为false
 
     public static GameManager Instence
     {
@@ -36,13 +35,14 @@ public class GameManager : MonoBehaviour {
     private void Awake()
     {
         BackPacktemDataManager.Instance.LoadItemConfigData();
-        isDialogue = false;
-    }
+        isPlay = true;
+
+}
 
 
     public void OnOpenPackageClick() {
-
-        Time.timeScale = 0;
+        isPlay = false;
+        //Time.timeScale = 0;
         backPackPanel.gameObject.SetActive(true);
         if (BackPacktemDataManager.Instance.BackPackItemList.Count > 0)
             backPackPanel.BackPackItemDetail.SetData(BackPacktemDataManager.Instance.BackPackItemList[0]);
@@ -54,9 +54,11 @@ public class GameManager : MonoBehaviour {
     public void OnClosedPackageClick()
     {
 
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         backPackPanel.ClearItemObjList();
         backPackPanel.gameObject.SetActive(false);
+        isPlay = true;
+
     }
 
 }

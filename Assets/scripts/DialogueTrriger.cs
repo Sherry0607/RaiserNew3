@@ -17,7 +17,7 @@ public class DialogueTrriger : MonoBehaviour {
     {
         if (collision.tag.Contains(StringManager.TAG_PLAYER))
         {
-            GameManager.Instence.isDialogue = true;
+            GameManager.Instence.isPlay = false;
             GameManager.Instence.dialogueCtr.gameObject.SetActive(true);
             GameManager.Instence.dialogueCtr.dialogueFileName = dialogueFileName;
             GameManager.Instence.dialogueCtr.InitDialogueData();

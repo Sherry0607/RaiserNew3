@@ -64,7 +64,7 @@ public class DialogueController : MonoBehaviour
         {
             currentDialogueIndex = 0;
             gameObject.SetActive(false);
-            GameManager.Instence.isDialogue = false;
+            GameManager.Instence.isPlay = true;
         }
         Dialogue();
     }
