@@ -11,6 +11,8 @@ public class Trap : MonoBehaviour {
         if (collision.tag == "Player")
         {
             collision.GetComponent<CharacterControl>().LifeChange(false);
+			 LifeChange();
+			 print("aaaaaaa");
         }
     }
 	 public void LifeChange()

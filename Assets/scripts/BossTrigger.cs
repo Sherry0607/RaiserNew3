@@ -7,6 +7,8 @@ public class BossTrigger : MonoBehaviour {
     public Boss Boss1;
     public Boss Boss2;
 
+	public GameObject cam1;
+	public GameObject cam2;
 	// Use this for initialization
 	void Start () {
 		
@@ -21,6 +23,8 @@ public class BossTrigger : MonoBehaviour {
     {
         if (col.tag == "Player")
         {//开始第一阶段
+		    cam1.SetActive(false);
+		    cam2.SetActive(true);
             Boss1.m_EnterStage = true;
             Boss2.m_EnterStage = true;
             Boss1.m_Index = 1;

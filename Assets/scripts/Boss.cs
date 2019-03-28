@@ -40,6 +40,8 @@ public class Boss : MonoBehaviour
     public int m_Index2;
     [HideInInspector]
     public bool m_EnterStage; //是否开始运动
+    [HideInInspector]
+    public float m_Alpha = 0;
 
     private float m_Duration;
     private float m_MaxDuration;
@@ -54,7 +56,6 @@ public class Boss : MonoBehaviour
     private int m_DiveTime; //侧中一套动作的循环次数
     private bool m_Dive; //用于单次计算DiveTime
     private bool m_ChangeAlpha;
-    private float m_Alpha = 0;
     public Animator m_Animator;
 
     public int loopTime;//每阶段循环次数

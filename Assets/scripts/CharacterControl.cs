@@ -14,15 +14,15 @@ public class CharacterControl : MonoBehaviour
     public Rigidbody2D m_rigid;
     //获取 animator组件
     private Animator m_animator;
-		private AnimatorStateInfo stateInfo;
+    private AnimatorStateInfo stateInfo;
     private float horizontal = 0;
     bool isJump = false;
     bool isDoubleJump = false;
     public bool isAttacking;
     [HideInInspector]
     public float move = 0;
-	[HideInInspector]
-	public bool Movement = true;
+    [HideInInspector]
+    public bool Movement = true;
     public int life;
     public List<GameObject> lifeImg;
 
@@ -35,9 +35,9 @@ public class CharacterControl : MonoBehaviour
     private GameObject smokePartileParentObj;   //粒子特效的空间位置父节点
     private Transform smokePos;                 //player的播放位置（脚下）
 
-
-
-
+    public float POS1;
+    public float POS2;
+    public float MaxHeight;//摔死的高度
 
     // Use this for initialization
     void Start()
@@ -46,7 +46,8 @@ public class CharacterControl : MonoBehaviour
         m_animator = GetComponent<Animator>();
 
         smokePos = transform.Find("SmokePos");// 获得 player的播放位置（脚下），用于播放粒子特效时使用
-
+        POS1 = transform.position.y;
+        POS2 = transform.position.y;
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -55,9 +56,17 @@ public class CharacterControl : MonoBehaviour
         {
             isJump = false;
             isDoubleJump = false;
-             m_animator.SetBool("Jump", false);
-             m_animator.SetBool("Jump2", false);
+            m_animator.SetBool("Jump", false);
+            m_animator.SetBool("Jump2", false);
+            POS2 = transform.position.y;
+        }
+    }
 
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "ground")
+        {
+            POS1 = transform.position.y;
         }
     }
 
@@ -79,6 +88,14 @@ public class CharacterControl : MonoBehaviour
     void Update()
     {
         move = 0;
+
+        if (POS1 - POS2 > 5)
+        {
+            life = 1;
+            LifeChange(false);
+            m_animator.SetBool("die", true);
+        }
+
         if (Movement && GameManager.Instence.isPlay)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -102,7 +119,7 @@ public class CharacterControl : MonoBehaviour
                     else
                     {
                         isDoubleJump = true;
-                        m_rigid.velocity = new Vector2(m_rigid.velocity.x,0);
+                        m_rigid.velocity = new Vector2(m_rigid.velocity.x, 0);
                         m_rigid.AddForce(new Vector2(0, JumpForce2));
                         m_animator.SetBool("Jump2", true);
 
@@ -114,8 +131,8 @@ public class CharacterControl : MonoBehaviour
                             smokePartileParentObj = new GameObject("Smoke ParticleSystem");
                         //设置粒子的显示位置
                         smokePartileParentObj.transform.position = smokePos.position;
-                        if(stepJumpParticle == null)
-                            stepJumpParticle =  Instantiate(smokePrefab, smokePartileParentObj.transform).GetComponent<ParticleSystem>();
+                        if (stepJumpParticle == null)
+                            stepJumpParticle = Instantiate(smokePrefab, smokePartileParentObj.transform).GetComponent<ParticleSystem>();
                         //播放粒子
                         stepJumpParticle.Play();
                         //-------------------------------------
@@ -131,17 +148,17 @@ public class CharacterControl : MonoBehaviour
                 Debug.Log("attack");
                 m_animator.SetBool("attack", true);
                 isAttacking = true;
-                if (Vector2.Distance(transform.position,bos1.transform.position)<=2.3f|| Vector2.Distance(transform.position, bos2.transform.position)<=2.3f)
+                if (Vector2.Distance(transform.position, bos1.transform.position) <= 2.3f || Vector2.Distance(transform.position, bos2.transform.position) <= 2.3f)
                 {
                     BossAI.instance.LifeChange();
                 }
             }
 
-		    stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
+            stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
             if (stateInfo.normalizedTime >= 0.95f && stateInfo.IsName("attack"))
             {
                 m_animator.SetBool("attack", false);
-				isAttacking = false;
+                isAttacking = false;
             }
 
 
@@ -160,7 +177,8 @@ public class CharacterControl : MonoBehaviour
                 m_rigid.velocity = new Vector2(dir * MoveSpeed, m_rigid.velocity.y);
 
             }
-            else {
+            else
+            {
                 m_rigid.velocity = new Vector2(0, m_rigid.velocity.y);
 
             }
@@ -178,35 +196,53 @@ public class CharacterControl : MonoBehaviour
             m_rigid.velocity = new Vector2(dir * MoveSpeed, m_rigid.velocity.y);
 
         }
-        else {
+        else
+        {
             m_rigid.velocity = new Vector2(0, m_rigid.velocity.y);
 
         }
         //取移动速度的绝对值，>0.1  播放move动画    <0.1 播放Idle动画 
         m_animator.SetFloat("move", Mathf.Abs(move));
 
+		
+
     }
 
     public void LifeChange(bool aa)
     {
-        if (aa&&life<6)
+        if (aa && life < 6)
         {
             lifeImg[life].SetActive(true);
             life++;
         }
-        if(!aa)
+        if (!aa)
         {
+		    int a = life;
             life--;
-            lifeImg[life].SetActive(false);
+            lifeImg[a].GetComponent<Animator>().SetBool("leaf",true); 
+			//m_animator.SetBool("hurt", true);
+		//	Invoke("idle", 0.5f);
+			
             if (life == 0)
             {
-                // Destroy(gameObject);
-                SceneManager.LoadScene("game");
+                foreach (var LifeImages in lifeImg)
+                {
+                    LifeImages.gameObject.SetActive(false);
+					
+                }
+                m_animator.SetBool("die", true);
+                Invoke("RestartGame", 2f);
             }
         }
     }
 
-
+    void RestartGame()
+    {
+        SceneManager.LoadScene("game");
+    }
+	void idle(){
+	 m_animator.SetBool("hurt", false);
+	}
 
 
     /// <summary>
@@ -215,13 +251,13 @@ public class CharacterControl : MonoBehaviour
     /// <returns></returns>
     private bool IsTouchedUI()
     {
-    #if UNITY_ANDROID || UNITY_IPHONE
+#if UNITY_ANDROID || UNITY_IPHONE
                 if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-    #else
-            if (EventSystem.current.IsPointerOverGameObject())
-    #endif
+#else
+        if (EventSystem.current.IsPointerOverGameObject())
+#endif
             return true;
-        
+
         return false;
     }
 
