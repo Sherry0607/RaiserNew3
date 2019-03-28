@@ -12,7 +12,7 @@ public class Trap : MonoBehaviour {
 	
 	GameObject Player;
 
-	 GameObject flower;
+	public GameObject flower;
 
 	public string ObjName; //此物体名字
 
@@ -20,7 +20,6 @@ public class Trap : MonoBehaviour {
 
 	void Start(){
         Player = GameObject.FindGameObjectWithTag("Player");
-        flower = GameObject.FindGameObjectWithTag("flower");
 	}
 
 	void FixedUpdate(){
@@ -75,8 +74,12 @@ public class Trap : MonoBehaviour {
         if (trap_hp == 0)
         {//小怪死亡
 		 Destroy(gameObject);
-		 Destroy(flower.gameObject);
-        GameObject a = Instantiate(smoke, transform.position, transform.rotation) as GameObject;
+            if (gameObject.tag == "flower")
+            {
+                Destroy(flower.gameObject);
+
+            }
+            GameObject a = Instantiate(smoke, transform.position, transform.rotation) as GameObject;
         Destroy(a, 1.6f);
         }
     }

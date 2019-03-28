@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 
@@ -27,6 +28,7 @@ public class CharacterControl : MonoBehaviour
     public List<GameObject> lifeImg;
 
     public GameObject bos1, bos2;
+    public GameObject leaf1;
 
 
     [SerializeField]
@@ -211,17 +213,18 @@ public class CharacterControl : MonoBehaviour
     public void LifeChange(bool aa)
     {
         if (aa && life < 6)
-        {
-            lifeImg[life].SetActive(true);
-            life++;
+        {   life++;
+            lifeImg[life-1].SetActive(true);
+            Debug.Log(lifeImg[life].name);
         }
         if (!aa)
         {
 		    int a = life;
             life--;
-			print(life);
-            lifeImg[life].GetComponent<Animator>().SetBool("leaf",true); 
-			m_animator.SetBool("hurt", true);
+            //lifeImg[life].GetComponent<Animator>().SetBool("leaf",true); 
+            lifeImg[life].SetActive(false);
+
+            m_animator.SetBool("hurt", true);
 			Invoke("idle", 0.5f);
 			
             if (life == 0)
@@ -245,6 +248,11 @@ public class CharacterControl : MonoBehaviour
 	void idle(){
 	 m_animator.SetBool("hurt", false);
 	}
+
+    void Leaves()
+    {
+        
+    }
 
 
     /// <summary>

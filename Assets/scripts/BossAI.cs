@@ -5,9 +5,13 @@ using UnityEngine;
 public class BossAI : MonoBehaviour
 {
     public static BossAI instance;
+    public GameObject BossLife;
     public UnityEngine.UI.Image LifeImage;
 	public Boss Boss;
+    public Boss Boss2;
     private int m_Life;
+    public GameObject cam1;
+    public GameObject cam2;
 
     private float m_CurrentDuration;
 
@@ -43,7 +47,11 @@ public class BossAI : MonoBehaviour
 	}
         if (m_Life == 0)
         {//boss死亡
-
+            Destroy(Boss.gameObject);
+            Destroy(Boss2.gameObject);
+            BossLife.SetActive(false);
+            cam1.SetActive(true);
+            cam2.SetActive(false);
         }
     }
 }
