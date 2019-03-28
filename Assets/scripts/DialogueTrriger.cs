@@ -17,13 +17,14 @@ public class DialogueTrriger : MonoBehaviour {
     {
         if (collision.tag.Contains(StringManager.TAG_PLAYER))
         {
-            GameManager.Instence.isPlay = false;
-            GameManager.Instence.dialogueCtr.gameObject.SetActive(true);
+            GameManager.Instence.isPlay = true;
             GameManager.Instence.dialogueCtr.dialogueFileName = dialogueFileName;
             GameManager.Instence.dialogueCtr.InitDialogueData();
+            GameManager.Instence.dialogueCtr.gameObject.SetActive(true);
             GameManager.Instence.dialogueCtr.dialgueTrriger = this;
         }
     }
+
 
 
     public void ResponseOnceDialgue() {

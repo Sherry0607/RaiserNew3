@@ -45,14 +45,19 @@ public class DialogueController : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        dialogueBGDefault = dialogueBG.sprite;
+    }
+
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
         dialogueChar.sprite = GetCharImage(dialogContentData[currentDialogueIndex][0]);
         dialogue.text = dialogContentData[currentDialogueIndex][1];
         currentDialogueIndex++;
 
-        dialogueBGDefault = dialogueBG.sprite;
+        SetdialogueCharImage();
     }
 
     /// <summary>
@@ -80,19 +85,8 @@ public class DialogueController : MonoBehaviour
             if (dialgueTrriger != null) dialgueTrriger.ResponseOnceDialgue();
         }
 
-        if (dialogContentData[currentDialogueIndex][0] == "头像_乌鸦人")
-        {
-            dialogueBG.sprite = dialogueBGPurple;
-            dialogue.color = Color.white;
-            dialogueNextFlag.GetComponent<Image>().color = Color.white;
-        }
-        else
-        {
-            dialogueBG.sprite = dialogueBGDefault;
-            dialogue.color = new Color(0.1960784f, 0.1960784f, 0.1960784f, 1);
-            dialogueNextFlag.GetComponent<Image>().color =new Color(0.2431373f, 0.1686275f, 0.145098f, 1);
+        SetdialogueCharImage();
 
-        }
         dialogueChar.sprite = GetCharImage(dialogContentData[currentDialogueIndex][0]);
         dialogue.text = dialogContentData[currentDialogueIndex][1];
         ++currentDialogueIndex;
@@ -162,5 +156,24 @@ public class DialogueController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 设置 对话角色的头像、对话背景、小箭头
+    /// </summary>
+    private void SetdialogueCharImage()
+    {
+        if (dialogContentData[currentDialogueIndex][0] == "头像_乌鸦人")
+        {
+            dialogueBG.sprite = dialogueBGPurple;
+            dialogue.color = Color.white;
+            dialogueNextFlag.GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            dialogueBG.sprite = dialogueBGDefault;
+            dialogue.color = new Color(0.1960784f, 0.1960784f, 0.1960784f, 1);
+            dialogueNextFlag.GetComponent<Image>().color = new Color(0.2431373f, 0.1686275f, 0.145098f, 1);
+        }
+
+    }
 
 }

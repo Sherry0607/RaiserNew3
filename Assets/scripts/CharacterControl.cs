@@ -89,12 +89,12 @@ public class CharacterControl : MonoBehaviour
     {
         move = 0;
 
-        if (POS1 - POS2 > 5)
+       /* if (POS1 - POS2 > 5)
         {
             life = 1;
             LifeChange(false);
             m_animator.SetBool("die", true);
-        }
+        }*/
 
         if (Movement && GameManager.Instence.isPlay)
         {
@@ -219,12 +219,14 @@ public class CharacterControl : MonoBehaviour
         {
 		    int a = life;
             life--;
-            lifeImg[a].GetComponent<Animator>().SetBool("leaf",true); 
-			//m_animator.SetBool("hurt", true);
-		//	Invoke("idle", 0.5f);
+			print(life);
+            lifeImg[life].GetComponent<Animator>().SetBool("leaf",true); 
+			m_animator.SetBool("hurt", true);
+			Invoke("idle", 0.5f);
 			
             if (life == 0)
             {
+			Movement=false;
                 foreach (var LifeImages in lifeImg)
                 {
                     LifeImages.gameObject.SetActive(false);

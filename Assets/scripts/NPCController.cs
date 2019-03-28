@@ -60,10 +60,13 @@ public class NPCController : MonoBehaviour {
     /// <summary>
     /// meet target , and chase target.
     /// </summary>
-    private void ChaseTarget() {
-        shell.position = Vector3.MoveTowards(shell.position, moveTargetPos, chaseSpeed * Time.deltaTime);
+     private void ChaseTarget()
+        {
+            if (Vector3.Distance(shell.position, moveTargetPos) >= 3)
+                shell.position = Vector3.MoveTowards(shell.position, moveTargetPos, chaseSpeed * Time.deltaTime);
 
-    }
+        }
+
 
 
     /// <summary>
