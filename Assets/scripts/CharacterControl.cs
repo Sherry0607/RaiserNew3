@@ -91,12 +91,12 @@ public class CharacterControl : MonoBehaviour
     {
         move = 0;
 
-       /* if (POS1 - POS2 > 5)
-        {
-            life = 1;
-            LifeChange(false);
-            m_animator.SetBool("die", true);
-        }*/
+         if (POS1 - POS2 > MaxHeight)
+         {
+             life = 1;
+             LifeChange(false);
+             m_animator.SetBool("die", true);
+         }
 
         if (Movement && GameManager.Instence.isPlay)
         {
@@ -147,7 +147,6 @@ public class CharacterControl : MonoBehaviour
 
             if (!IsTouchedUI() && Input.GetMouseButtonDown(0))
             {
-                Debug.Log("attack");
                 m_animator.SetBool("attack", true);
                 isAttacking = true;
                 if (Vector2.Distance(transform.position, bos1.transform.position) <= 2.3f || Vector2.Distance(transform.position, bos2.transform.position) <= 2.3f)
@@ -157,7 +156,7 @@ public class CharacterControl : MonoBehaviour
             }
 
             stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
-            if (stateInfo.normalizedTime >= 0.95f && stateInfo.IsName("attack"))
+            if (stateInfo.normalizedTime >= 0.9f && stateInfo.IsName("attack"))
             {
                 m_animator.SetBool("attack", false);
                 isAttacking = false;
@@ -206,34 +205,35 @@ public class CharacterControl : MonoBehaviour
         //取移动速度的绝对值，>0.1  播放move动画    <0.1 播放Idle动画 
         m_animator.SetFloat("move", Mathf.Abs(move));
 
-		
+
 
     }
 
     public void LifeChange(bool aa)
     {
         if (aa && life < 6)
-        {   life++;
-            lifeImg[life-1].SetActive(true);
+        {
+            life++;
+            lifeImg[life - 1].SetActive(true);
             Debug.Log(lifeImg[life].name);
         }
         if (!aa)
         {
-		    int a = life;
+            int a = life;
             life--;
             //lifeImg[life].GetComponent<Animator>().SetBool("leaf",true); 
             lifeImg[life].SetActive(false);
 
             m_animator.SetBool("hurt", true);
-			Invoke("idle", 0.5f);
-			
+            Invoke("idle", 0.5f);
+
             if (life == 0)
             {
-			Movement=false;
+                Movement = false;
                 foreach (var LifeImages in lifeImg)
                 {
                     LifeImages.gameObject.SetActive(false);
-					
+
                 }
                 m_animator.SetBool("die", true);
                 Invoke("RestartGame", 2f);
@@ -245,13 +245,14 @@ public class CharacterControl : MonoBehaviour
     {
         SceneManager.LoadScene("game");
     }
-	void idle(){
-	 m_animator.SetBool("hurt", false);
-	}
+    void idle()
+    {
+        m_animator.SetBool("hurt", false);
+    }
 
     void Leaves()
     {
-        
+
     }
 
 

@@ -12,6 +12,7 @@ public class BossAI : MonoBehaviour
     private int m_Life;
     public GameObject cam1;
     public GameObject cam2;
+    public GameObject wall;
 
     private float m_CurrentDuration;
 
@@ -52,6 +53,7 @@ public class BossAI : MonoBehaviour
             BossLife.SetActive(false);
             cam1.SetActive(true);
             cam2.SetActive(false);
+            wall.SetActive(false);
         }
     }
 }
