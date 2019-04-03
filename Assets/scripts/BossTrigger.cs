@@ -37,7 +37,7 @@ public class BossTrigger : MonoBehaviour {
             Boss2.m_Index = 1;
             Boss2.m_Index2 = 1;
             wall.SetActive(true);
-            BlackAlpha.Increase = true;
+            BlackAlpha.ScreenFade();
             Invoke("ChangeCamera", 1.6f);
 			Destroy(gameObject,2f);
         }

@@ -35,15 +35,6 @@ public class DialogueController : MonoBehaviour
     private static Dictionary<string, Sprite> dialogueCharImageDict = new Dictionary<string, Sprite>();
 
 
-    public void InitDialogueData()
-    {
-        if (dialogueFileName == null) gameObject.SetActive(false);
-
-        dialogueNextFlag.SetActive(true);
-        LoadFile(dialogueFileName);
-        currentDialogueIndex = 0;
-
-    }
 
     private void Awake()
     {
@@ -55,9 +46,20 @@ public class DialogueController : MonoBehaviour
     {
         dialogueChar.sprite = GetCharImage(dialogContentData[currentDialogueIndex][0]);
         dialogue.text = dialogContentData[currentDialogueIndex][1];
+        SetdialogueCharImage();
         currentDialogueIndex++;
 
-        SetdialogueCharImage();
+    }
+
+
+    public void InitDialogueData()
+    {
+        if (dialogueFileName == null) gameObject.SetActive(false);
+
+        dialogueNextFlag.SetActive(true);
+        LoadFile(dialogueFileName);
+        currentDialogueIndex = 0;
+
     }
 
     /// <summary>

@@ -1,26 +1,28 @@
-﻿using System.Collections;
+﻿using Anima2D; //加上命名空间
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Anima2D; //加上命名空间
+
+
+
 
 [RequireComponent(typeof(Animator))]
-
 public class CharacterControl : MonoBehaviour
 {
     public float JumpForce1 = 800;
     public float JumpForce2 = 500;
     public float MoveSpeed = 20;
+
+    [HideInInspector]
     public Rigidbody2D m_rigid;
     //获取 animator组件
     private Animator m_animator;
     private AnimatorStateInfo stateInfo;
     private float horizontal = 0;
-    bool isJump = false;
-    bool isDoubleJump = false;
-    public bool isAttacking;
+    private bool isJump = false;
+    private bool isDoubleJump = false;
+    private bool isAttacking;
     [HideInInspector]
     public float move = 0;
     [HideInInspector]
@@ -150,7 +152,7 @@ public class CharacterControl : MonoBehaviour
             {
                 m_animator.SetBool("attack", true);
                 isAttacking = true;
-                if (Vector2.Distance(transform.position, bos1.transform.position) <= 2.3f || Vector2.Distance(transform.position, bos2.transform.position) <= 2.3f)
+                if (bos1 != null && Vector2.Distance(transform.position, bos1.transform.position) <= 2.3f || bos2 != null && Vector2.Distance(transform.position, bos2.transform.position) <= 2.3f)
                 {
                     BossAI.instance.LifeChange();
                 }
@@ -186,7 +188,12 @@ public class CharacterControl : MonoBehaviour
             }
 
         }
-
+        else {
+            //当处于非活动状态时，将主角的状态置为 Idle
+            m_animator.SetBool("attack", false);
+            m_animator.SetBool("Jump2", false);
+            m_animator.SetBool("Jump", false);
+        }
         if (move != 0)
         {
             int dir = move > 0 ? 1 : -1;
@@ -210,15 +217,14 @@ public class CharacterControl : MonoBehaviour
 
     }
 
-    public void LifeChange(bool aa)
+    public void LifeChange(bool addBlood)
     {
-        if (aa && life < 6)
+        if (addBlood && life < 6)
         {
             life++;
             lifeImg[life - 1].SetActive(true);
-            Debug.Log(lifeImg[life].name);
         }
-        if (!aa && life > 0)
+        if (!addBlood && life > 0)
         {
             foreach (var alpha in Alphas)
             {

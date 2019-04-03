@@ -1,28 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class BackPackItemDetail : MonoBehaviour {
-    public GameObject desPanelObj;
     public Image Icon;
-    public Text Name;
+    //public Text Name;
     public Text Description;
     public Button UseButton;
     //private Sprite spp;
   
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         this.UseButton.onClick.AddListener(this.OnUseBtnClicked);
-	}
+        SetInfoState(false);
+
+    }
 
     public void SetData(BackPackItem item)
     {
-        desPanelObj.SetActive(true);
+
         this.Icon.sprite = Resources.Load<Sprite>("Art/" + item.ItemName);
-        this.Name.text = item.ItemName;
+        //this.Name.text = item.ItemName;
         this.Description.text = item.ItemDesc;
         this.UseButton.gameObject.SetActive(true);
+        SetInfoState(true);
     }
 
     /// <summary>
@@ -35,4 +37,12 @@ public class BackPackItemDetail : MonoBehaviour {
         Debug.Log("On Use clicked");
 
     }
+
+
+    private void SetInfoState(bool state) {
+        Icon.gameObject.SetActive(state);
+        Description.gameObject.SetActive(state);
+        UseButton.gameObject.SetActive(state);
+    }
+
 }
