@@ -19,6 +19,7 @@ public class PoisonousMarsh : MonoBehaviour {
             {
                 Attack = false;
                 collision.GetComponent<CharacterControl>().LifeChange(false);
+                collision.GetComponent<Animator>().SetBool("hurt", true);
                 Invoke("ResetAttack", 3f);
             }
         }

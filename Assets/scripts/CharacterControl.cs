@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Anima2D; //加上命名空间
 
 [RequireComponent(typeof(Animator))]
 
@@ -28,8 +29,6 @@ public class CharacterControl : MonoBehaviour
     public List<GameObject> lifeImg;
 
     public GameObject bos1, bos2;
-    public GameObject leaf1;
-
 
     [SerializeField]
     private GameObject smokePrefab;             //二段跳的粒子特效
@@ -40,6 +39,8 @@ public class CharacterControl : MonoBehaviour
     public float POS1;
     public float POS2;
     public float MaxHeight;//摔死的高度
+    public GameObject[] Alphas;
+
 
     // Use this for initialization
     void Start()
@@ -217,15 +218,18 @@ public class CharacterControl : MonoBehaviour
             lifeImg[life - 1].SetActive(true);
             Debug.Log(lifeImg[life].name);
         }
-        if (!aa)
+        if (!aa && life > 0)
         {
+            foreach (var alpha in Alphas)
+            {
+                alpha.transform.GetComponent<SpriteMeshInstance>().m_Color.a = 0.5f;
+                Invoke("ResetAlpha", 0.1f);
+            }
+
             int a = life;
             life--;
-            //lifeImg[life].GetComponent<Animator>().SetBool("leaf",true); 
-            lifeImg[life].SetActive(false);
-
-            m_animator.SetBool("hurt", true);
-            Invoke("idle", 0.5f);
+            lifeImg[life].GetComponent<Animator>().SetBool("leaf", true);
+            Invoke("Idle", 0.5f);
 
             if (life == 0)
             {
@@ -245,17 +249,18 @@ public class CharacterControl : MonoBehaviour
     {
         SceneManager.LoadScene("game");
     }
-    void idle()
+    void Idle()
     {
         m_animator.SetBool("hurt", false);
     }
 
-    void Leaves()
+    void ResetAlpha()
     {
-
+        foreach (var alpha in Alphas)
+        {
+            alpha.transform.GetComponent<SpriteMeshInstance>().m_Color.a = 1;
+        }
     }
-
-
     /// <summary>
     /// 是否鼠标放在 UI上
     /// </summary>
