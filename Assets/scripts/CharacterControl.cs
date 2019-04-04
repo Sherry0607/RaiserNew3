@@ -26,7 +26,7 @@ public class CharacterControl : MonoBehaviour
     [HideInInspector]
     public float move = 0;
     [HideInInspector]
-    public bool Movement = true;
+    public bool Movement;
     public int life;
     public List<GameObject> lifeImg;
 
@@ -47,6 +47,7 @@ public class CharacterControl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Movement = true;
         m_rigid = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
 
@@ -92,7 +93,7 @@ public class CharacterControl : MonoBehaviour
 
     void Update()
     {
-        move = 0;
+        //move = 0;
 
          if (POS1 - POS2 > MaxHeight)
          {
@@ -198,7 +199,7 @@ public class CharacterControl : MonoBehaviour
         {
             int dir = move > 0 ? 1 : -1;
 
-            this.transform.localScale = new Vector3(Mathf.Abs(this.transform.localScale.x) * dir,
+            this.transform.localScale = new Vector3(Mathf.Abs(this.transform.localScale.x) * -dir,
                                     this.transform.localScale.y,
                                     this.transform.localScale.z);
 
