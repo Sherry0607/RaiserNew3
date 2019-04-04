@@ -229,8 +229,8 @@ public class CharacterControl : MonoBehaviour
         {
             foreach (var alpha in Alphas)
             {
-                alpha.transform.GetComponent<SpriteMeshInstance>().m_Color.a = 0.5f;
-                Invoke("ResetAlpha", 0.1f);
+                alpha.transform.GetComponent<SpriteMeshInstance>().color = new Color(0.9f, 0.67f, 0.67f, 1);
+                Invoke("ResetAlpha", 0.5f);
             }
 
             int a = life;
@@ -265,7 +265,7 @@ public class CharacterControl : MonoBehaviour
     {
         foreach (var alpha in Alphas)
         {
-            alpha.transform.GetComponent<SpriteMeshInstance>().m_Color.a = 1;
+            alpha.transform.GetComponent<SpriteMeshInstance>().m_Color = new Color(1, 1, 1, 1);
         }
     }
     /// <summary>
