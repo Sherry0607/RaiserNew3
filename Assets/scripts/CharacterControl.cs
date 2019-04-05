@@ -254,7 +254,7 @@ public class CharacterControl : MonoBehaviour
 
     void RestartGame()
     {
-        SceneManager.LoadScene("game");
+        SceneManager.LoadScene("level1");
     }
     void Idle()
     {
