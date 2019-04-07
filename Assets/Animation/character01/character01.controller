@@ -206,9 +206,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0.6937219
-  m_ExitTime: 0.75
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.05953507
+  m_ExitTime: 0.93694
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -407,7 +407,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.37366933
+  m_TransitionDuration: 0.22234195
   m_TransitionOffset: 0
   m_ExitTime: 0.75000006
   m_HasExitTime: 0
@@ -636,7 +636,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Jump
-  m_Speed: 1
+  m_Speed: 1.57
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101308138565236282}
@@ -691,10 +691,10 @@ AnimatorStateMachine:
     m_Position: {x: 108, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102504509610397812}
-    m_Position: {x: 600, y: 456, z: 0}
+    m_Position: {x: 612, y: 468, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102205972510308124}
-    m_Position: {x: 564, y: 348, z: 0}
+    m_Position: {x: 612, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102443871840317968}
     m_Position: {x: 372, y: -12, z: 0}

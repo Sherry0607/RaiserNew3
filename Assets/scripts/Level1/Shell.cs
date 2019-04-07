@@ -34,22 +34,12 @@ public class Shell : MonoBehaviour {
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Player") //打贝壳
-        {
-            if (Input.GetMouseButtonUp(0) && Attack == true)
-            {
-                LifeChange_m();
-                Attack = false;
-            }
-        }
-    }
+
 
     public void LifeChange_m()
     {
-        --trap_hp;
-            GetComponent<SpriteRenderer>().color = new Color(0.9f, 0.67f, 0.67f, 1);
+            --trap_hp;
+            GetComponent<SpriteRenderer>().color = new Color(0.3207547f, 0.3207547f, 0.3207547f, 1);
             Invoke("ResetColor1", 0.5f);
 
         if (trap_hp == 0)

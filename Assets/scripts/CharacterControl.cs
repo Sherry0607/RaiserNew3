@@ -93,7 +93,7 @@ public class CharacterControl : MonoBehaviour
 
     void Update()
     {
-        //move = 0;
+       move = 0;
 
          if (POS1 - POS2 > MaxHeight)
          {
