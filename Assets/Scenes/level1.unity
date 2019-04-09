@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -976,7 +976,7 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21418105}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 12ebb96cc45bab44ebee8814945c499d, type: 3}
@@ -1272,7 +1272,6 @@ GameObject:
   - component: {fileID: 24160751}
   - component: {fileID: 24160753}
   - component: {fileID: 24160754}
-  - component: {fileID: 24160752}
   m_Layer: 0
   m_Name: boss1
   m_TagString: guaiwu
@@ -1297,31 +1296,6 @@ Transform:
   m_Father: {fileID: 1988628821}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!61 &24160752
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 24160750}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 2.606848, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 16.373642, y: 7.52}
-  m_EdgeRadius: 0
 --- !u!95 &24160753
 Animator:
   serializedVersion: 3
@@ -2578,7 +2552,6 @@ GameObject:
   - component: {fileID: 62324613}
   - component: {fileID: 62324616}
   - component: {fileID: 62324615}
-  - component: {fileID: 62324614}
   - component: {fileID: 62324617}
   m_Layer: 0
   m_Name: BOSS1_crow02-wing2.1
@@ -2601,32 +2574,6 @@ Transform:
   m_Father: {fileID: 1146262268}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!61 &62324614
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61917035235585816, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 62324612}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.34436774, y: 0.25080848}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.3072639, y: 2.984212}
-  m_EdgeRadius: 0
 --- !u!137 &62324615
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -6758,7 +6705,6 @@ GameObject:
   - component: {fileID: 161480981}
   - component: {fileID: 161480984}
   - component: {fileID: 161480983}
-  - component: {fileID: 161480982}
   - component: {fileID: 161480985}
   m_Layer: 0
   m_Name: BOSS1_crow02-wing2.1
@@ -6781,32 +6727,6 @@ Transform:
   m_Father: {fileID: 207314468}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!61 &161480982
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61917035235585816, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 161480980}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.34436774, y: 0.25080848}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.3072639, y: 2.984212}
-  m_EdgeRadius: 0
 --- !u!137 &161480983
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -7954,6 +7874,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 207314468}
+  - component: {fileID: 207314470}
+  - component: {fileID: 207314469}
   m_Layer: 0
   m_Name: boss1-sprites meshes
   m_TagString: Untagged
@@ -7980,6 +7902,43 @@ Transform:
   m_Father: {fileID: 24160751}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &207314469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207314467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d4f8b4e912c9349a023d641366f83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossWing: {fileID: 1535212954}
+--- !u!61 &207314470
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207314467}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.571981, y: 1.2519734}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.0680237, y: 1.3606453}
+  m_EdgeRadius: 0
 --- !u!1 &213236330
 GameObject:
   m_ObjectHideFlags: 0
@@ -7991,7 +7950,6 @@ GameObject:
   - component: {fileID: 213236331}
   - component: {fileID: 213236334}
   - component: {fileID: 213236333}
-  - component: {fileID: 213236332}
   - component: {fileID: 213236335}
   m_Layer: 0
   m_Name: BOSS1_crow02-wing2
@@ -8014,32 +7972,6 @@ Transform:
   m_Father: {fileID: 1146262268}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!61 &213236332
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61547791566245294, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 213236330}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.015370607, y: 0.09629023}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.848734, y: 2.3815897}
-  m_EdgeRadius: 0
 --- !u!137 &213236333
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -10752,7 +10684,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 282840810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 84.85, y: -24.119999, z: -10.32377}
+  m_LocalPosition: {x: 33.2, y: 4.8999996, z: -10.32377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17512,7 +17444,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 429379258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 84.85, y: -24.119999, z: -10.32377}
+  m_LocalPosition: {x: 33.2, y: 4.8999996, z: -10.32377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 876825293}
@@ -21738,7 +21670,6 @@ MonoBehaviour:
   bos2: {fileID: 1988628819}
   smokePrefab: {fileID: 1249897277425200, guid: bd11cc3b5b798e442adb97d8a69a6323,
     type: 2}
-  POS1: 0
   POS2: 0
   MaxHeight: 25
   Alphas:
@@ -26473,7 +26404,6 @@ GameObject:
   - component: {fileID: 696338870}
   - component: {fileID: 696338873}
   - component: {fileID: 696338872}
-  - component: {fileID: 696338871}
   - component: {fileID: 696338874}
   m_Layer: 0
   m_Name: BOSS1_crow02-wing1.1
@@ -26496,32 +26426,6 @@ Transform:
   m_Father: {fileID: 1146262268}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!61 &696338871
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61669453170798140, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 696338869}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15263379, y: 0.18181926}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.4451835, y: 2.7741628}
-  m_EdgeRadius: 0
 --- !u!137 &696338872
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -31681,11 +31585,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4742247174159014, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 84.85
+      value: 33.2
       objectReference: {fileID: 0}
     - target: {fileID: 4742247174159014, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -25.72
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 4742247174159014, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalPosition.z
@@ -31768,11 +31672,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4067889312685254, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.99157304
+      value: -0.99157286
       objectReference: {fileID: 0}
     - target: {fileID: 4067889312685254, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.12954898
+      value: 0.12955065
       objectReference: {fileID: 0}
     - target: {fileID: 4067889312685254, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -31780,11 +31684,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4111220705973342, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.9899483
+      value: 0.9899481
       objectReference: {fileID: 0}
     - target: {fileID: 4111220705973342, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.14143008
+      value: 0.14143151
       objectReference: {fileID: 0}
     - target: {fileID: 4111220705973342, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -32939,7 +32843,6 @@ GameObject:
   - component: {fileID: 870310348}
   - component: {fileID: 870310351}
   - component: {fileID: 870310350}
-  - component: {fileID: 870310349}
   - component: {fileID: 870310352}
   m_Layer: 0
   m_Name: BOSS1_crow02-body2
@@ -32962,32 +32865,6 @@ Transform:
   m_Father: {fileID: 207314468}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &870310349
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61337300090910480, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 870310347}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.09504938, y: 1.739371}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.9351711, y: 1.4804208}
-  m_EdgeRadius: 0
 --- !u!137 &870310350
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -37992,7 +37869,6 @@ GameObject:
   - component: {fileID: 989789986}
   - component: {fileID: 989789989}
   - component: {fileID: 989789988}
-  - component: {fileID: 989789987}
   - component: {fileID: 989789990}
   m_Layer: 0
   m_Name: BOSS1_crow02-wing1
@@ -38015,32 +37891,6 @@ Transform:
   m_Father: {fileID: 207314468}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!61 &989789987
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61011928271970736, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 989789985}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.1440301, y: 0.08273792}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.4583468, y: 2.3371286}
-  m_EdgeRadius: 0
 --- !u!137 &989789988
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -48795,6 +48645,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1146262268}
+  - component: {fileID: 1146262270}
+  - component: {fileID: 1146262269}
   m_Layer: 0
   m_Name: boss1-sprites meshes
   m_TagString: Untagged
@@ -48821,6 +48673,43 @@ Transform:
   m_Father: {fileID: 1481974659}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1146262269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146262267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d4f8b4e912c9349a023d641366f83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossWing: {fileID: 213236334}
+--- !u!61 &1146262270
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146262267}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.3120246, y: 0.90806526}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.25948, y: 1.4922088}
+  m_EdgeRadius: 0
 --- !u!1 &1149934714
 GameObject:
   m_ObjectHideFlags: 0
@@ -48832,7 +48721,6 @@ GameObject:
   - component: {fileID: 1149934715}
   - component: {fileID: 1149934718}
   - component: {fileID: 1149934717}
-  - component: {fileID: 1149934716}
   - component: {fileID: 1149934719}
   m_Layer: 0
   m_Name: BOSS1_crow02-body2
@@ -48855,32 +48743,6 @@ Transform:
   m_Father: {fileID: 1146262268}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1149934716
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61337300090910480, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1149934714}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.104735434, y: 1.939674}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.7685452, y: 1.881026}
-  m_EdgeRadius: 0
 --- !u!137 &1149934717
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -50585,7 +50447,6 @@ GameObject:
   - component: {fileID: 1190511857}
   - component: {fileID: 1190511860}
   - component: {fileID: 1190511859}
-  - component: {fileID: 1190511858}
   - component: {fileID: 1190511861}
   m_Layer: 0
   m_Name: BOSS1_crow02-wing2
@@ -50608,32 +50469,6 @@ Transform:
   m_Father: {fileID: 207314468}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!61 &1190511858
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61547791566245294, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1190511856}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.015370607, y: 0.09629023}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.848734, y: 2.3815897}
-  m_EdgeRadius: 0
 --- !u!137 &1190511859
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -60268,7 +60103,6 @@ GameObject:
   - component: {fileID: 1481974659}
   - component: {fileID: 1481974661}
   - component: {fileID: 1481974662}
-  - component: {fileID: 1481974660}
   m_Layer: 0
   m_Name: boss1
   m_TagString: guaiwu
@@ -60293,31 +60127,6 @@ Transform:
   m_Father: {fileID: 1036353252}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!61 &1481974660
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1481974658}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 2.6068478, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 16.373604, y: 7.52}
-  m_EdgeRadius: 0
 --- !u!95 &1481974661
 Animator:
   serializedVersion: 3
@@ -62437,7 +62246,6 @@ GameObject:
   - component: {fileID: 1535212951}
   - component: {fileID: 1535212954}
   - component: {fileID: 1535212953}
-  - component: {fileID: 1535212952}
   - component: {fileID: 1535212955}
   m_Layer: 0
   m_Name: BOSS1_crow02-wing1.1
@@ -62460,32 +62268,6 @@ Transform:
   m_Father: {fileID: 207314468}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!61 &1535212952
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61669453170798140, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1535212950}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15263379, y: 0.18181926}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.4451835, y: 2.7741628}
-  m_EdgeRadius: 0
 --- !u!137 &1535212953
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -65274,7 +65056,7 @@ MonoBehaviour:
   TopPosition: {fileID: 1154073046}
   BottomPosition: {fileID: 1877474535}
   Lighting: {fileID: 1994334944}
-  atTop: 0
+  atTop: 1
   OnElevator: 0
 --- !u!1 &1607989005
 GameObject:
@@ -76463,7 +76245,6 @@ GameObject:
   - component: {fileID: 1895040832}
   - component: {fileID: 1895040835}
   - component: {fileID: 1895040834}
-  - component: {fileID: 1895040833}
   - component: {fileID: 1895040836}
   m_Layer: 0
   m_Name: BOSS1_crow02-wing1
@@ -76486,32 +76267,6 @@ Transform:
   m_Father: {fileID: 1146262268}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!61 &1895040833
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 61011928271970736, guid: 0a2c5d8274ac37244a22787bd26b2a63,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1895040831}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.1440301, y: 0.08273792}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.4583468, y: 2.3371286}
-  m_EdgeRadius: 0
 --- !u!137 &1895040834
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

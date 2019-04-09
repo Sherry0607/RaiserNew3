@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 
-
-
 [RequireComponent(typeof(Animator))]
 public class CharacterControl : MonoBehaviour
 {
@@ -38,7 +36,8 @@ public class CharacterControl : MonoBehaviour
     private GameObject smokePartileParentObj;   //粒子特效的空间位置父节点
     private Transform smokePos;                 //player的播放位置（脚下）
 
-    public float POS1;
+    float POS1;
+    [HideInInspector]
     public float POS2;
     public float MaxHeight;//摔死的高度
     public GameObject[] Alphas;
@@ -78,29 +77,22 @@ public class CharacterControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "BossFeature" || col.tag == "BossMouth")
-        {//扣血
-            LifeChange(false);
-        }
-
         if (col.tag == "BossWing" && isAttacking)
         {
             var bossAi = GameObject.Find("BossAI").GetComponent<BossAI>();
             bossAi.LifeChange();
         }
     }
-    // Update is called once per frame
 
+    // Update is called once per frame
     void Update()
     {
-       move = 0;
-
-         if (POS1 - POS2 > MaxHeight)
-         {
-             life = 1;
-             LifeChange(false);
-             m_animator.SetBool("die", true);
-         }
+        if (POS1 - POS2 > MaxHeight)
+        {
+            life = 1;
+            LifeChange(false);
+            m_animator.SetBool("die", true);
+        }
 
         if (Movement && GameManager.Instence.isPlay)
         {
@@ -152,12 +144,14 @@ public class CharacterControl : MonoBehaviour
             if (!IsTouchedUI() && Input.GetMouseButtonDown(0))
             {
                 m_animator.SetBool("attack", true);
-                isAttacking = true;
-                if (bos1 != null && Vector2.Distance(transform.position, bos1.transform.position) <= 2.3f || bos2 != null && Vector2.Distance(transform.position, bos2.transform.position) <= 2.3f)
-                {
-                    BossAI.instance.LifeChange();
+                if (!isAttacking)
+                {if(bos1 != null && Vector2.Distance(transform.position, bos1.transform.position) <= 5f || bos2 != null && Vector2.Distance(transform.position, bos2.transform.position) <= 5f)
+                    {
+                        BossAI.instance.LifeChange();
+                        isAttacking = true;
+                    }
                 }
-            }
+            } 
 
             stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
             if (stateInfo.normalizedTime >= 0.9f && stateInfo.IsName("attack"))
@@ -169,8 +163,6 @@ public class CharacterControl : MonoBehaviour
 
             horizontal = Input.GetAxis("Horizontal");
             move = horizontal * MoveSpeed;
-
-
             if (move != 0)
             {
                 int dir = move > 0 ? 1 : -1;
@@ -185,11 +177,10 @@ public class CharacterControl : MonoBehaviour
             else
             {
                 m_rigid.velocity = new Vector2(0, m_rigid.velocity.y);
-
             }
-
         }
-        else {
+        else
+        {
             //当处于非活动状态时，将主角的状态置为 Idle
             m_animator.SetBool("attack", false);
             m_animator.SetBool("Jump2", false);

@@ -111,7 +111,7 @@ public class Elevator : MonoBehaviour {
             OnElevator = false;
             staySecond = 0;
             atTop = !moveUp;
-
+            characterCtr.POS2 = collision.transform.position.y;
         }
     }
 
@@ -134,7 +134,6 @@ public class Elevator : MonoBehaviour {
         elevatorRigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation; //冻结旋转
         rod.transform.localScale = new Vector3(1, length, 1);
         transform.position = new Vector3(transform.position.x, PosY, transform.position.z);
-        //TopPosition.SetActive(true);
     }
 
     void MoveDown()
@@ -149,6 +148,5 @@ public class Elevator : MonoBehaviour {
         elevatorRigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         rod.transform.localScale = new Vector3(1, length, 1);
         transform.position = new Vector3(transform.position.x, PosY, transform.position.z);
-        //BottomPosition.SetActive(true);
     }
 }
