@@ -87,6 +87,7 @@ public class CharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        move = 0;
         if (POS1 - POS2 > MaxHeight)
         {
             life = 1;
