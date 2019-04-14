@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlowerBullet : MonoBehaviour {
 
+    GameObject Player;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,14 +13,14 @@ public class FlowerBullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        Destroy(gameObject, 1f);
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "ground")
+        if (collision.tag == "Player")
         {
-            Destroy(gameObject,0.2f);
+            collision.GetComponent<CharacterControl2>().LifeChange(false);
         }
     }
 }

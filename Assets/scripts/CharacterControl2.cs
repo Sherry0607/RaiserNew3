@@ -28,8 +28,6 @@ public class CharacterControl2 : MonoBehaviour
     public int life;
     public List<GameObject> lifeImg;
 
-    public GameObject bos1, bos2;
-
     [SerializeField]
     private GameObject smokePrefab;             //二段跳的粒子特效
     private ParticleSystem stepJumpParticle;    //粒子特效的引用
@@ -145,13 +143,6 @@ public class CharacterControl2 : MonoBehaviour
             if (!IsTouchedUI() && Input.GetMouseButtonDown(0))
             {
                 m_animator.SetBool("attack", true);
-                if (!isAttacking)
-                {if(bos1 != null && Vector2.Distance(transform.position, bos1.transform.position) <= 5f || bos2 != null && Vector2.Distance(transform.position, bos2.transform.position) <= 5f)
-                    {
-                        BossAI.instance.LifeChange();
-                        isAttacking = true;
-                    }
-                }
             } 
 
             stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
