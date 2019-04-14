@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4663939553293206}
   - component: {fileID: 212889043937082544}
   - component: {fileID: 50824195492509258}
-  - component: {fileID: 60731317416112924}
   - component: {fileID: 114714306069989588}
+  - component: {fileID: 70878403727670732}
   m_Layer: 0
   m_Name: FlowerBullet
   m_TagString: Untagged
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60731317416112924
-PolygonCollider2D:
+--- !u!70 &70878403727670732
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,43 +76,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.53, y: 2.02}
-    newSize: {x: 0.53, y: 2.02}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.125, y: -0.26}
-      - {x: 0.16499999, y: -0.21}
-      - {x: 0.225, y: 0.03}
-      - {x: 0.265, y: 0.21}
-      - {x: 0.265, y: 0.29}
-      - {x: 0.185, y: 0.56}
-      - {x: 0.125, y: 0.72999996}
-      - {x: 0.095, y: 0.82}
-      - {x: 0.044999998, y: 0.91999996}
-      - {x: -0.024999999, y: 1.01}
-      - {x: -0.085, y: 1.01}
-      - {x: -0.13499999, y: 0.96}
-      - {x: -0.185, y: 0.78999996}
-      - {x: -0.265, y: 0.47}
-      - {x: -0.265, y: 0.13}
-      - {x: -0.255, y: 0.049999997}
-      - {x: -0.185, y: -0.14}
-      - {x: -0.155, y: -0.26999998}
-      - {x: -0.13499999, y: -0.41}
-      - {x: -0.095, y: -0.56}
-      - {x: -0.024999999, y: -0.91999996}
-      - {x: 0.005, y: -0.96999997}
-      - {x: 0.035, y: -0.96}
-      - {x: 0.074999996, y: -0.84999996}
-      - {x: 0.114999995, y: -0.51}
-      - {x: 0.125, y: -0.38}
+  m_Size: {x: 0.53, y: 2.02}
+  m_Direction: 0
 --- !u!114 &114714306069989588
 MonoBehaviour:
   m_ObjectHideFlags: 1
