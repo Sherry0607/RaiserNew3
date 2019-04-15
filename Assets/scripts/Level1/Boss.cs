@@ -5,15 +5,11 @@ using Anima2D; //加上命名空间
 
 public class Boss : MonoBehaviour
 {
-
-   
     public BossFeather[] Features;
     public GameObject[] Alphas;
     public GameObject DarkSmoke;
 	public GameObject Boss1;
     public GameObject Boss2;
-
-    public GameObject Hp;
 
     public float Duration1;
     public Transform Boss1DiveStartPoint;
@@ -90,7 +86,6 @@ public class Boss : MonoBehaviour
 
         if (m_EnterStage == true)
         {
-            Hp.SetActive(true);
             switch (m_Index)
             {
                 case 1:

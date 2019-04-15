@@ -13,6 +13,7 @@ public class BossAI : MonoBehaviour
     public GameObject cam1;
     public GameObject cam2;
     public GameObject wall;
+    public ScreenFadeIn BlackAlpha; //黑幕
 
     void Awake()
     {
@@ -26,12 +27,6 @@ public class BossAI : MonoBehaviour
         LifeImage.transform.parent.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-
     public void LifeChange()
     {
         if (Boss.m_Alpha > 0.5f)
@@ -44,9 +39,15 @@ public class BossAI : MonoBehaviour
             Destroy(Boss.gameObject);
             Destroy(Boss2.gameObject);
             BossLife.SetActive(false);
-            cam1.SetActive(true);
-            cam2.SetActive(false);
+            BlackAlpha.ScreenFade();
+            Invoke("ChangeCamera", 1.6f);
             wall.SetActive(false);
         }
+    }
+
+    void ChangeCamera()
+    {
+        cam2.SetActive(false);
+        cam1.SetActive(true);
     }
 }

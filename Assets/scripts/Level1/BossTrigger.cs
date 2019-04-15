@@ -6,6 +6,7 @@ public class BossTrigger : MonoBehaviour {
 
     public Boss Boss1;
     public Boss Boss2;
+    public GameObject Hp;
     public GameObject wall;
 
 	public GameObject cam1;
@@ -17,13 +18,9 @@ public class BossTrigger : MonoBehaviour {
 	void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-	    void OnTriggerEnter2D(Collider2D col)
+
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "Player")
         {//开始第一阶段
@@ -52,5 +49,6 @@ public class BossTrigger : MonoBehaviour {
     {
         cam1.SetActive(false);
         cam2.SetActive(true);
+        Hp.SetActive(true);
     }
 }
