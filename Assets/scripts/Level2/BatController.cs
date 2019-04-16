@@ -4,70 +4,126 @@ using UnityEngine;
 
 public class BatController : MonoBehaviour {
 
-    public Transform bat;
-    public float moveSpeed;
-    public float chaseSpeed;
-    public float waitTime;
-    public Transform[] movePoints;
+    public Transform batBody;//bat 的主体
+    public float chaseSpeed;//攻击的速度
+    public float attckTime = 2;//攻击的时间
+    public float delayTime;//等待下次攻击的时间
 
-    private GameObject targetObj;
-    private Vector3 moveTargetPos;
-    private float waitTimer;
-    private int movePointIndex;
+    [HideInInspector]
+    public bool isCanAttack = false;//是否可以进行攻击（每次冲击制造成一次伤害）
+    private Animator animator;//bat 的animator
 
-    private bool isChaseTarget = false;
+
+    private GameObject playerObj;//player
+    private Vector3 targetPos;//player的位置
+    private bool isChaseTarget = false;//是否可以攻击player
+    private float delayTimer;//计时器
+    private float attackTimer;//计时器
+
+    private Rigidbody2D body2D;
+
+    private Vector3 regionPos;//bat的原始位置
+    private Vector3 risePos;//bat 上升时的目标位置
+
+
     // Use this for initialization
     void Start()
     {
-        targetObj = GameObject.FindGameObjectWithTag("Player");
-        waitTimer = waitTime;
-        movePointIndex = 0;
-        moveTargetPos = movePoints[movePointIndex].position;
-        SetTarget(moveTargetPos);
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+        animator = batBody.GetComponent<Animator>();
+        body2D = batBody.GetComponent<Rigidbody2D>();
+
+        delayTimer = delayTime*0.5f;
+        attackTimer = attckTime;
+        isChaseTarget = false;
+        body2D.gravityScale = 0f;//初始时将bat的重力取消，攻击时重新设置上
+        regionPos = batBody.position;
+        risePos = batBody.position;
     }
 
-    // Update is called once per frame
+
+
+
+    /*
+    //bat的状态：
+    //1：攻击状态 2： 等待下次攻击状态 3：空闲状态
+     //状态描述：
+        player进入攻击范围时，进行攻击，‘空闲状态’ --> ‘攻击状态’
+        一次攻击结束后，‘攻击状态’ --> ‘等待下次攻击状态’，只要player可攻击（在攻击范围内）循环执行该行为
+        player 退出攻击范围，攻击结束，状态转换到 ‘空闲状态’
+
+     */
     void Update()
     {
         if (isChaseTarget)
-            ChaseTarget();
-        else
-            NormalMove();
-    }
-
-
-    /// <summary>
-    /// 在没有遇到target时的移动。
-    /// </summary>
-    private void NormalMove()
-    {
-        if (Vector3.Distance(moveTargetPos, bat.position) <= 0.1f)
         {
-            waitTimer -= Time.deltaTime;
-            if (waitTimer <= 0)
+            delayTimer -= Time.deltaTime;//攻击间歇计时
+            if (delayTimer <= 0)
             {
-                waitTimer = waitTime;
-                movePointIndex = (movePointIndex + 1) % movePoints.Length;
-                moveTargetPos = movePoints[movePointIndex].position;
-                SetTarget(moveTargetPos);
+                attackTimer -= Time.deltaTime;
+                if (attackTimer <= 0)//结束当前回合攻击，转到  ‘等待下次攻击状态’
+                {
+                    delayTimer = delayTime;//重置计时器时间
+                    attackTimer = attckTime;
+                    risePos = new Vector3(batBody.position.x
+                                         ,regionPos.y
+                                         , batBody.position.z);//重置上升的位置
+                    animator.SetBool("Attack", false);//取消攻击的动画
+                    body2D.gravityScale = 0f;//重力取消
+
+                }
+                else {
+                    //‘攻击状态’
+                    //如果没有进行攻击，则进行攻击
+                    if (!animator.GetBool("Attack")) {
+                        targetPos = new Vector3(playerObj.transform.position.x
+                                                ,playerObj.transform.position.y
+                                                ,batBody.position.z);
+                        animator.SetBool("Attack", true);
+                        body2D.gravityScale = 1f;
+                        isCanAttack = true;
+                    }
+
+                    ChaseTarget();//攻击player
+                }
+
+            }
+            else
+            {
+                Rise(risePos,chaseSpeed*0.5f);//上升到当前位置的上方位置
             }
         }
-        else
-        {
-            bat.position = Vector3.MoveTowards(bat.position, moveTargetPos, moveSpeed * Time.deltaTime);
+        else {
+            //取消攻击，状态转换到 '空闲状态'
+            if (Vector3.Distance(batBody.position, regionPos) >= 0.1f)//是否到了原始的位置
+            {
+                Rise(regionPos,chaseSpeed*0.2f);//上升到原始位置
+
+            }
+
 
         }
+
     }
-
-
+    
 
     /// <summary>
-    /// meet target , and chase target.
+    /// 冲击player
     /// </summary>
     private void ChaseTarget()
     {
-        if (Vector3.Distance(bat.position, moveTargetPos) >= 3)
-            bat.position = Vector3.MoveTowards(bat.position, moveTargetPos, chaseSpeed * Time.deltaTime);
+        body2D.AddForce((targetPos-batBody.position).normalized *chaseSpeed*10);
+
+    }
+
+
+    /// <summary>
+    /// 向上 上升
+    /// </summary>
+    /// <param name="targetPos"></param>
+    /// <param name="speed"></param>
+    private void Rise(Vector3 targetPos,float speed) {
+        batBody.position = Vector3.Lerp(batBody.position, targetPos, speed * Time.deltaTime);
 
     }
 
@@ -83,24 +139,13 @@ public class BatController : MonoBehaviour {
         {
 
             isChaseTarget = true;
-            moveTargetPos = collision.gameObject.transform.position;
-            SetTarget(moveTargetPos);
+            targetPos = new Vector3(playerObj.transform.position.x
+                                    ,playerObj.transform.position.y
+                                    , batBody.position.z);
+
         }
     }
 
-
-    /// <summary>
-    /// look at  target pos always when target into trigger.
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag.Contains("Player"))
-        {
-            moveTargetPos = collision.gameObject.transform.position;
-            SetTarget(moveTargetPos);
-        }
-    }
 
     /// <summary>
     /// lose target.
@@ -112,20 +157,13 @@ public class BatController : MonoBehaviour {
         {
 
             isChaseTarget = false;
-            moveTargetPos = movePoints[movePointIndex].position;
-            SetTarget(moveTargetPos);
+            body2D.gravityScale = 0f;
+
+            animator.SetBool("Attack",false);
+
         }
+
+
     }
 
-
-    /// <summary>
-    /// 重置 shell 移向 目标的状态
-    /// </summary>
-    /// <param name="pos">target's  pos.</param>
-    private void SetTarget(Vector3 pos)
-    {
-
-        moveTargetPos = new Vector3(pos.x, bat.position.y, pos.z);
-        bat.right = -(moveTargetPos - bat.position).normalized;
-    }
 }
