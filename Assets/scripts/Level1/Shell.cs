@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Anima2D;
+
 
 public class Shell : MonoBehaviour {
 
@@ -9,13 +11,18 @@ public class Shell : MonoBehaviour {
     public GameObject smoke;
     public GameObject Enemy; //小怪，放最外层父物体，最后销毁用
 
-    GameObject Player;
+    private GameObject Player;
     bool Hurt = true; //小怪打人
     public bool Attack = true; //人打小怪
     AnimatorStateInfo stateInfo;
 
+
+    private List<SpriteRenderer> spriteRendererList;
+
+
     void Start()
     {
+       
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -27,13 +34,13 @@ public class Shell : MonoBehaviour {
             Hurt = false;
             Invoke("ResetHurt", 1f);
         }
+
         stateInfo = Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
         if (stateInfo.normalizedTime >= 0.95f && stateInfo.IsName("attack") && Attack == false)
         {
             Attack = true;
         }
     }
-
 
 
     public void LifeChange_m()
@@ -50,6 +57,7 @@ public class Shell : MonoBehaviour {
             Destroy(Enemy.gameObject, 1.7f);
         }
     }
+
 
     void ResetHurt()
     {
