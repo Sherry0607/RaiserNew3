@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1919,11 +1919,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4742247174159014, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -68
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 4742247174159014, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 32.5
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 4742247174159014, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2006,11 +2006,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4067889312685254, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.9915731
+      value: -0.9915729
       objectReference: {fileID: 0}
     - target: {fileID: 4067889312685254, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.12954877
+      value: 0.12954982
       objectReference: {fileID: 0}
     - target: {fileID: 4067889312685254, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2018,11 +2018,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4111220705973342, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.9899483
+      value: 0.9899482
       objectReference: {fileID: 0}
     - target: {fileID: 4111220705973342, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.14142996
+      value: 0.1414303
       objectReference: {fileID: 0}
     - target: {fileID: 4111220705973342, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2030,15 +2030,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4006434432335150, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.99868643
+      value: 0.9986864
       objectReference: {fileID: 0}
     - target: {fileID: 4006434432335150, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.051239055
+      value: 0.051239766
       objectReference: {fileID: 0}
     - target: {fileID: 4165910624445620, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.0069650603
+      value: 0.006964464
       objectReference: {fileID: 0}
     - target: {fileID: 4742247174159014, guid: cbdca6ecddd757747bb2058857234e82, type: 2}
       propertyPath: m_LocalScale.x
@@ -7304,7 +7304,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0815248, y: 0.84578705}
+  m_Offset: {x: 0.0031824112, y: -1.2082043}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7315,7 +7315,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.005123, y: 8.437439}
+  m_Size: {x: 19.010412, y: 12.545422}
   m_EdgeRadius: 0
 --- !u!114 &622691774
 MonoBehaviour:
@@ -7329,8 +7329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batBody: {fileID: 713058744}
-  chaseSpeed: 3
-  attckTime: 1
+  chaseSpeed: 4
+  attckTime: 2
   delayTime: 2
   isCanAttack: 0
 --- !u!4 &622691775
@@ -7340,7 +7340,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 622691772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.4, y: 4.92, z: -0.059570312}
+  m_LocalPosition: {x: 19.8, y: 8.5, z: -0.059570312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 713058744}
@@ -8051,6 +8051,7 @@ GameObject:
   - component: {fileID: 713058746}
   - component: {fileID: 713058749}
   - component: {fileID: 713058745}
+  - component: {fileID: 713058751}
   - component: {fileID: 713058750}
   m_Layer: 0
   m_Name: Batbody
@@ -8151,7 +8152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062c3bcff991e8c479db65520c6333ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trap_hp: 8
+  trap_hp: 2
   smoke: {fileID: 1429530690502134, guid: a4f2991ad6452ea4d819a3d23b0e60bc, type: 2}
   Enemy: {fileID: 622691772}
 --- !u!212 &713058750
@@ -8200,6 +8201,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &713058751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 713058743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062c3bcff991e8c479db65520c6333ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trap_hp: 3
+  smoke: {fileID: 1429530690502134, guid: a4f2991ad6452ea4d819a3d23b0e60bc, type: 2}
+  Enemy: {fileID: 622691772}
 --- !u!1 &722390835
 GameObject:
   m_ObjectHideFlags: 0
@@ -11408,7 +11423,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1049509857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -68, y: 34.69393, z: -10.32377}
+  m_LocalPosition: {x: 13.8, y: 6.093931, z: -10.32377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14102,7 +14117,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1315139661819094, guid: 529a0341d6e40754a82d06b876949964, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 529a0341d6e40754a82d06b876949964, type: 2}
@@ -19818,7 +19833,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007537873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -68, y: 34.69393, z: -10.32377}
+  m_LocalPosition: {x: 13.8, y: 6.093931, z: -10.32377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1703162282}
