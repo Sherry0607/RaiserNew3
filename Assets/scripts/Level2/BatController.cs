@@ -55,6 +55,10 @@ public class BatController : MonoBehaviour {
      */
     void Update()
     {
+        if (!GameManager.Instence.isPlay)
+            return;
+
+
         if (isChaseTarget)
         {
             delayTimer -= Time.deltaTime;//攻击间歇计时
