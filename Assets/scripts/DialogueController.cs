@@ -44,7 +44,8 @@ public class DialogueController : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        dialogueChar.sprite = GetCharImage(dialogContentData[currentDialogueIndex][0]);
+
+        SetDialogueImage(GetCharImage(dialogContentData[currentDialogueIndex][0]));
         dialogue.text = dialogContentData[currentDialogueIndex][1];
         SetdialogueCharImage();
         currentDialogueIndex++;
@@ -89,14 +90,28 @@ public class DialogueController : MonoBehaviour
 
         SetdialogueCharImage();
 
-        dialogueChar.sprite = GetCharImage(dialogContentData[currentDialogueIndex][0]);
+        SetDialogueImage(GetCharImage(dialogContentData[currentDialogueIndex][0]));
         dialogue.text = dialogContentData[currentDialogueIndex][1];
         ++currentDialogueIndex;
     }
 
 
+    private void SetDialogueImage(Sprite sprite) {
+
+        if (sprite == null)
+            dialogueChar.enabled = false;
+        else
+        {
+            dialogueChar.sprite = sprite;
+            dialogueChar.enabled = true;
+        }
+    }
+
     private Sprite GetCharImage(string name)
     {
+        if (string.IsNullOrEmpty(name))
+            return null;
+
         Sprite temp;
         if (dialogueCharImageDict.ContainsKey(name))
             return dialogueCharImageDict[name];

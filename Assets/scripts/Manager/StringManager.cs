@@ -21,4 +21,7 @@ public class StringManager {
     public const string TAG_PLAYER = "Player";
 
 
+
+    //--------------------------save key-------------------------------------------------------
+    public const string Save_Level1DoorOpen = "Level1DoorOpen";
 }

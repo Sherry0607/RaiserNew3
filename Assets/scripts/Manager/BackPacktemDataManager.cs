@@ -50,14 +50,23 @@ public class BackPacktemDataManager
 
         if (itemID == -1)
             BackPackItemList.Add(item);
-        
+
+        SaveBackPackData();
+    }
+
+
+
+    /// <summary>
+    /// 保存背包数据
+    /// </summary>
+    private void SaveBackPackData() {
+
         string json = JsonMapper.ToJson(BackPackItemList);//生成Json文件
 
         //将json写入到文件
         StreamWriter sw = new StreamWriter(Application.streamingAssetsPath + "/BackPackItems.json");
         sw.Write(json);
         sw.Close();
-
     }
 
     private void DecodeJson()
@@ -82,6 +91,40 @@ public class BackPacktemDataManager
 
     }
 
+
+
+    /// <summary>
+    /// 背包中是否有钥匙
+    /// </summary>
+    /// <returns></returns>
+    public bool IsHaveKey() {
+        for (int i = 0; i < BackPackItemList.Count; i++)
+        {
+            if (BackPackItemList[i].ItemID == 1)
+                return true;
+        }
+        return false;
+
+
+    }
+
+
+    /// <summary>
+    /// 使用物品
+    /// </summary>
+    /// <param name="itemID"> 物品的 ID</param>
+    /// <param name="count">使用物品的数量</param>
+    public void UseItem(int itemID, int count = 1) {
+        for (int i = 0; i < BackPackItemList.Count; i++)
+        {
+            if (itemID == BackPackItemList[i].ItemID) {
+                BackPackItemList[i].ItemCount -= count;
+                SaveBackPackData();
+                return;
+            }
+        }
+
+    }
 
 
 }
