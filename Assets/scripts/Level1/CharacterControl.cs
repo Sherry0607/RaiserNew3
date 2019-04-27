@@ -43,6 +43,20 @@ public class CharacterControl : MonoBehaviour
     public GameObject[] Alphas;
 
 
+
+
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == StringManager.LEVEL_level1
+            || SceneManager.GetActiveScene().name == StringManager.LEVEL_level2
+                || SceneManager.GetActiveScene().name == StringManager.LEVEL_level3)
+        {
+
+            transform.position = GameManager.Instence.LoadPlayerPos();
+        }
+
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -113,7 +127,6 @@ public class CharacterControl : MonoBehaviour
                     if (isDoubleJump)//判断是否在二段跳  
                     {
                         return;//否则不能二段跳  
-
                     }
                     else
                     {
@@ -145,13 +158,18 @@ public class CharacterControl : MonoBehaviour
             if (!IsTouchedUI() && Input.GetMouseButtonDown(0))
             {
                 m_animator.SetBool("attack", true);
-                if (!isAttacking)
-                {if(bos1 != null && Vector2.Distance(transform.position, bos1.transform.position) <= 5f || bos2 != null && Vector2.Distance(transform.position, bos2.transform.position) <= 5f)
+                if (SceneManager.GetActiveScene().name == "level1" && !isAttacking)
+                {
+                    if (bos1 != null && Vector2.Distance(transform.position, bos1.transform.position) <= 5f || bos2 != null && Vector2.Distance(transform.position, bos2.transform.position) <= 5f)
                     {
                         BossAI.instance.LifeChange();
                         isAttacking = true;
                     }
                 }
+                else {
+                    isAttacking = true;
+                }
+
             } 
 
             stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕
@@ -246,7 +264,7 @@ public class CharacterControl : MonoBehaviour
 
     void RestartGame()
     {
-        SceneManager.LoadScene("level1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     void Idle()
     {

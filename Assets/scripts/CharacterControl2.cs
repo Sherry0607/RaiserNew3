@@ -42,6 +42,17 @@ public class CharacterControl2 : MonoBehaviour
     public GameObject[] Alphas;
 
 
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == StringManager.LEVEL_level1
+            || SceneManager.GetActiveScene().name == StringManager.LEVEL_level2
+                || SceneManager.GetActiveScene().name == StringManager.LEVEL_level3) {
+        
+            transform.position =  GameManager.Instence.LoadPlayerPos();
+        }
+
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -230,7 +241,7 @@ public class CharacterControl2 : MonoBehaviour
 
     void RestartGame()
     {
-        SceneManager.LoadScene("level1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     void Idle()
     {

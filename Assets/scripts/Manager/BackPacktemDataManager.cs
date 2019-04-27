@@ -69,6 +69,8 @@ public class BackPacktemDataManager
         sw.Close();
     }
 
+
+
     private void DecodeJson()
     {
         BackPackItemList.Clear();
