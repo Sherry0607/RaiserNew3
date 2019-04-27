@@ -12,15 +12,26 @@ public class Boss02Stage1 : MonoBehaviour {
     public bool Stage2;
 
     int i;
+    AnimatorStateInfo stateInfo;
+
+    private void FixedUpdate()
+    {
+        stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测动画播放进度
+        if (stateInfo.normalizedTime >= 0.9f && stateInfo.IsName("HandUp"))
+        {
+            GetComponent<Animator>().SetBool("HandUp", false);
+        }
+    }
 
     public void StartStage1()
     {
-        Appear();
-        Invoke("Appear1", deltaTimes + 0.8f);
-        Invoke("Appear2", deltaTimes * 2 +1.6f);
+        GetComponent<Animator>().SetBool("HandUp", true);
+        Invoke("Appear", 1f);
+        Invoke("Appear1", deltaTimes + 2.8f);
+        Invoke("Appear2", deltaTimes * 2 + 3.6f);
     }
 
-    void Appear()
+    void Appear() //小弟出现
     {
         i = 0;
         GameObject a;

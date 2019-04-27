@@ -16,11 +16,12 @@ public class Boss02 : MonoBehaviour
 
     public int Boss02Index;
     GameObject Player;
+    bool PlayerAttack; //玩家是否在做攻击动作
     Animator m_Animator;
     AnimatorStateInfo stateInfo;
     bool Stage3Attack; //双镰刀阶段是否攻击
     float Timer; //计时器
-
+    int Hp;
     public bool Stage4;
 
     // Use this for initialization
@@ -30,11 +31,13 @@ public class Boss02 : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         Stage3Attack = true;
         EnterBossStage = false;
+        Hp = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerAttack = Player.GetComponent<CharacterControl2>().isAttacking;
         stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测动画播放进度
         if (EnterBossStage)
         {
@@ -74,8 +77,8 @@ public class Boss02 : MonoBehaviour
             Stage3Attack = true;
             Timer = 0;
             m_Animator.SetBool("Liandao", false);
-            Boss02Index++;
-            if(!Stage4)
+            Boss02Index = 4;
+            if (!Stage4)
             Stage4 = true;
         }
     }
@@ -85,7 +88,7 @@ public class Boss02 : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
         transform.position = Pos[0].transform.position;
         stage1.StartStage1();
-        Boss02Index++;
+        Boss02Index = 2;
     }
 
     void Stage2_1()//突刺右往左
@@ -93,7 +96,7 @@ public class Boss02 : MonoBehaviour
         transform.position = Pos[1].position;
         SharpTrigger.InstantiateSharps = 3;
         Invoke("AnimaTuci", 0.3f);
-        Boss02Index++;
+        Boss02Index = 3;
     }
     void Stage2_2()//突刺左往右
     {
@@ -116,7 +119,7 @@ public class Boss02 : MonoBehaviour
         if (Stage3Attack)
         {
             m_Animator.SetBool("Liandao", true);
-            if (Timer > 3f)
+            if (Timer > 2f)
             {
                 Stage3Attack = false;
                 if (Vector2.Distance(transform.position, Player.transform.position) < AttackDistance)
@@ -124,6 +127,15 @@ public class Boss02 : MonoBehaviour
                     Player.GetComponent<CharacterControl2>().LifeChange(false);
                 }
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (PlayerAttack && collision.tag == "chanzi")
+        {
+            Hp--;
+            print(Hp);
         }
     }
 }

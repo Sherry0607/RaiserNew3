@@ -9,6 +9,7 @@ public class SharpSpawn : MonoBehaviour {
     public Transform[] SharpPositions; //尖刺左往右出现的位置
     public Transform[] SharpPositions2; //尖刺右往左
     public int SharpNumber; //尖刺总数
+    public float SeperateTime;
 
     [HideInInspector]
     public int InstantiateSharps;
@@ -32,7 +33,7 @@ public class SharpSpawn : MonoBehaviour {
         if (InstantiateSharps == 1) //左往右
         {
             SharpIndex = 0;
-            StartCoroutine(Delay(0.3f));
+            StartCoroutine(Delay());
             InstantiateSharps++;
         }
         else
@@ -40,17 +41,16 @@ public class SharpSpawn : MonoBehaviour {
         {
             AddSharpPosition2();
             SharpIndex = 0;
-            StartCoroutine(Delay2(0.3f));
+            StartCoroutine(Delay2());
             InstantiateSharps++;
         }
-        else return;
     }
     
-    IEnumerator Delay(float seconds) //延时刷新尖刺的循环
+    IEnumerator Delay() //延时刷新尖刺的循环
     {
         while (SharpIndex < SharpNumber)
         {
-            yield return new WaitForSeconds(seconds);
+            yield return new WaitForSeconds(SeperateTime);
             Instantiate(Sharp, m_SharpPosition[SharpIndex], Quaternion.identity);
             SharpIndex++;
         }
@@ -60,11 +60,11 @@ public class SharpSpawn : MonoBehaviour {
         }
     }
 
-    IEnumerator Delay2(float seconds) //延时刷新尖刺的循环
+    IEnumerator Delay2() //延时刷新尖刺的循环
     {
         while (SharpIndex < SharpNumber)
         {
-            yield return new WaitForSeconds(seconds);
+            yield return new WaitForSeconds(SeperateTime);
             Instantiate(Sharp, m_SharpPosition2[SharpIndex], Quaternion.identity);
             SharpIndex++;
         }
@@ -101,5 +101,4 @@ public class SharpSpawn : MonoBehaviour {
     {
         Stage202 = true;
     }
-
 }

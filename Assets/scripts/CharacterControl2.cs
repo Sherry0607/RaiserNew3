@@ -20,7 +20,8 @@ public class CharacterControl2 : MonoBehaviour
     private float horizontal = 0;
     private bool isJump = false;
     private bool isDoubleJump = false;
-    private bool isAttacking;
+    [HideInInspector]
+    public bool isAttacking;
     [HideInInspector]
     public float move = 0;
     [HideInInspector]
@@ -70,15 +71,6 @@ public class CharacterControl2 : MonoBehaviour
         if (coll.gameObject.tag == "ground")
         {
             POS1 = transform.position.y;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.tag == "BossWing" && isAttacking)
-        {
-            var bossAi = GameObject.Find("BossAI").GetComponent<BossAI>();
-            bossAi.LifeChange();
         }
     }
 
@@ -143,6 +135,7 @@ public class CharacterControl2 : MonoBehaviour
             if (!IsTouchedUI() && Input.GetMouseButtonDown(0))
             {
                 m_animator.SetBool("attack", true);
+                isAttacking = true;
             } 
 
             stateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0); //监测attack动画是否播放完毕

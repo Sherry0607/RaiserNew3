@@ -9,6 +9,7 @@ public class SharpPopUp : MonoBehaviour {
     public float Speed; //运动速度
     public float DestroyTime;
 
+    float timing;
     float RiseHight = 0;
     Vector2 StartPosition; //起始位置
     bool isMaxRiseHight;
@@ -20,7 +21,7 @@ public class SharpPopUp : MonoBehaviour {
 	}
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (RiseHight < MaxRiseHight && isMaxRiseHight == false) //尖刺向上冒
         {
@@ -31,11 +32,9 @@ public class SharpPopUp : MonoBehaviour {
         }
         if (isMaxRiseHight == true) //尖刺回缩
         {
-            float timing;
-            timing = Time.deltaTime;
-            transform.position -= transform.up * Speed * 2 * Time.deltaTime;
-            //RiseHight += Speed * Time.deltaTime;
-            //transform.position = new Vector2(transform.position.x, transform.position.y - RiseHight);
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            timing += Time.deltaTime;
+            transform.position -= transform.up * Speed * 2.5f * Time.deltaTime;
             if (timing > DestroyTime)
                 Destroy(gameObject);
         }

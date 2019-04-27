@@ -287,6 +287,7 @@
     <Compile Include="Assets\scripts\Level1\ShellAnimationController.cs" />
     <Compile Include="Assets\scripts\Level1\ShellBeDamage.cs" />
     <Compile Include="Assets\scripts\Level1\Shoot.cs" />
+    <Compile Include="Assets\scripts\Level1\ToLevel2Door.cs" />
     <Compile Include="Assets\scripts\Level1\Trap.cs" />
     <Compile Include="Assets\scripts\Level2\BatAtack.cs" />
     <Compile Include="Assets\scripts\Level2\BatController.cs" />
@@ -300,9 +301,11 @@
     <Compile Include="Assets\scripts\Level2\Ghost.cs" />
     <Compile Include="Assets\scripts\Level2\GhostController.cs" />
     <Compile Include="Assets\scripts\Level2\GhostFloating.cs" />
+    <Compile Include="Assets\scripts\Level2\Save.cs" />
     <Compile Include="Assets\scripts\Level2\SharpPopUp.cs" />
     <Compile Include="Assets\scripts\Level2\SharpSpawn.cs" />
     <Compile Include="Assets\scripts\Level2\SharpTrigger.cs" />
+    <Compile Include="Assets\scripts\Level2\WaterAttack.cs" />
     <Compile Include="Assets\scripts\LifeLeaf.cs" />
     <Compile Include="Assets\scripts\Manager\BackPacktemDataManager.cs" />
     <Compile Include="Assets\scripts\Manager\StringManager.cs" />
@@ -347,6 +350,7 @@
     <None Include="Assets\2DxFX\_OldResources\2dxfx_AL\_2dxFX_AL_PixelDie.shader" />
     <None Include="Assets\2DxFX\_OldResources\_2dxFX_Smoke.shader" />
     <None Include="Assets\2DxFX\_OldResources\2dxfx_AL\_2dxFX_AL_Ice.shader" />
+    <None Include="Assets\StreamingAssets\HaveKey.txt" />
     <None Include="Assets\2DxFX\_OldResources\2dxfx_AL\_2dxFX_AL_Distortion.shader" />
     <None Include="Assets\Tools\Demigiant\DOTweenPro\readme.txt" />
     <None Include="Assets\2DxFX\_OldResources\2dxfx_AL\_2dxFX_AL_Noise.shader" />
@@ -462,6 +466,7 @@
     <None Include="Assets\2DxFX\_OldResources\_2dxFX_WaterAndBackgroundDeluxe.shader" />
     <None Include="Assets\2DxFX\_OldResources\2dxfx_AL\_2dxFX_AL_PlasmaRainbow.shader" />
     <None Include="Assets\2DxFX\_OldResources\_2dxFX_Hologram2.shader" />
+    <None Include="Assets\StreamingAssets\NoKey.txt" />
     <None Include="Assets\2DxFX\_OldResources\_2dxFX_PlasmaShield.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
     <None Include="Assets\2DxFX\_OldResources\2dxfx_AL\_2dxFX_AL_GrassFX.shader" />
