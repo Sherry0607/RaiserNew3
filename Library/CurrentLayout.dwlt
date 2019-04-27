@@ -105,10 +105,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 813, y: 342}
-  m_MaxSize: {x: 22008, y: 12042}
+  m_MinSize: {x: 817, y: 363}
+  m_MaxSize: {x: 22012, y: 12063}
   vertical: 1
-  controlID: 48
+  controlID: 28
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -131,10 +131,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 813, y: 342}
-  m_MaxSize: {x: 22008, y: 12042}
+  m_MinSize: {x: 817, y: 363}
+  m_MaxSize: {x: 22012, y: 12063}
   vertical: 0
-  controlID: 49
+  controlID: 29
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -156,10 +156,10 @@ MonoBehaviour:
     y: 0
     width: 1083
     height: 947
-  m_MinSize: {x: 102, y: 342}
-  m_MaxSize: {x: 4002, y: 12042}
+  m_MinSize: {x: 102, y: 363}
+  m_MaxSize: {x: 4002, y: 12063}
   vertical: 1
-  controlID: 50
+  controlID: 30
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -205,8 +205,8 @@ MonoBehaviour:
     y: 364
     width: 1083
     height: 383
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -255,8 +255,8 @@ MonoBehaviour:
     y: 0
     width: 237
     height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -418,14 +418,14 @@ MonoBehaviour:
     height: 343
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 5447.814462663446
+  lastFramingTime: 618.8682943699785
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -57.611843, y: 2.8420775, z: 0.0027905134}
+    m_Target: {x: -14.977013, y: -20.937311, z: 0.005306059}
     speed: 2
-    m_Value: {x: -57.611843, y: 2.8420775, z: 0.0027905134}
+    m_Value: {x: -14.977013, y: -20.937311, z: 0.005306059}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -457,9 +457,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 22.757393
+    m_Target: 12.23685
     speed: 2
-    m_Value: 22.757393
+    m_Value: 12.23685
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -660,7 +660,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: c6faffffe4fbffff00000000
+    m_ExpandedIDs: e4fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -721,7 +721,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/scripts/Manager
+    - Assets/2DGamekit/Prefabs/Environment
   m_ViewMode: 0
   m_StartGridSize: 16
   m_LastFolders: []
@@ -733,7 +733,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 52540000
     m_LastClickedID: 21586
-    m_ExpandedIDs: 000000001c3200002e3400002a350000423500007e350000ce350000a6360000ae360000263700005c3700006e370000d4370000fe370000a238000010390000c4390000bc3a0000683b0000943b0000f23c0000263d0000803e000080570000825700008457000086570000885700008a5700008c5700008e57000090570000
+    m_ExpandedIDs: 000000001c32000030340000343400003c3500005435000090350000e2350000d6360000de3600005a37000090370000a2370000fe3700000c3800003638000042380000e038000050390000043a0000e63a0000fe3a0000aa3b0000da3b00002a3d00003c3d0000703d0000aa3e0000b23e0000ce3e0000ee3e0000543f000030580000325800003458000036580000385800003a5800003c5800003e58000040580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -758,10 +758,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 368}
+    scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000001c3200002e3400002a350000423500007e350000ce350000a6360000ae360000263700005c3700006e370000d4370000fe370000a238000010390000c4390000bc3a0000683b0000943b0000f23c0000263d0000803e000080570000825700008457000086570000885700008a5700008c5700008e57000090570000
+    m_ExpandedIDs: ffffffff000000001c32000030340000343400003c3500005435000090350000e2350000d6360000de3600005a37000090370000a2370000fe3700000c3800003638000042380000e038000050390000043a0000e63a0000fe3a0000aa3b0000da3b00002a3d00003c3d0000703d0000aa3e0000b23e0000ce3e0000ee3e0000543f000030580000325800003458000036580000385800003a5800003c5800003e58000040580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
