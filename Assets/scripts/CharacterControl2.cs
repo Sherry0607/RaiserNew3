@@ -28,6 +28,7 @@ public class CharacterControl2 : MonoBehaviour
     public bool Movement;
     public int life;
     public List<GameObject> lifeImg;
+    public GameObject smoke;
 
     [SerializeField]
     private GameObject smokePrefab;             //二段跳的粒子特效
@@ -62,6 +63,7 @@ public class CharacterControl2 : MonoBehaviour
         smokePos = transform.Find("SmokePos");// 获得 player的播放位置（脚下），用于播放粒子特效时使用
         POS1 = transform.position.y;
         POS2 = transform.position.y;
+        
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -73,6 +75,8 @@ public class CharacterControl2 : MonoBehaviour
             m_animator.SetBool("Jump", false);
             m_animator.SetBool("Jump2", false);
             POS2 = transform.position.y;
+            smoke.SetActive(true);
+
         }
     }
 
@@ -99,21 +103,20 @@ public class CharacterControl2 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                smoke.SetActive(false);
                 // m_rigid.AddForce(new Vector2(0,JumpForce));
                 if (!isJump)//如果还在跳跃中，则不重复执行 
                 {
                     m_rigid.AddForce(new Vector2(0, JumpForce1));
                     isJump = true;
                     m_animator.SetBool("Jump", true);
-
+                   
                 }
                 else
                 {
-
                     if (isDoubleJump)//判断是否在二段跳  
                     {
                         return;//否则不能二段跳  
-
                     }
                     else
                     {
