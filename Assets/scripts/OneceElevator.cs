@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class OneceElevator : MonoBehaviour {
     public float waitingTime; //电梯上的等待时间
-
     public float ElevatorSpeed;
 
     float PlayerGravity;
     GameObject player;
-    public float staySecond; //玩家在电梯上停留的时间
+    float staySecond; //玩家在电梯上停留的时间
     float PosY;
+    bool Down;
 
     private Rigidbody2D playerRigidbody2D;
     private Rigidbody2D elevatorRigidbody2D;
-    public bool Down;
-
-
 
     // Use this for initialization
     void Start()
@@ -26,6 +23,7 @@ public class OneceElevator : MonoBehaviour {
         elevatorRigidbody2D = GetComponent<Rigidbody2D>();
         playerRigidbody2D = player.GetComponent<Rigidbody2D>();
         PlayerGravity = playerRigidbody2D.gravityScale;
+        Down = false;
     }
 
     // Update is called once per frame
@@ -38,6 +36,8 @@ public class OneceElevator : MonoBehaviour {
 
         if (Down)
         {
+            player.GetComponent<CharacterControl2>().POS1 = player.transform.position.y;
+            player.GetComponent<CharacterControl2>().POS2 = player.transform.position.y;
         }
 
     }
@@ -65,6 +65,7 @@ public class OneceElevator : MonoBehaviour {
         if (collision.tag == "Player")
         {
             playerRigidbody2D.gravityScale = 0;
+            Down = true;
         }
     }
 
@@ -74,7 +75,7 @@ public class OneceElevator : MonoBehaviour {
         {
             playerRigidbody2D.gravityScale = PlayerGravity;
             staySecond = 0;
-
+            Down = false;
         }
     }
 

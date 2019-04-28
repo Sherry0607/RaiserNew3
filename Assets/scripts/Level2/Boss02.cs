@@ -10,6 +10,10 @@ public class Boss02 : MonoBehaviour
     public float AttackDistance; //双镰刀攻击的最大距离（是三角形的斜边）
     public SharpTrigger SharpTrigger;
     public SharpSpawn SharpSpawn;
+    public GameObject[] SickleLight;
+    public Transform[] SickleLightPos; //刀光坐标
+
+    public float waitingTime;
 
     //[HideInInspector]
     public bool EnterBossStage;
@@ -23,6 +27,7 @@ public class Boss02 : MonoBehaviour
     float Timer; //计时器
     int Hp;
     public bool Stage4;
+    bool Daoguang;
 
     // Use this for initialization
     void Start()
@@ -32,6 +37,7 @@ public class Boss02 : MonoBehaviour
         Stage3Attack = true;
         EnterBossStage = false;
         Hp = 10;
+        Daoguang = true;
     }
 
     // Update is called once per frame
@@ -96,6 +102,7 @@ public class Boss02 : MonoBehaviour
         transform.position = Pos[1].position;
         SharpTrigger.InstantiateSharps = 3;
         Invoke("AnimaTuci", 0.3f);
+        Daoguang = true;
         Boss02Index = 3;
     }
     void Stage2_2()//突刺左往右
@@ -119,7 +126,18 @@ public class Boss02 : MonoBehaviour
         if (Stage3Attack)
         {
             m_Animator.SetBool("Liandao", true);
-            if (Timer > 2f)
+
+            if (Timer > waitingTime && Daoguang)
+            {
+                GameObject a, b;
+                a = Instantiate(SickleLight[0], SickleLightPos[0].position, SickleLight[0].transform.rotation);
+                b = Instantiate(SickleLight[1], SickleLightPos[1].position, SickleLight[1].transform.rotation);
+                Destroy(a, 1f);
+                Destroy(b, 1f);
+                Daoguang = false;
+            }
+
+            if (Timer > waitingTime)
             {
                 Stage3Attack = false;
                 if (Vector2.Distance(transform.position, Player.transform.position) < AttackDistance)

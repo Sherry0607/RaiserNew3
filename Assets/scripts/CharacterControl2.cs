@@ -35,9 +35,8 @@ public class CharacterControl2 : MonoBehaviour
     private GameObject smokePartileParentObj;   //粒子特效的空间位置父节点
     private Transform smokePos;                 //player的播放位置（脚下）
 
-    float POS1;
     [HideInInspector]
-    public float POS2;
+    public float POS1,POS2;
     public float MaxHeight;//摔死的高度
     public GameObject[] Alphas;
 
