@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss02Trigger : MonoBehaviour {
 
-    public GameObject Boss02;
+    public Boss02 Boss02;
     public GameObject cam1;
     public GameObject cam2;
     public ScreenFadeIn BlackAlpha;
@@ -13,9 +13,9 @@ public class Boss02Trigger : MonoBehaviour {
     GameObject Player;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Boss02.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,7 +29,6 @@ public class Boss02Trigger : MonoBehaviour {
             BlackAlpha.ScreenFade();
             Invoke("ChangeCamera", 1.6f);
             Invoke("EnterStage", 3.5f);
-            //Destroy(gameObject, 2f);
         }
     }
 
@@ -42,12 +41,11 @@ public class Boss02Trigger : MonoBehaviour {
     {
         cam1.SetActive(false);
         cam2.SetActive(true);
-        Boss02.SetActive(true);
         BossLifeUI.SetActive(true);
     }
 
     void EnterStage()
     {
-        Boss02.GetComponent<Boss02>().EnterBossStage = true;
+        Boss02.EnterBossStage = true;
     }
 }

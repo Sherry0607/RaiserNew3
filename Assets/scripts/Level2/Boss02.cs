@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss02 : MonoBehaviour
 {
-
+    public GameObject BossSprite;
     public Boss02Stage1 stage1;
     public Transform[] Pos;
     public float AttackDistance; //双镰刀攻击的最大距离（是三角形的斜边）
@@ -12,6 +12,7 @@ public class Boss02 : MonoBehaviour
     public SharpSpawn SharpSpawn;
     public GameObject[] SickleLight;
     public Transform[] SickleLightPos; //刀光坐标
+    public GameObject Smoke;
 
     public float waitingTime;
 
@@ -50,24 +51,54 @@ public class Boss02 : MonoBehaviour
             switch (Boss02Index)
             {
                 case 1:
-                    Stage4 = false;
                     if (SharpSpawn.Stage1)
-                        Stage1();
+                    {
+                        transform.position = Pos[0].transform.position;
+                        Invoke("InstantiateSmoke", 0.5f);
+                        Invoke("BossAppear", 0.6f);
+                        Invoke("Stage1", 1f);
+                        Invoke("InstantiateSmoke", 14.5f);
+                        Invoke("BossDisappear", 14.6f);
+                        SharpSpawn.Stage1 = false;
+                    }
                     break;
                 case 2:
-                    SharpSpawn.Stage1 = false;
                     if (stage1.Stage2)
-                        Stage2_1();
+                    {
+                        transform.position = Pos[1].position;
+                        Invoke("InstantiateSmoke", 0.5f);
+                        Invoke("BossAppear", 0.6f);
+                        Invoke("Stage2_1", 1f);
+                        Invoke("InstantiateSmoke", 4.7f);
+                        Invoke("BossDisappear", 4.8f);
+                        stage1.Stage2 = false;
+                    }
                     break;
                 case 3:
-                    stage1.Stage2 = false;
                     if (SharpSpawn.Stage202)
-                        Stage3();
+                    {
+                        print("333");
+                        transform.position = Pos[3].transform.position;
+                        Invoke("InstantiateSmoke", 0.5f);
+                        Invoke("BossAppear", 0.6f);
+                        Invoke("Stage3", 1f);
+                        Invoke("InstantiateSmoke", 7.1f);
+                        Invoke("BossDisappear", 7.2f);
+                        SharpSpawn.Stage202 = false;
+                    }
                     break;
                 case 4:
-                    SharpSpawn.Stage202 = false;
                     if (Stage4)
-                        Stage2_2();
+                    {
+                        Stage4 = false;
+                        print("444");
+                        transform.position = Pos[2].position;
+                        Invoke("InstantiateSmoke", 0.5f);
+                        Invoke("BossAppear", 0.6f);
+                        Invoke("Stage2_2", 1f);
+                        Invoke("InstantiateSmoke", 4.7f);
+                        Invoke("BossDisappear", 4.8f);
+                    }
                     break;
             }
         }
@@ -84,7 +115,6 @@ public class Boss02 : MonoBehaviour
             Timer = 0;
             m_Animator.SetBool("Liandao", false);
             Boss02Index = 4;
-            if (!Stage4)
             Stage4 = true;
         }
     }
@@ -92,26 +122,20 @@ public class Boss02 : MonoBehaviour
     void Stage1()
     {
         transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
-        transform.position = Pos[0].transform.position;
         stage1.StartStage1();
-        Boss02Index = 2;
     }
 
     void Stage2_1()//突刺右往左
     {
-        transform.position = Pos[1].position;
         SharpTrigger.InstantiateSharps = 3;
         Invoke("AnimaTuci", 0.3f);
         Daoguang = true;
-        Boss02Index = 3;
     }
     void Stage2_2()//突刺左往右
     {
         transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         SharpTrigger.InstantiateSharps = 1;
-        transform.position = Pos[2].position;
         Invoke("AnimaTuci", 0.3f);
-        Boss02Index = 1;
     }
 
     void AnimaTuci()
@@ -121,7 +145,6 @@ public class Boss02 : MonoBehaviour
 
     void Stage3()
     {
-        transform.position = Pos[3].transform.position;
         Timer += Time.deltaTime;
         if (Stage3Attack)
         {
@@ -156,4 +179,39 @@ public class Boss02 : MonoBehaviour
             print(Hp);
         }
     }
+
+    void InstantiateSmoke()
+    {
+        GameObject a;
+        switch (Boss02Index)
+        {
+            case 1:
+                a = Instantiate(Smoke, Pos[0].transform.position, Smoke.transform.rotation);
+                Destroy(a, 1.6f);
+                break;
+            case 2:
+                a = Instantiate(Smoke, Pos[1].transform.position, Smoke.transform.rotation);
+                Destroy(a, 1.6f);
+                break;
+            case 3:
+                a = Instantiate(Smoke, Pos[3].transform.position, Smoke.transform.rotation);
+                Destroy(a, 1.6f);
+                break;
+            case 4:
+                a = Instantiate(Smoke, Pos[2].transform.position, Smoke.transform.rotation);
+                Destroy(a, 1.6f);
+                break;
+        }
+    }
+
+    void BossDisappear()
+    {
+        BossSprite.SetActive(false);
+    }
+
+    void BossAppear()
+    {
+        BossSprite.SetActive(true);
+    }
+
 }
