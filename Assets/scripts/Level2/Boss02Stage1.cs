@@ -75,7 +75,6 @@ public class Boss02Stage1 : MonoBehaviour {
 
     void EnterStage2()
     {
-        GetComponent<Boss02>().Boss02Index = 2;
         Stage2 = true;
     }
 }

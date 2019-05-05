@@ -94,13 +94,11 @@ public class SharpSpawn : MonoBehaviour {
 
     void ChangeBool()
     {
-        GetComponent<Boss02>().Boss02Index = 1;
         Stage1 = true;
     }
 
     void ChangeBool2()
     {
-        GetComponent<Boss02>().Boss02Index = 3;
         Stage202 = true;
     }
 }
