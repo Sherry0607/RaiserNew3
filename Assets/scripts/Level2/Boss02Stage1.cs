@@ -8,7 +8,7 @@ public class Boss02Stage1 : MonoBehaviour {
     public GameObject LittleBoss;
     public GameObject BlackSmoke;
     public float deltaTimes;
-    //[HideInInspector]
+    [HideInInspector]
     public bool Stage2;
 
     int i;
@@ -75,6 +75,7 @@ public class Boss02Stage1 : MonoBehaviour {
 
     void EnterStage2()
     {
+        GetComponent<Boss02>().Boss02Index = 2;
         Stage2 = true;
     }
 }

@@ -13,9 +13,9 @@ public class SharpSpawn : MonoBehaviour {
 
     [HideInInspector]
     public int InstantiateSharps;
-    //[HideInInspector]
+    [HideInInspector]
     public bool Stage202;
-    //[HideInInspector]
+    [HideInInspector]
     public bool Stage1; //触发boss战时需启用
 
     List<Vector2> m_SharpPosition;
@@ -94,11 +94,13 @@ public class SharpSpawn : MonoBehaviour {
 
     void ChangeBool()
     {
+        GetComponent<Boss02>().Boss02Index = 1;
         Stage1 = true;
     }
 
     void ChangeBool2()
     {
+        GetComponent<Boss02>().Boss02Index = 3;
         Stage202 = true;
     }
 }

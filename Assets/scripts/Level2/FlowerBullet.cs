@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class FlowerBullet : MonoBehaviour {
 
-    GameObject Player;
+    public float Speed;
+    public bool ChangeX;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        Destroy(gameObject, 1f);
-	}
+    float PosY;
+    float PosX;
+
+    // Use this for initialization
+    void Start()
+    {
+        PosY = transform.position.y;
+        PosX = transform.position.x;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        PosY -= Time.deltaTime * Speed;
+        PosX -= Time.deltaTime * Speed;
+
+        if (!ChangeX)
+            transform.position = new Vector2(transform.position.x, PosY);
+        else
+            transform.position = new Vector2(PosX, transform.position.y);
+
+        Destroy(gameObject, 0.8f);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
