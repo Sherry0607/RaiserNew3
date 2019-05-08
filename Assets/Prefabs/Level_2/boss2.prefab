@@ -1700,6 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfeb938caa610a479f1442097a34e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossSprite: {fileID: 0}
   stage1: {fileID: 114826235718691556}
   Pos:
   - {fileID: 0}
@@ -1711,13 +1712,14 @@ MonoBehaviour:
   SharpSpawn: {fileID: 114120224291311564}
   SickleLight: []
   SickleLightPos: []
+  Smoke: {fileID: 0}
+  BossLife: {fileID: 0}
+  LifeImage: {fileID: 0}
   waitingTime: 0
   EnterBossStage: 1
   Boss02Index: 1
-  boss2: {fileID: 0}
-  BossLife: {fileID: 0}
-  LifeImage: {fileID: 0}
-  Stage4: 0
+  Timer: 0
+  Daoguang: 0
 --- !u!114 &114312136746389438
 MonoBehaviour:
   m_ObjectHideFlags: 1
