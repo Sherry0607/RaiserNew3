@@ -9,6 +9,8 @@ public class Boss02Trigger : MonoBehaviour {
     public GameObject cam2;
     public ScreenFadeIn BlackAlpha;
     public GameObject BossLifeUI;
+    public GameObject[] SkyWall;
+    public CharacterControl2 smoke;
 
     GameObject Player;
 
@@ -29,6 +31,8 @@ public class Boss02Trigger : MonoBehaviour {
             BlackAlpha.ScreenFade();
             Invoke("ChangeCamera", 1.6f);
             Invoke("EnterStage", 3.5f);
+            
+
             //Destroy(gameObject, 2f);
         }
     }
@@ -44,6 +48,7 @@ public class Boss02Trigger : MonoBehaviour {
         cam2.SetActive(true);
         Boss02.SetActive(true);
         BossLifeUI.SetActive(true);
+        smoke.smoke.SetActive(false);
     }
 
     void EnterStage()

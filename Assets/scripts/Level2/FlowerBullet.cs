@@ -28,7 +28,7 @@ public class FlowerBullet : MonoBehaviour {
         else
             transform.position = new Vector2(PosX, transform.position.y);
 
-        Destroy(gameObject, 0.8f);
+        Destroy(gameObject, 0.6f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

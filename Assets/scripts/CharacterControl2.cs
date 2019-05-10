@@ -223,9 +223,18 @@ public class CharacterControl2 : MonoBehaviour
             }
 
             int a = life;
-            life--;
-            lifeImg[life].GetComponent<Animator>().SetBool("leaf", true);
-            Invoke("Idle", 0.5f);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                life = a;
+            }
+            else
+            {
+                life--;
+                lifeImg[life].GetComponent<Animator>().SetBool("leaf", true);
+                Invoke("Idle", 0.5f);
+            }
+                
+            
 
             if (life == 0)
             {
@@ -257,6 +266,8 @@ public class CharacterControl2 : MonoBehaviour
             alpha.transform.GetComponent<SpriteMeshInstance>().m_Color = new Color(1, 1, 1, 1);
         }
     }
+
+    
     /// <summary>
     /// 是否鼠标放在 UI上
     /// </summary>

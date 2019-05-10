@@ -6,8 +6,9 @@ public class SharpTrigger : MonoBehaviour {
 
     //触发突刺技能，放在手杖的碰撞核上
     public SharpSpawn sharpSpawn;
-    [HideInInspector]
-    public int InstantiateSharps;
+    public Boss02 Boss02;
+
+    int InstantiateSharps;
 
     // Use this for initialization
     void Start () {
@@ -18,6 +19,7 @@ public class SharpTrigger : MonoBehaviour {
     {
         if (collision.tag == "ground")
         {
+            InstantiateSharps = Boss02.SharpIns;
             sharpSpawn.InstantiateSharps = InstantiateSharps;
         }
     }

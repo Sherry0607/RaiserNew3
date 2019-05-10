@@ -8,7 +8,6 @@ public class Boss02 : MonoBehaviour
     public Boss02Stage1 stage1;
     public Transform[] Pos;
     public float AttackDistance; //双镰刀攻击的最大距离（是三角形的斜边）
-    public SharpTrigger SharpTrigger;
     public SharpSpawn SharpSpawn;
     public GameObject[] SickleLight;
     public Transform[] SickleLightPos; //刀光坐标
@@ -19,6 +18,8 @@ public class Boss02 : MonoBehaviour
     public float waitingTime;
 
     [HideInInspector]
+    public int SharpIns;
+    [HideInInspector]
     public bool EnterBossStage;
 
     public int Boss02Index;
@@ -27,10 +28,10 @@ public class Boss02 : MonoBehaviour
     Animator m_Animator;
     AnimatorStateInfo stateInfo;
     bool Stage3Attack; //双镰刀阶段是否攻击
-    public float Timer; //计时器
+   public float Timer; //计时器
     int Hp;
     bool Stage4;
-   public bool Daoguang;
+    bool Daoguang;
     bool Stage03;
 
     // Use this for initialization
@@ -97,7 +98,6 @@ public class Boss02 : MonoBehaviour
                         }
                         break;
                     case 4:
-                        SharpSpawn.Stage202 = false;
                         if (Stage4)
                         {
                             Stage4 = false;
@@ -140,14 +140,14 @@ public class Boss02 : MonoBehaviour
 
     void Stage2_1()//突刺右往左
     {
-        SharpTrigger.InstantiateSharps = 3;
+        SharpIns = 3;
         Invoke("AnimaTuci", 0.3f);
         Daoguang = true;
     }
     void Stage2_2()//突刺左往右
     {
         transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-        SharpTrigger.InstantiateSharps = 1;
+        SharpIns = 1;
         Invoke("AnimaTuci", 0.3f);
     }
 
@@ -171,6 +171,7 @@ public class Boss02 : MonoBehaviour
                 Destroy(a, 1f);
                 Destroy(b, 1f);
                 Daoguang = false;
+                Invoke("BossIndexIncrease", 0.1f);
             }
 
             if (Timer > waitingTime)
@@ -182,6 +183,11 @@ public class Boss02 : MonoBehaviour
                 }
             }
         }
+    }
+
+    void BossIndexIncrease()
+    {
+        SharpSpawn.Stage202 = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
