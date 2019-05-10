@@ -5,12 +5,12 @@ using Anima2D; //加上命名空间
 
 public class cici : MonoBehaviour {
     private Animator m_animator;
-    public bool ispushing = false;
+   
    
     // Use this for initialization
     void Start () {
         m_animator = GetComponent<Animator>();
-        // ispushing = false;
+       
         m_animator.enabled = false;
     }
 	
@@ -19,11 +19,11 @@ public class cici : MonoBehaviour {
        
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Player")
         {
-            // ispushing = true;
+           
             m_animator.enabled = true;
             
         }

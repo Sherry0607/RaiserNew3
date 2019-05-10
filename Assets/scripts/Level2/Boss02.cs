@@ -12,6 +12,7 @@ public class Boss02 : MonoBehaviour
     public GameObject[] SickleLight;
     public Transform[] SickleLightPos; //刀光坐标
     public GameObject Smoke;
+    public bool dadianti;
 
     public GameObject BossLife;
     public UnityEngine.UI.Image LifeImage;
@@ -45,6 +46,7 @@ public class Boss02 : MonoBehaviour
         Hp = 10;
         Daoguang = true;
         Stage03 = true;
+        dadianti = false;
     }
 
     // Update is called once per frame
@@ -98,7 +100,7 @@ public class Boss02 : MonoBehaviour
                         }
                         break;
                     case 4:
-                        if (Stage4 && !Stage03)
+                        if (Stage4)
                         {
                             Stage4 = false;
                             transform.position = Pos[2].position;
@@ -119,7 +121,8 @@ public class Boss02 : MonoBehaviour
         {
             m_Animator.SetBool("Tuci", false);
         }
-        else if (stateInfo.normalizedTime >=1f && stateInfo.IsName("Liandao"))
+
+        if (stateInfo.normalizedTime >= 0.9f && stateInfo.IsName("Liandao"))
         {
             Stage3Attack = true;
             Timer = 0;
@@ -194,12 +197,14 @@ public class Boss02 : MonoBehaviour
         if (PlayerAttack && collision.tag == "chanzi" && BossSprite.activeSelf)
         {
             Hp--;
+            dadianti = true;
             LifeImage.fillAmount = Hp / 10.0f;
         }
         if (Hp == 0)  //boss死亡
         {
             Destroy(gameObject);
             BossLife.SetActive(false);
+            
         }
     }
 

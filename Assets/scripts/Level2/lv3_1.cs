@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class lv3_1 : MonoBehaviour {
 
-    private CharacterControl2 playerCtr;
+    public CharacterControl2 playerCtr;
     private Transform Player;
     Animator Animators;
 
@@ -19,4 +19,15 @@ public class lv3_1 : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag =="Player")
+        {
+           // playerCtr.life --;
+            playerCtr.LifeChange(false);
+        }
+
+    }
+
 }

@@ -154,6 +154,7 @@ public class CharacterControl : MonoBehaviour
                 }
 
             }
+
             if (!IsTouchedUI() && Input.GetMouseButtonDown(0))
             {
                 m_animator.SetBool("attack", true);
@@ -177,6 +178,7 @@ public class CharacterControl : MonoBehaviour
                 m_animator.SetBool("attack", false);
                 isAttacking = false;
             }
+
 
             horizontal = Input.GetAxis("Horizontal");
             move = horizontal * MoveSpeed;

@@ -37,15 +37,12 @@ public class ToLevel2Door : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-
         if (collision.tag.Contains(StringManager.TAG_PLAYER))
         {
-            isDoorNear = true;
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (PlayerPrefs.GetInt(StringManager.Save_Level1DoorOpen) == 1) {
+                if (PlayerPrefs.GetInt(StringManager.Save_Level1DoorOpen) == 1)
                     UnityEngine.SceneManagement.SceneManager.LoadScene("level2");
-                }
             }
         }
 
