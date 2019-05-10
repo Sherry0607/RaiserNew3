@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharpSpawn: {fileID: 114120224291311564}
-  InstantiateSharps: 0
+  Boss02: {fileID: 0}
 --- !u!114 &114077048070657808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1708,7 +1708,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   AttackDistance: 18
-  SharpTrigger: {fileID: 114003181515287190}
   SharpSpawn: {fileID: 114120224291311564}
   SickleLight: []
   SickleLightPos: []
@@ -1716,10 +1715,10 @@ MonoBehaviour:
   BossLife: {fileID: 0}
   LifeImage: {fileID: 0}
   waitingTime: 0
+  SharpIns: 0
   EnterBossStage: 1
   Boss02Index: 1
   Timer: 0
-  Daoguang: 0
 --- !u!114 &114312136746389438
 MonoBehaviour:
   m_ObjectHideFlags: 1

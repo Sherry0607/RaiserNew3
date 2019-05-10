@@ -98,7 +98,7 @@ public class Boss02 : MonoBehaviour
                         }
                         break;
                     case 4:
-                        if (Stage4)
+                        if (Stage4 && !Stage03)
                         {
                             Stage4 = false;
                             transform.position = Pos[2].position;
@@ -119,8 +119,7 @@ public class Boss02 : MonoBehaviour
         {
             m_Animator.SetBool("Tuci", false);
         }
-
-        if (stateInfo.normalizedTime >= 0.9f && stateInfo.IsName("Liandao"))
+        else if (stateInfo.normalizedTime >=1f && stateInfo.IsName("Liandao"))
         {
             Stage3Attack = true;
             Timer = 0;
