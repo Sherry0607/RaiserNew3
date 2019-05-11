@@ -101,7 +101,7 @@ public class Boss02 : MonoBehaviour
                         }
                         break;
                     case 4:
-                        if (Stage4)
+                        if (Stage4 && !Stage03)
                         {
                             Stage4 = false;
                             transform.position = Pos[2].position;
