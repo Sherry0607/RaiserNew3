@@ -14,7 +14,7 @@ public class Boss02Trigger : MonoBehaviour {
 
     GameObject Player;
     int BossHp;
-
+    public bool Dadianti;
     // Use this for initialization
     void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -23,15 +23,14 @@ public class Boss02Trigger : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        BossHp = Boss02.GetComponent<Boss02>().Hp;
+        if (Boss02 != null)
+            BossHp = Boss02.GetComponent<Boss02>().Hp;
         if (BossHp <= 0)
         {
             SkyWall[0].SetActive(false);
             SkyWall[1].SetActive(false);
-            Player.GetComponent<CharacterControl2>().move = 0;
-            Player.GetComponent<CharacterControl2>().Movement = false;
-            Invoke("RemovePlayer", 2.2f);
-            BlackAlpha.ScreenFade();
+            Dadianti = true;
+            //BlackAlpha.ScreenFade();
             Invoke("ChangeCamera2", 1.6f);
         }
     }
