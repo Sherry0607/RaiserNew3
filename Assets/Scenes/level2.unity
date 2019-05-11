@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7648,7 +7648,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4256039559725982, guid: d5bb3594e6152e347933639df43d967b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 72.95
+      value: 34.6
       objectReference: {fileID: 0}
     - target: {fileID: 4256039559725982, guid: d5bb3594e6152e347933639df43d967b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7759,6 +7759,22 @@ Prefab:
       propertyPath: lifeImg.Array.data[5]
       value: 
       objectReference: {fileID: 257821665}
+    - target: {fileID: 4933005657806840, guid: d5bb3594e6152e347933639df43d967b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.05123953
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764085036958136, guid: d5bb3594e6152e347933639df43d967b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.9915729
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764085036958136, guid: d5bb3594e6152e347933639df43d967b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.12954982
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182320089453408, guid: d5bb3594e6152e347933639df43d967b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.1414303
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5bb3594e6152e347933639df43d967b, type: 2}
   m_IsPrefabAsset: 0
@@ -22028,7 +22044,9 @@ MonoBehaviour:
   cam2: {fileID: 417047821}
   BlackAlpha: {fileID: 709768488}
   BossLifeUI: {fileID: 757689690}
-  SkyWall: []
+  SkyWall:
+  - {fileID: 205373482}
+  - {fileID: 1403130099}
   smoke: {fileID: 228517297}
 --- !u!1 &823823464
 GameObject:
@@ -25804,7 +25822,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1049509857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 75.14393, z: -10}
+  m_LocalPosition: {x: 0.15, y: 36.79393, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -31555,6 +31573,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114289858522956042, guid: 99b5bcd305c52874e8c1260339b4379a,
         type: 2}
+      propertyPath: GasWalls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114289858522956042, guid: 99b5bcd305c52874e8c1260339b4379a,
+        type: 2}
       propertyPath: SickleLight.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -32021,7 +32044,7 @@ Prefab:
     - target: {fileID: 114289858522956042, guid: 99b5bcd305c52874e8c1260339b4379a,
         type: 2}
       propertyPath: waitingTime
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 114289858522956042, guid: 99b5bcd305c52874e8c1260339b4379a,
         type: 2}
@@ -32135,6 +32158,16 @@ Prefab:
       propertyPath: dadianti
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114289858522956042, guid: 99b5bcd305c52874e8c1260339b4379a,
+        type: 2}
+      propertyPath: GasWalls.Array.data[0]
+      value: 
+      objectReference: {fileID: 205373482}
+    - target: {fileID: 114289858522956042, guid: 99b5bcd305c52874e8c1260339b4379a,
+        type: 2}
+      propertyPath: GasWalls.Array.data[1]
+      value: 
+      objectReference: {fileID: 1403130099}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99b5bcd305c52874e8c1260339b4379a, type: 2}
   m_IsPrefabAsset: 0
@@ -68420,7 +68453,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007537873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 75.14393, z: -10}
+  m_LocalPosition: {x: 0.15, y: 36.79393, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1703162282}

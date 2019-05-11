@@ -13,6 +13,7 @@ public class Boss02Trigger : MonoBehaviour {
     public CharacterControl2 smoke;
 
     GameObject Player;
+    int BossHp;
 
     // Use this for initialization
     void Start () {
@@ -20,6 +21,20 @@ public class Boss02Trigger : MonoBehaviour {
         Boss02.SetActive(false);
     }
 
+    private void FixedUpdate()
+    {
+        BossHp = Boss02.GetComponent<Boss02>().Hp;
+        if (BossHp <= 0)
+        {
+            SkyWall[0].SetActive(false);
+            SkyWall[1].SetActive(false);
+            Player.GetComponent<CharacterControl2>().move = 0;
+            Player.GetComponent<CharacterControl2>().Movement = false;
+            Invoke("RemovePlayer", 2.2f);
+            BlackAlpha.ScreenFade();
+            Invoke("ChangeCamera2", 1.6f);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -31,9 +46,8 @@ public class Boss02Trigger : MonoBehaviour {
             BlackAlpha.ScreenFade();
             Invoke("ChangeCamera", 1.6f);
             Invoke("EnterStage", 3.5f);
-            
-
-            //Destroy(gameObject, 2f);
+            SkyWall[0].SetActive(true);
+            SkyWall[1].SetActive(true);
         }
     }
 
@@ -49,6 +63,11 @@ public class Boss02Trigger : MonoBehaviour {
         Boss02.SetActive(true);
         BossLifeUI.SetActive(true);
         smoke.smoke.SetActive(false);
+    }
+    void ChangeCamera2() //Boss凉了之后的切换
+    {
+        cam1.SetActive(true);
+        cam2.SetActive(false);
     }
 
     void EnterStage()

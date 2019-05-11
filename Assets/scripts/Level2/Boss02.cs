@@ -29,11 +29,12 @@ public class Boss02 : MonoBehaviour
     Animator m_Animator;
     AnimatorStateInfo stateInfo;
     bool Stage3Attack; //双镰刀阶段是否攻击
-   public float Timer; //计时器
-    int Hp;
+    float Timer; //计时器
+    public int Hp;
     bool Stage4;
     bool Daoguang;
     bool Stage03;
+    bool Dead;
 
     // Use this for initialization
     void Start()
@@ -202,9 +203,17 @@ public class Boss02 : MonoBehaviour
         }
         if (Hp == 0)  //boss死亡
         {
-            Destroy(gameObject);
+            if (!Dead)
+            {
+                GameObject a;
+                a = Instantiate(Smoke, transform.position, Smoke.transform.rotation);
+                Destroy(a, 1.6f);
+                Dead = true;
+            }
+            //Destroy(gameObject);
+            BossSprite.SetActive(false);
             BossLife.SetActive(false);
-            
+            GetComponent<Boss02>().enabled = false;
         }
     }
 
