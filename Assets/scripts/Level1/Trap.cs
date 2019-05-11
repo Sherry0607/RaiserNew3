@@ -38,16 +38,19 @@ public class Trap : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 Attack = false;
-                if (Player.transform.localScale.x > 0 && Enemy.transform.rotation.y < 0)
-                {
-                    LifeChange_m();
-                }
-                else
-                if (Player.transform.localScale.x < 0 && Enemy.transform.rotation.y > 0)
-                {
-                    LifeChange_m();
-                    Attack = false;
-                }
+                LifeChange_m();
+
+                print("aaaaaaaa");
+                //if (Player.transform.localScale.x > 0 && Enemy.transform.rotation.y < 0)
+                //{
+                //    LifeChange_m();
+                //}
+                //else
+                //if (Player.transform.localScale.x < 0 && Enemy.transform.rotation.y > 0)
+                //{
+                //    LifeChange_m();
+                //    Attack = false;
+                //}
             }
 
         }
