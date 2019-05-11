@@ -44,7 +44,6 @@ public class CharacterControl : MonoBehaviour
 
 
 
-
     private void Awake()
     {
         if (SceneManager.GetActiveScene().name == StringManager.LEVEL_level1
@@ -91,6 +90,7 @@ public class CharacterControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+
         if (col.tag == "BossWing" && isAttacking)
         {
             var bossAi = GameObject.Find("BossAI").GetComponent<BossAI>();

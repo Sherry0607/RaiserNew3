@@ -47,7 +47,7 @@ public class CharacterControl2 : MonoBehaviour
         if (SceneManager.GetActiveScene().name == StringManager.LEVEL_level1
             || SceneManager.GetActiveScene().name == StringManager.LEVEL_level2
                 || SceneManager.GetActiveScene().name == StringManager.LEVEL_level3) {
-        
+            print("Awake--------------");
             transform.position =  GameManager.Instence.LoadPlayerPos();
         }
 
@@ -75,7 +75,8 @@ public class CharacterControl2 : MonoBehaviour
             m_animator.SetBool("Jump", false);
             m_animator.SetBool("Jump2", false);
             POS2 = transform.position.y;
-            smoke.SetActive(true);
+            if(smoke!= null)
+                smoke.SetActive(true);
 
         }
     }
@@ -253,6 +254,7 @@ public class CharacterControl2 : MonoBehaviour
     void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
     void Idle()
     {

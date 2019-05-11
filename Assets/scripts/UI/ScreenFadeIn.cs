@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 
 public class ScreenFadeIn : MonoBehaviour {
+    public float fadeTime = 1.2f;
+    public float delayTime = 0f;
 
     private Image Black;
 
@@ -12,6 +14,7 @@ public class ScreenFadeIn : MonoBehaviour {
 
     private float alpha;
     private bool isIncrase;//是否处于屏幕 变黑状态
+    private float delayTimer = 0f;
 
 
 
@@ -20,15 +23,13 @@ public class ScreenFadeIn : MonoBehaviour {
         alpha = 0;
         Black = GetComponent<Image>();
         Black.raycastTarget = false;//关闭掉 “黑屏”的点击事件的响应
-
+        delayTimer = delayTime;
     }
 
 
 
     void FixedUpdate()
     {
-
-
         if (isScreenFade)
             FadeMaskImage();
 
@@ -39,7 +40,7 @@ public class ScreenFadeIn : MonoBehaviour {
 
         if (isIncrase)
         {
-            alpha += Time.deltaTime * 0.6f;
+            alpha += Time.deltaTime * fadeTime*0.5f;
             Black.color = new Color(0, 0, 0, alpha);
 
             if (Black.color.a >= 1)
@@ -47,13 +48,19 @@ public class ScreenFadeIn : MonoBehaviour {
         }
         else
         {
-            alpha -= Time.deltaTime * 0.6f;
+            if (delayTimer > 0) {
+                delayTimer -= Time.deltaTime * fadeTime * 0.5f;
+                return;
+            }
+
+            alpha -= Time.deltaTime * fadeTime * 0.5f;
             Black.color = new Color(0, 0, 0, alpha);
 
             if (Black.color.a <= 0) {
                 isScreenFade = false;
                 Black.raycastTarget = false;
 
+                delayTimer = delayTime;
             }
         }
     }
