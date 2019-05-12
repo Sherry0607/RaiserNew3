@@ -429,6 +429,9 @@
     <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineVirtualCameraBaseEditor.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineVirtualCameraEditor.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\EventHelpers\CinemachineTriggerActionEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Experimental\CinemachineNewFreeLookEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Experimental\CinemachineNewVirtualCameraEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Experimental\VcamStageEditor.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineCollisionImpulseSourceEditor.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineImpulseChannelPropertyDrawer.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineImpulseChannels.cs" />
@@ -441,9 +444,7 @@
     <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\CinemachineBlendDefinitionPropertyDrawer.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\CinemachineTagFieldPropertyDrawer.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\EmbeddedAssetPropertyDrawer.cs" />
-    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\GetSetDrawer.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\LensSettingsPropertyDrawer.cs" />
-    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\MinDrawer.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\NoiseSettingsPropertyDrawer.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\OrbitalTransposerHeadingPropertyDrawer.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Editor\Timeline\CinemachineShotEditor.cs" />
@@ -683,7 +684,6 @@
     <None Include="Packages\com.unity.cinemachine\Editor\Resources\CMWaveform.compute" />
     <None Include="Packages\com.unity.cinemachine\Editor\Resources\CMWaveform.shader" />
     <None Include="Packages\com.unity.cinemachine\Editor\Resources\StdLib.hlsl" />
-    <None Include="Packages\com.unity.cinemachine\ReleaseNotes.txt" />
     <None Include="Packages\com.unity.cinemachine\license.txt" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />

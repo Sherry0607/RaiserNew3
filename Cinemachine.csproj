@@ -393,6 +393,7 @@
     <Compile Include="Packages\com.unity.cinemachine\Runtime\AssemblyInfo.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Behaviours\CinemachineBrain.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Runtime\Behaviours\CinemachineCameraOffset.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Behaviours\CinemachineClearShot.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Behaviours\CinemachineCollider.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Behaviours\CinemachineConfiner.cs" />
@@ -443,6 +444,8 @@
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Core\UnityVectorExtensions.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Core\UpdateTracker.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\EventHelpers\CinemachineTriggerAction.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Runtime\Experimental\CinemachineNewFreeLook.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Runtime\Experimental\CinemachineNewVirtualCamera.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Impulse\CinemachineCollisionImpulseSource.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Impulse\CinemachineFixedSignal.cs" />
     <Compile Include="Packages\com.unity.cinemachine\Runtime\Impulse\CinemachineImpulseDefinition.cs" />
@@ -676,7 +679,6 @@
     <None Include="Packages\com.unity.cinemachine\Editor\Resources\CMWaveform.compute" />
     <None Include="Packages\com.unity.cinemachine\Editor\Resources\CMWaveform.shader" />
     <None Include="Packages\com.unity.cinemachine\Editor\Resources\StdLib.hlsl" />
-    <None Include="Packages\com.unity.cinemachine\ReleaseNotes.txt" />
     <None Include="Packages\com.unity.cinemachine\license.txt" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />

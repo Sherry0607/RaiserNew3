@@ -11081,7 +11081,6 @@ GameObject:
   m_Component:
   - component: {fileID: 417047823}
   - component: {fileID: 417047822}
-  - component: {fileID: 417047825}
   - component: {fileID: 417047824}
   m_Layer: 0
   m_Name: CM vcam1 (1)
@@ -11235,13 +11234,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &417047825
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 417047821}
-  m_Enabled: 1
 --- !u!1 &426189633
 GameObject:
   m_ObjectHideFlags: 0
@@ -22607,6 +22599,7 @@ MonoBehaviour:
   m_SoftZoneHeight: 1
   m_BiasX: 0
   m_BiasY: 0
+  m_CenterOnActivate: 1
   m_GroupFramingMode: 2
   m_AdjustmentMode: 2
   m_GroupFramingSize: 0.8
@@ -60389,6 +60382,7 @@ MonoBehaviour:
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
+  m_CenterOnActivate: 1
   m_GroupFramingMode: 2
   m_AdjustmentMode: 2
   m_GroupFramingSize: 0.8
@@ -69211,7 +69205,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2007537875}
   - component: {fileID: 2007537874}
-  - component: {fileID: 2007537877}
   - component: {fileID: 2007537876}
   m_Layer: 0
   m_Name: CM vcam1
@@ -69365,13 +69358,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &2007537877
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2007537873}
-  m_Enabled: 1
 --- !u!1 &2012965611
 GameObject:
   m_ObjectHideFlags: 0
