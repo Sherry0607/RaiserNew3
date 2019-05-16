@@ -47,7 +47,7 @@ public class startscene : MonoBehaviour {
     //开始游戏
     public void PlayGame() {
        // Debug.Log("play game");
-        Application.LoadLevel("savehouse");
+        Application.LoadLevel("level1");
        
     }
 

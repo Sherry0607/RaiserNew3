@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class SafeHouse : MonoBehaviour {
     public ScreenFadeIn BlackAlpha;
 
@@ -11,13 +9,11 @@ public class SafeHouse : MonoBehaviour {
     private Transform Player;
     private bool isEnter = false;
 
-    
-
     void Start()
     {
 
         Player = GameObject.FindGameObjectWithTag("Player").transform;
-        
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)

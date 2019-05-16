@@ -36,6 +36,6 @@ public class EnterTowFloor : MonoBehaviour {
     void ChangeCameraEnterTowFloor()
     {
         isEnter = false;
-        Player.position = new Vector3(411.5f, -29.1f, 0);
+        Player.position = new Vector3(411.5f, -27.29f, 0);
     }
 }

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 
 
+
 public class ScreenFadeIn : MonoBehaviour {
     public float fadeTime = 1.2f;
     public float delayTime = 0f;

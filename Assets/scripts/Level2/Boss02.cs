@@ -210,8 +210,8 @@ public class Boss02 : MonoBehaviour
                 Destroy(a, 1.6f);
                 Dead = true;
             }
-            Destroy(gameObject,0.2f);
-            //BossSprite.SetActive(false);
+            //Destroy(gameObject);
+            BossSprite.SetActive(false);
             BossLife.SetActive(false);
             GetComponent<Boss02>().enabled = false;
         }

@@ -5,11 +5,9 @@ using UnityEngine;
 public class Dadianti : MonoBehaviour {
 
     private Animator m_animator;
-    public  Boss02Trigger bossTigger;
+    public  Boss02 boss2;
 
     public GameObject ci;
-
-    bool dadianti;
     // Use this for initialization
     void Start()
     {
@@ -19,14 +17,14 @@ public class Dadianti : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
     }
   
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Player"  && bossTigger.Dadianti)
+        if (coll.gameObject.tag == "Player"  && boss2.dadianti == true)
         {
             m_animator.enabled = true;
             ci.GetComponent<Animator>().enabled = true;

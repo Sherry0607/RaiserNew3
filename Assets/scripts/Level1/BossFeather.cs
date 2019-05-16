@@ -29,13 +29,4 @@ public class BossFeather : MonoBehaviour
         gameObject.transform.localPosition = m_OriginalPos;
         gameObject.SetActive(true);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            collision.GetComponent<CharacterControl>().LifeChange(false);
-        }
-    }
-
 }
