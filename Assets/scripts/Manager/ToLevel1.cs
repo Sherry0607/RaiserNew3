@@ -8,7 +8,6 @@ public class ToLevel1 : MonoBehaviour {
     public ScreenFadeIn BlackAlpha;
     private Transform Player;
     
-
     void Start()
     {
 

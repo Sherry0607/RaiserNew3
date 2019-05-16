@@ -26,7 +26,6 @@ public class lv3_1 : MonoBehaviour {
         {
            // playerCtr.life --;
             playerCtr.LifeChange(false);
-            
         }
 
     }

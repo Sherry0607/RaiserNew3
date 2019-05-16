@@ -37,7 +37,7 @@ public class EnterSafeDoor : MonoBehaviour {
 
     void ChangeCamera()
     {
-        Player.position = new Vector3(60.6f, -29.1f, 0);
+        Player.position = new Vector3(60.6f, -29.94f, 0);
         vCmera01.SetActive(false);
         vCmera02.SetActive(true);
         isEnter = false;

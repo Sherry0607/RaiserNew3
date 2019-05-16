@@ -35,7 +35,7 @@ public class EnterOneFloor : MonoBehaviour
 
     void ChangeCameraEnterTowFloor()
     {
-        Player.position = new Vector3(247.5f, -26.17951f, 0);
+        Player.position = new Vector3(247.5f, -0.17951f, 0);
         isEnter = false;
     }
 }
