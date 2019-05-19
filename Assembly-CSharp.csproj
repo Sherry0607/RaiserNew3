@@ -315,8 +315,16 @@
     <Compile Include="Assets\scripts\Level2\SharpSpawn.cs" />
     <Compile Include="Assets\scripts\Level2\SharpTrigger.cs" />
     <Compile Include="Assets\scripts\Level2\WaterAttack.cs" />
+    <Compile Include="Assets\scripts\Level3\Boss03_Ghost.cs" />
+    <Compile Include="Assets\scripts\Level3\Boss03SpawnController.cs" />
+    <Compile Include="Assets\scripts\Level3\Boss03Stage03.cs" />
+    <Compile Include="Assets\scripts\Level3\Boss03Stage04.cs" />
+    <Compile Include="Assets\scripts\Level3\GhostChasing.cs" />
     <Compile Include="Assets\scripts\LifeLeaf.cs" />
+    <Compile Include="Assets\scripts\MachineFish.cs" />
+    <Compile Include="Assets\scripts\MachineFishChasing.cs" />
     <Compile Include="Assets\scripts\Manager\BackPacktemDataManager.cs" />
+    <Compile Include="Assets\scripts\Manager\ChangeCam1.cs" />
     <Compile Include="Assets\scripts\Manager\EnterSafeDoor.cs" />
     <Compile Include="Assets\scripts\Manager\StringManager.cs" />
     <Compile Include="Assets\scripts\Manager\ToLevel1.cs" />
@@ -328,6 +336,7 @@
     <Compile Include="Assets\scripts\SKT_AI.cs" />
     <Compile Include="Assets\scripts\Spawn.cs" />
     <Compile Include="Assets\scripts\UI\GameMeunUI.cs" />
+    <Compile Include="Assets\scripts\UI\LevelLoader.cs" />
     <Compile Include="Assets\scripts\UI\ScreenFadeIn.cs" />
     <Compile Include="Assets\scripts\UI\startscene.cs" />
     <Compile Include="Assets\scripts\UICountral.cs" />
