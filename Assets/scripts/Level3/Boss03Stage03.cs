@@ -8,12 +8,11 @@ public class Boss03Stage03 : MonoBehaviour {
     public float startWait = 0.0f; //刷新时间间隔
     public float everyWaveWait;
     public int hazardCount;
-    public float StopTime;
 
     float PosX;
     float PosY;
     Vector3 Pos;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isCorutine;
 
     // Use this for initialization

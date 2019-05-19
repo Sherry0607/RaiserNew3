@@ -9,7 +9,7 @@ public class Boss03SpawnController : MonoBehaviour {
 
     public GameObject[] Spawn;
 
-    public float Timer;
+    float Timer;
 
     // Use this for initialization
     void Start () {
@@ -23,14 +23,11 @@ public class Boss03SpawnController : MonoBehaviour {
         {
             Spawn[0].SetActive(true);
             Spawn[0].GetComponent<Boss03Stage03>().isCorutine = true;
-            Spawn[1].SetActive(true);
-            Spawn[1].GetComponent<Boss03Stage03>().isCorutine = true;
             Timer = 0;
         }
         if (Timer > StopTime)
         {
             Spawn[0].SetActive(false);
-            Spawn[1].SetActive(false);
         }
     }
 

@@ -25,7 +25,7 @@ public class CameraMovement : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W)) //镜头上移
+        if (Input.GetKey(KeyCode.Q)) //镜头上移
         {
             m_Cinemachine.m_Follow = null;
 
@@ -38,7 +38,7 @@ public class CameraMovement : MonoBehaviour {
                 transform.position = new Vector3(Player.transform.position.x, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKey(KeyCode.S)) //下移
+        if (Input.GetKey(KeyCode.E)) //下移
         {
             m_Cinemachine.m_Follow = null;
             if (Mathf.Abs(UpDis) < MaxDis)
@@ -50,11 +50,11 @@ public class CameraMovement : MonoBehaviour {
                 transform.position = new Vector3(Player.transform.position.x, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode. Q))
         {
             isFollow = true;
         }
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             isFollow2 = true;
         }

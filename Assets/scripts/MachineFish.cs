@@ -58,7 +58,8 @@ public class MachineFish : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && collision.tag == "chanzi" && GhostHurt && !PlayerAnimator.GetBool("hurt"))
         {
             GhostHurt = false;
-            Invoke("LifeChange_Ghost", 0.4f);//在0.4 秒后 开始进行伤害处理
+            Invoke("LifeChange_Ghost", 0.1f);//在0.4 秒后 开始进行伤害处理
+            //LifeChange_Ghost();
         }
     }
 
