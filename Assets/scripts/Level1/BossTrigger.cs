@@ -13,6 +13,8 @@ public class BossTrigger : MonoBehaviour {
 	public GameObject cam2;
     public ScreenFadeIn BlackAlpha;
 
+    public GameObject music;
+
     GameObject Player;
 	// Use this for initialization
 	void Start () {
@@ -50,5 +52,6 @@ public class BossTrigger : MonoBehaviour {
         cam1.SetActive(false);
         cam2.SetActive(true);
         Hp.SetActive(true);
+        music.SetActive(false);
     }
 }
