@@ -5,11 +5,13 @@ using UnityEngine;
 
 
 public class SafeHouse : MonoBehaviour {
+
     public ScreenFadeIn BlackAlpha;
 
     public GameObject vCmera01, vCmera02;
     private Transform Player;
     private bool isEnter = false;
+    public GameObject music;
 
     
 
@@ -44,6 +46,7 @@ public class SafeHouse : MonoBehaviour {
         vCmera01.SetActive(true);
         vCmera02.SetActive(false);
         isEnter = false;
+        music.SetActive(false);
 
     }
 }

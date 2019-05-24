@@ -17,6 +17,7 @@ public class Boss02 : MonoBehaviour
     public GameObject BossLife;
     public UnityEngine.UI.Image LifeImage;
     public float waitingTime;
+    
 
     [HideInInspector]
     public int SharpIns;
@@ -213,6 +214,7 @@ public class Boss02 : MonoBehaviour
             Destroy(gameObject,0.2f);
             //BossSprite.SetActive(false);
             BossLife.SetActive(false);
+            
             GetComponent<Boss02>().enabled = false;
         }
     }
@@ -244,6 +246,7 @@ public class Boss02 : MonoBehaviour
     void BossDisappear()
     {
         BossSprite.SetActive(false);
+        
     }
 
     void BossAppear()

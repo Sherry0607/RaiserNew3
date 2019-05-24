@@ -14,6 +14,7 @@ public class BossAI : MonoBehaviour
     public GameObject cam2;
     public GameObject wall;
     public ScreenFadeIn BlackAlpha; //黑幕
+    public GameObject music;
 
     void Awake()
     {
@@ -42,6 +43,7 @@ public class BossAI : MonoBehaviour
             BlackAlpha.ScreenFade();
             Invoke("ChangeCamera", 1.6f);
             wall.SetActive(false);
+            music.SetActive(true);
         }
     }
 

@@ -9,6 +9,8 @@ public class EnterSafeDoor : MonoBehaviour {
     private Transform Player;
     private bool isEnter = false;
 
+    public GameObject music;
+
 
 
     void Start()
@@ -41,6 +43,7 @@ public class EnterSafeDoor : MonoBehaviour {
         vCmera01.SetActive(false);
         vCmera02.SetActive(true);
         isEnter = false;
+        music.SetActive(true);
 
     }
 }

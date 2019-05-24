@@ -11,6 +11,7 @@ public class Boss02Trigger : MonoBehaviour {
     public GameObject BossLifeUI;
     public GameObject[] SkyWall;
     public CharacterControl2 smoke;
+    public GameObject music;
 
     GameObject Player;
     int BossHp;
@@ -47,6 +48,7 @@ public class Boss02Trigger : MonoBehaviour {
             Invoke("EnterStage", 3.5f);
             SkyWall[0].SetActive(true);
             SkyWall[1].SetActive(true);
+            music.SetActive(false);
         }
     }
 
@@ -67,6 +69,7 @@ public class Boss02Trigger : MonoBehaviour {
     {
         cam1.SetActive(true);
         cam2.SetActive(false);
+        music.SetActive(true);
     }
 
     void EnterStage()
