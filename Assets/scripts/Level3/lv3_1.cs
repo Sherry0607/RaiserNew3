@@ -5,8 +5,10 @@ using UnityEngine;
 public class lv3_1 : MonoBehaviour {
 
     public CharacterControl2 playerCtr;
+    public ShakeCamera ShakeCamera;
     private Transform Player;
     Animator Animators;
+ 
 
     // Use this for initialization
     void Start () {
@@ -24,8 +26,9 @@ public class lv3_1 : MonoBehaviour {
     {
         if (collision.tag =="Player")
         {
-           // playerCtr.life --;
             playerCtr.LifeChange(false);
+            ShakeCamera.shake();
+            
         }
 
     }
