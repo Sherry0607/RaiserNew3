@@ -4,32 +4,38 @@ using UnityEngine;
 
 public class Boss03SpawnController : MonoBehaviour {
 
-    public float RestartTime;
     public float StopTime;
-
     public GameObject[] Spawn;
+    public Boss03 boss03;
+    [HideInInspector]
+    public bool Enter;
 
     float Timer;
-
-    // Use this for initialization
-    void Start () {
-
-    }
+    bool Restart;
 
     // Update is called once per frame
-    void FixedUpdate () {
-        Timer += Time.deltaTime;
-        if (Timer > RestartTime)
+    void FixedUpdate()
+    {
+        if (Enter)
         {
-            Spawn[0].SetActive(true);
-            Spawn[0].GetComponent<Boss03Stage03>().isCorutine = true;
-            Timer = 0;
-        }
-        if (Timer > StopTime)
-        {
-            Spawn[0].SetActive(false);
+            Timer += Time.deltaTime;
+            if (Timer > 0.05f)
+            {
+                if (!Restart)
+                {
+                    Spawn[0].SetActive(true);
+                    Spawn[0].GetComponent<Boss03Stage03>().isCorutine = true;
+                    Restart = true;
+                }
+            }
+
+            if (Timer > StopTime)
+            {
+                Spawn[0].SetActive(false);
+                Timer = 0;
+                Restart = false;
+                Enter = false;
+            }
         }
     }
-
-
 }
