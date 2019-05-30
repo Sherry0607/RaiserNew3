@@ -274,8 +274,8 @@ public class Boss : MonoBehaviour
                     m_DiveTime++;
                     m_Dive = true;
                 }
-                Invoke("ChangeAlpha", 2);
-                Invoke("Smoke", 2);
+                Invoke("ChangeAlpha", 1);
+                Invoke("Smoke", 1);
                 m_Smoke = false;
                 Stage005 = true;
                 Stage004 = false;

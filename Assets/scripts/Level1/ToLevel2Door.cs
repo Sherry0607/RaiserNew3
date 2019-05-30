@@ -10,10 +10,10 @@ public class ToLevel2Door : MonoBehaviour {
     private GameObject noHaveKeyObj;
 
 
-    //private void Start()
-    //{
-    //    PlayerPrefs.SetInt(StringManager.Save_Level1DoorOpen, 0);
-    //}
+    private void Start()
+    {
+        PlayerPrefs.SetInt(StringManager.Save_Level1DoorOpen, 0);
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +42,7 @@ public class ToLevel2Door : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (PlayerPrefs.GetInt(StringManager.Save_Level1DoorOpen) == 1)
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("level2");
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("library");
             }
         }
 

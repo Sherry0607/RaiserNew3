@@ -10,6 +10,7 @@ public class leave2 : MonoBehaviour {
         {
             collision.GetComponent<CharacterControl2>().LifeChange(true);
             Destroy(gameObject);
+            
 
         }
     }

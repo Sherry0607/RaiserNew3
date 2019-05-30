@@ -29,8 +29,6 @@ public class BossTrigger : MonoBehaviour {
             col.GetComponent<CharacterControl>().move = 0;
             col.GetComponent<CharacterControl>().Movement = false;
             Invoke("RemovePlayer", 2f);
-            Boss1.m_EnterStage = true;
-            Boss2.m_EnterStage = true;
             Boss1.m_Index = 1;
             Boss1.m_Index2 = 1;
             Boss2.m_Index = 1;
@@ -53,5 +51,7 @@ public class BossTrigger : MonoBehaviour {
         cam2.SetActive(true);
         Hp.SetActive(true);
         music.SetActive(false);
+        Boss1.m_EnterStage = true;
+        Boss2.m_EnterStage = true;
     }
 }
