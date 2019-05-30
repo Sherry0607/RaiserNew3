@@ -53,9 +53,18 @@ public class Boss : MonoBehaviour
     private bool m_Dive; //用于单次计算DiveTime
     private bool m_ChangeAlpha;
     public Animator m_Animator;
+    bool Stage01;
+    bool Stage02;
+    bool Stage03;
+
+    bool Stage001;
+    bool Stage002;
+    bool Stage003;
+    bool Stage004;
+    bool Stage005;
 
     public int loopTime;//每阶段循环次数
-  
+
     //Use this for initialization
     void Start()
     {
@@ -64,6 +73,8 @@ public class Boss : MonoBehaviour
         {
             feature.gameObject.SetActive(true);
         }
+        Stage01 = true;
+        Stage001 = true;
     }
     void FixedUpdate()
     {
@@ -78,27 +89,38 @@ public class Boss : MonoBehaviour
             if (m_Alpha >= 0)
                 m_Alpha -= 1f * Time.deltaTime;
         }
-        Alphas[0].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
-        Alphas[1].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
-        Alphas[2].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
-        Alphas[3].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
-        Alphas[4].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
+        {
+            Alphas[0].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
+            Alphas[1].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
+            Alphas[2].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
+            Alphas[3].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
+            Alphas[4].transform.GetComponent<SpriteMeshInstance>().m_Color.a = m_Alpha;
+        }
 
         if (m_EnterStage == true)
         {
             switch (m_Index)
             {
                 case 1:
-                    MoveLoop();
-                    Invoke("Stage1", 1f);
+                    if (Stage01)
+                    {
+                        MoveLoop();
+                        Invoke("Stage1", 1f);
+                    }
                     break;
                 case 2:
-                    MoveLoop();
-                    Invoke("Stage2", 1f);
+                    if (Stage02)
+                    {
+                        MoveLoop();
+                        Invoke("Stage2", 1f);
+                    }
                     break;
                 case 3:
-                    MoveBezier();
-                    Invoke("Stage3", 1f);
+                    if (Stage03)
+                    {
+                        MoveBezier();
+                        Invoke("Stage3", 1f);
+                    }
                     break;
             }
         }
@@ -112,6 +134,9 @@ public class Boss : MonoBehaviour
             m_DiveTime = 0;
         }
         m_Index2 = 1;
+        Stage001 = true;
+        Stage01 = false;
+        Stage02 = true;
     }
     void DelayIncrease2()
     {
@@ -120,6 +145,9 @@ public class Boss : MonoBehaviour
             m_Index = 3;
             m_Index2 = 6;
             m_DiveTime = 0;
+            Stage02 = false;
+            Stage03 = true;
+            Stage001 = true;
         }
         if (m_Index == 2 && m_DiveTime < loopTime)
         {
@@ -133,6 +161,8 @@ public class Boss : MonoBehaviour
             m_Index = 1;
             m_Index2 = 1;
             m_DiveTime = 0;
+            Stage03 = false;
+            Stage01 = true;
         }
         if (m_Index == 3 && m_DiveTime < loopTime)
             m_Index2 = 6;
@@ -182,35 +212,36 @@ public class Boss : MonoBehaviour
         }
         m_Index2 = 2;
         m_Dive = false;
+        Stage002 = true;
     }
     void Stage1_2()
     {
         transform.position = Vector3.MoveTowards(transform.position, m_Points_end_1, m_Speed * Time.deltaTime);
         m_Animator.SetBool("Dive", true);
-
         if (m_Index == 1)
         {
-               Boss1.transform.localEulerAngles = new Vector3(90, -90, -90);
-               Boss2.transform.localEulerAngles = new Vector3(90, 90, -90);
+            Boss1.transform.localEulerAngles = new Vector3(90, -90, -90);
+            Boss2.transform.localEulerAngles = new Vector3(90, 90, -90);
         }
         if (m_Index == 2)
         {
-               Boss1.transform.localEulerAngles = new Vector3(180, -90, -90);
-               Boss2.transform.localEulerAngles = new Vector3(180, 90, -90);
+            Boss1.transform.localEulerAngles = new Vector3(180, -90, -90);
+            Boss2.transform.localEulerAngles = new Vector3(180, 90, -90);
         }
         if (Vector3.Distance(transform.position, m_Points_end_1) <= 0.00001f)
         {
             if (m_Smoke == true)
             {
-                Invoke("ChangeAlpha", 2);
-                Invoke("Smoke", 2);
+                Invoke("ChangeAlpha", 1);
+                Invoke("Smoke", 1);
                 m_Smoke = false;
-
+                Stage002 = false;
+                Stage003 = true;
             }
             m_Index2 = 3;
             m_Animator.SetBool("Dive", false);
             Boss1.transform.localEulerAngles = new Vector3(-90, 0, 0);
-            Boss2.transform.localEulerAngles = new Vector3(-90, 0, 0);
+            Boss2.transform.localEulerAngles = new Vector3(-90, 0, 180);
         }
     }
     void Stage1_3()
@@ -224,6 +255,8 @@ public class Boss : MonoBehaviour
             Destroy(a, 1.6f);
         }
         m_Index2 = 4;
+        Stage004 = true;
+        Stage003 = false;
     }
     void Stage1_4()
     {
@@ -244,11 +277,13 @@ public class Boss : MonoBehaviour
                 Invoke("ChangeAlpha", 2);
                 Invoke("Smoke", 2);
                 m_Smoke = false;
+                Stage005 = true;
+                Stage004 = false;
             }
             m_Index2 = 5;
             m_Animator.SetBool("Dive", false);
             Boss1.transform.localEulerAngles = new Vector3(-90, 0, 0);
-            Boss2.transform.localEulerAngles = new Vector3(-90, 0, 0);
+            Boss2.transform.localEulerAngles = new Vector3(-90, 0, 180);
         }
     }
 
@@ -257,19 +292,30 @@ public class Boss : MonoBehaviour
         switch (m_Index2)
         {
             case 1:
-                Invoke("Stage1_1", 4f);//此处时间需大于烟雾和透明度改变时的时间
+                if (Stage001)
+                {
+                    Invoke("Stage1_1", 1.6f);//此处时间需大于烟雾和透明度改变时的时间
+                    Stage001 = false;
+                }
                 break;
             case 2: //第一次俯冲
-                Invoke("Stage1_2", 4f);
+                if (Stage002)
+                    Invoke("Stage1_2", 1.6f);
                 break;
             case 3:
-                Invoke("Stage1_3", 4f);
+                if (Stage003)
+                    Invoke("Stage1_3", 1.8f);
                 break;
             case 4: //第二次俯冲
-                Invoke("Stage1_4", 4f);
+                if (Stage004)
+                    Invoke("Stage1_4", 1.7f);
                 break;
             case 5:
-                Invoke("DelayIncrease", 4f);
+                if (Stage005)
+                {
+                    Invoke("DelayIncrease", 1.7f);
+                    Stage005 = false;
+                }
                 break;
         }
     }
@@ -278,56 +324,67 @@ public class Boss : MonoBehaviour
         switch (m_Index2)
         {
             case 1:
-                Invoke("Stage1_1", 4f);
+                if (Stage001)
+                {
+                    Invoke("Stage1_1", 1.6f);//此处时间需大于烟雾和透明度改变时的时间
+                    Stage001 = false;
+                }
                 break;
-            case 2:
-                Invoke("Stage1_2", 4f);
+            case 2: //第一次俯冲
+                if (Stage002)
+                    Invoke("Stage1_2", 1.6f);
                 break;
             case 3:
-                Invoke("Stage1_3", 4f);
+                if (Stage003)
+                    Invoke("Stage1_3", 1.8f);
                 break;
-            case 4:
-                Invoke("Stage1_4", 4f);
+            case 4: //第二次俯冲
+                if (Stage004)
+                    Invoke("Stage1_4", 1.7f);
                 break;
             case 5:
-                Invoke("DelayIncrease2", 4f);
+                if (Stage005)
+                {
+                    Invoke("DelayIncrease2", 1.7f);
+                    Stage005 = false;
+                }
                 break;
         }
     }
     void Stage3()
     {
-            switch (m_Index2)
-            {
-                case 6:
-                    Invoke("Stage3_1", 1.0f);
-                    break;
-                case 7:
-                    Invoke("Stage3_2", 1.0f);
-                    break;
-                case 8:
-                    Invoke("Stage1_3", 1.0f);
-                    break;
-                case 4:
-                    Invoke("Stage1_4", 1.0f);
-                    break;
-                case 5:
-                    Invoke("DelayIncrease3", 1f);
-                    break;
-            }
+        switch (m_Index2)
+        {
+            case 6:
+                Invoke("Stage3_1", 1.0f);
+                break;
+            case 7:
+                Invoke("Stage3_2", 1.0f);
+                break;
+            case 8:
+                Invoke("Stage1_3", 1.0f);
+                break;
+            case 4:
+                Invoke("Stage1_4", 1.0f);
+                break;
+            case 5:
+                Invoke("DelayIncrease3", 1f);
+                break;
+        }
     }
-     void Stage3_1()
-     {
-         transform.position = BossBezierPoint1.position;
-         if (m_Smoke == false)
-         {
-             ChangeAlpha();
-             GameObject a = Instantiate(DarkSmoke, transform.position, transform.rotation) as GameObject;
-             m_Smoke = true;
-             Destroy(a, 1.6f);
-         }
+    void Stage3_1()
+    {
+        transform.position = BossBezierPoint1.position;
+        if (m_Smoke == false)
+        {
+            ChangeAlpha();
+            GameObject a = Instantiate(DarkSmoke, transform.position, transform.rotation) as GameObject;
+            m_Smoke = true;
+            Destroy(a, 1.6f);
+        }
         m_Duration = 0;
         m_Index2 = 7;
-     }
+    }
     void Stage3_2()
     {
         m_Dive = false;
@@ -376,7 +433,7 @@ public class Boss : MonoBehaviour
             m_ChangeAlpha = false;
     }
 
-	    void Smoke()
+    void Smoke()
     {
         GameObject a = Instantiate(DarkSmoke, transform.position, transform.rotation) as GameObject;
         Destroy(a, 1.6f);
