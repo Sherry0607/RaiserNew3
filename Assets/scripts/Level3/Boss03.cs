@@ -9,6 +9,9 @@ public class Boss03 : MonoBehaviour {
     [HideInInspector]
     public int Hp;
 
+    public GameObject BossLife;
+    public UnityEngine.UI.Image LifeImage;
+
     public int Index;
 
     Animator m_Animator;
@@ -115,4 +118,22 @@ public class Boss03 : MonoBehaviour {
     {
         Stage03 = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "chanzi" )
+        {
+            Hp--;
+            LifeImage.fillAmount = Hp / 30.0f;
+        }
+        if (Hp == 0)  //boss死亡
+        {
+            Destroy(gameObject, 0.2f);
+            //BossSprite.SetActive(false);
+            BossLife.SetActive(false);
+
+            GetComponent<Boss03>().enabled = false;
+        }
+    }
+
 }
