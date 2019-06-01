@@ -47,7 +47,7 @@ public class CharacterControl2 : MonoBehaviour
         if (SceneManager.GetActiveScene().name == StringManager.LEVEL_level1
             || SceneManager.GetActiveScene().name == StringManager.LEVEL_level2
                 || SceneManager.GetActiveScene().name == StringManager.LEVEL_level3) {
-            print("Awake--------------");
+            //print("Awake--------------");
             transform.position =  GameManager.Instence.LoadPlayerPos();
         }
 

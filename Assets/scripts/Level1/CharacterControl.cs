@@ -50,7 +50,6 @@ public class CharacterControl : MonoBehaviour
             || SceneManager.GetActiveScene().name == StringManager.LEVEL_level2
                 || SceneManager.GetActiveScene().name == StringManager.LEVEL_level3)
         {
-
             transform.position = GameManager.Instence.LoadPlayerPos();
         }
 
