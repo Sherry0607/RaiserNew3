@@ -25,7 +25,7 @@ public class Boss03 : MonoBehaviour {
     void Start () {
         m_Animator = GetComponent<Animator>();
         Stage01 = true;
-        Hp = 30;
+        Hp = 100;
 	}
 	
 	// Update is called once per frame
@@ -127,7 +127,7 @@ public class Boss03 : MonoBehaviour {
         if (collision.tag == "chanzi" )
         {
             Hp--;
-            LifeImage.fillAmount = Hp / 30.0f;
+            LifeImage.fillAmount = Hp / 100.0f;
         }
         if (Hp == 0)  //boss死亡
         {
@@ -135,7 +135,7 @@ public class Boss03 : MonoBehaviour {
             //BossSprite.SetActive(false);
             BossLife.SetActive(false);
 
-            GetComponent<Boss03>().enabled = false;
+            //GetComponent<Boss03>().enabled = false;
         }
     }
 

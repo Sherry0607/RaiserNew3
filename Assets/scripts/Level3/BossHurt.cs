@@ -27,7 +27,8 @@ public class BossHurt : MonoBehaviour {
         if (PlayerAttack && collision.tag == "chanzi")
         {
             boss03.Hp--;
-            LifeImage.fillAmount = boss03.Hp / 30.0f;
+            print(boss03.Hp);
+            LifeImage.fillAmount = boss03.Hp / 100.0f;
         }
         if (boss03.Hp == 0)  //boss死亡
         {
