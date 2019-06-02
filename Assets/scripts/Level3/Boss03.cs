@@ -60,7 +60,7 @@ public class Boss03 : MonoBehaviour {
             if (stateInfo.normalizedTime >= 0.9f && stateInfo.IsName("BOSS3-jiqiyu")) //机器鱼
             {
                 m_Animator.SetBool("jiqiyu", false);
-                Invoke("DelayChangeStage03", 2f);
+                Invoke("DelayChangeStage03", 5f);
             }
 
             if (stateInfo.normalizedTime >= 0.9f && stateInfo.IsName("BOSS3-zuo")) //左拳
@@ -87,6 +87,7 @@ public class Boss03 : MonoBehaviour {
     {
         m_Animator.SetBool("zuo", true);
         Index = 4;
+        Stage02 = false;
         Stage03 = false;
     }
 
@@ -112,11 +113,13 @@ public class Boss03 : MonoBehaviour {
         WheelSpawn.SetActive(true);
         Index = 1;
         Stage04 = false;
+        Stage03 = false;
     }
 
     void DelayChangeStage03()
     {
         Stage03 = true;
+        Stage02 = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

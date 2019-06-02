@@ -6,7 +6,6 @@ public class Boss03SpawnController : MonoBehaviour {
 
     public float StopTime;
     public GameObject[] Spawn;
-    public Boss03 boss03;
     [HideInInspector]
     public bool Enter;
 
