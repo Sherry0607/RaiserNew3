@@ -10,7 +10,7 @@ public class Boss02Trigger : MonoBehaviour {
     public ScreenFadeIn BlackAlpha;
     public GameObject BossLifeUI;
     public GameObject[] SkyWall;
-    //public CharacterControl2 smoke;
+    public CharacterControl2 smoke;
     public GameObject music;
 
     GameObject Player;

@@ -6,8 +6,10 @@ public class Dadianti : MonoBehaviour {
 
     private Animator m_animator;
     public  Boss02Trigger bossTigger;
-
+    public GameObject banban;
     public GameObject ci;
+
+    public OneceElevator oneceElevator;
 
     bool dadianti;
     // Use this for initialization
@@ -28,8 +30,10 @@ public class Dadianti : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player"  && bossTigger.Dadianti)
         {
-            m_animator.enabled = true;
+            //m_animator.enabled = true;
             ci.GetComponent<Animator>().enabled = true;
+            oneceElevator.m_MoveDown = true;
+            banban.SetActive(false);
         }
     }
 }
