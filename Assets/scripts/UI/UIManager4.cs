@@ -25,6 +25,7 @@ public class UIManager4 : MonoBehaviour
     private void ToLevel01()
     {
 
+
         SceneManager.LoadScene("level3");   //这个也是转换场景的代码，我建议你用这个，因为你的那个过时了，没准会有问题。记得加黑屏的效果
     }
 
@@ -36,7 +37,10 @@ public class UIManager4 : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartGame();
+        
+                StartGame();
+
+          
     }
 
 }

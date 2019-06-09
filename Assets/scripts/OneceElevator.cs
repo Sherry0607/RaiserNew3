@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OneceElevator : MonoBehaviour {
-    public float waitingTime; //电梯上的等待时间
     public float ElevatorSpeed;
+    [HideInInspector]
+    public bool m_MoveDown;
 
     float PlayerGravity;
     GameObject player;
@@ -29,7 +30,7 @@ public class OneceElevator : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (staySecond > waitingTime && GameManager.Instence.isPlay) //向下
+        if (m_MoveDown)
         {
             MoveDown();
         }
@@ -56,10 +57,10 @@ public class OneceElevator : MonoBehaviour {
 
         if (collision.name == "电梯底端") //电梯到达起始位置
         {
-            //transform.DetachChildren();
+            print("aaaaaaaa");
+            ElevatorSpeed = 0;
             elevatorRigidbody2D.bodyType = RigidbodyType2D.Static;
             playerRigidbody2D.gravityScale = PlayerGravity;
-            collision.gameObject.SetActive(false);
         }
 
         if (collision.tag == "Player")
@@ -83,7 +84,6 @@ public class OneceElevator : MonoBehaviour {
     {
         PosY -= Time.deltaTime * ElevatorSpeed;
         elevatorRigidbody2D.gravityScale = 0;
-        elevatorRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         elevatorRigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         transform.position = new Vector3(transform.position.x, PosY, transform.position.z);
     }

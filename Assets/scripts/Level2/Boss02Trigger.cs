@@ -10,7 +10,7 @@ public class Boss02Trigger : MonoBehaviour {
     public ScreenFadeIn BlackAlpha;
     public GameObject BossLifeUI;
     public GameObject[] SkyWall;
-    public CharacterControl2 smoke;
+    //public CharacterControl2 smoke;
     public GameObject music;
 
     GameObject Player;
@@ -63,7 +63,7 @@ public class Boss02Trigger : MonoBehaviour {
         cam2.SetActive(true);
         Boss02.SetActive(true);
         BossLifeUI.SetActive(true);
-        smoke.smoke.SetActive(false);
+        //smoke.smoke.SetActive(false);
     }
     void ChangeCamera2() //Boss凉了之后的切换
     {

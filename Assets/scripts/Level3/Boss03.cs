@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss03 : MonoBehaviour {
 
     public GameObject WheelSpawn;
+    public Transform WheelSpawnPos;
     public GameObject FishSpawn;
     [HideInInspector]
     public int Hp;
@@ -15,11 +16,12 @@ public class Boss03 : MonoBehaviour {
     public int Index;
 
     Animator m_Animator;
-    bool Stage01;
-    bool Stage02;
-    bool Stage03;
-    bool Stage04;
+    public bool Stage01;
+    public bool Stage02;
+    public bool Stage03;
+    public bool Stage04;
     AnimatorStateInfo stateInfo;
+    GameObject Spawn;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +32,8 @@ public class Boss03 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        LifeImage.fillAmount = Hp / 100.0f;
+
         switch (Index)
         {
             case 1:
@@ -77,7 +81,7 @@ public class Boss03 : MonoBehaviour {
             if (stateInfo.normalizedTime >= 0.9f && stateInfo.IsName("BOSS3-danmu")) //弹幕
             {
                 m_Animator.SetBool("danmu", false);
-                WheelSpawn.SetActive(false);
+                Destroy(Spawn.gameObject);
                 Stage01 = true;
             }
         }
@@ -87,8 +91,12 @@ public class Boss03 : MonoBehaviour {
     {
         m_Animator.SetBool("zuo", true);
         Index = 4;
+
+        Stage01 = false;
         Stage02 = false;
         Stage03 = false;
+        Stage04 = false;
+
     }
 
     void PoisonousGas() //喷毒气
@@ -96,6 +104,9 @@ public class Boss03 : MonoBehaviour {
         m_Animator.SetBool("duqi", true);
         Index = 2;
         Stage01 = false;
+        Stage02 = false;
+        Stage03 = false;
+        Stage04 = false;
     }
 
     void MachineFish() //机器鱼
@@ -103,17 +114,27 @@ public class Boss03 : MonoBehaviour {
         m_Animator.SetBool("jiqiyu", true);
         FishSpawn.SetActive(true);
         FishSpawn.GetComponent<Boss03SpawnController>().Enter = true;
-        Stage02 = false;
         Index = 3;
+
+        Stage01 = false;
+        Stage02 = false;
+        Stage03 = false;
+        Stage04 = false;
+
     }
 
     void GeerWheel() //弹幕齿轮
     {
         m_Animator.SetBool("danmu", true);
-        WheelSpawn.SetActive(true);
+        //WheelSpawn.SetActive(true);
+        Spawn = Instantiate(WheelSpawn, WheelSpawnPos.position, WheelSpawn.transform.rotation);
         Index = 1;
-        Stage04 = false;
+
+        Stage01 = false;
+        Stage02 = false;
         Stage03 = false;
+        Stage04 = false;
+
     }
 
     void DelayChangeStage03()
@@ -121,22 +142,4 @@ public class Boss03 : MonoBehaviour {
         Stage03 = true;
         Stage02 = false;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "chanzi" )
-        {
-            Hp--;
-            LifeImage.fillAmount = Hp / 100.0f;
-        }
-        if (Hp == 0)  //boss死亡
-        {
-            Destroy(gameObject, 0.2f);
-            //BossSprite.SetActive(false);
-            BossLife.SetActive(false);
-
-            //GetComponent<Boss03>().enabled = false;
-        }
-    }
-
 }

@@ -5,13 +5,14 @@ using UnityEngine;
 public class BossHurt : MonoBehaviour {
 
     public Boss03 boss03;
-
-    bool PlayerAttack; //玩家是否在做攻击动作
-    GameObject Player;
+    public GameObject Boss3;
 
     public GameObject BossLife;
     public UnityEngine.UI.Image LifeImage;
 
+
+    bool PlayerAttack; //玩家是否在做攻击动作
+    GameObject Player;
     // Use this for initialization
     void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -28,15 +29,15 @@ public class BossHurt : MonoBehaviour {
         {
             boss03.Hp--;
             print(boss03.Hp);
-            LifeImage.fillAmount = boss03.Hp / 100.0f;
         }
+
         if (boss03.Hp == 0)  //boss死亡
         {
-            Destroy(gameObject, 0.2f);
+            Boss3.SetActive(false);
             BossLife.SetActive(false);
-            GetComponent<Boss03>().enabled = false;
+            GetComponent<BossHurt>().enabled = false;
         }
     }
 
-   
+
 }

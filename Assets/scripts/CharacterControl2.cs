@@ -28,7 +28,7 @@ public class CharacterControl2 : MonoBehaviour
     public bool Movement;
     public int life;
     public List<GameObject> lifeImg;
-    public GameObject smoke;
+    //public GameObject smoke;
 
     [SerializeField]
     private GameObject smokePrefab;             //二段跳的粒子特效
@@ -75,8 +75,8 @@ public class CharacterControl2 : MonoBehaviour
             m_animator.SetBool("Jump", false);
             m_animator.SetBool("Jump2", false);
             POS2 = transform.position.y;
-            if(smoke!= null)
-                smoke.SetActive(true);
+            //if(smoke!= null)
+            //    smoke.SetActive(true);
 
         }
     }
@@ -104,7 +104,7 @@ public class CharacterControl2 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                smoke.SetActive(false);
+                //smoke.SetActive(false);
                 // m_rigid.AddForce(new Vector2(0,JumpForce));
                 if (!isJump)//如果还在跳跃中，则不重复执行 
                 {

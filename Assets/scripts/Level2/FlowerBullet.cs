@@ -37,5 +37,10 @@ public class FlowerBullet : MonoBehaviour {
         {
             collision.GetComponent<CharacterControl2>().LifeChange(false);
         }
+
+        if (collision.tag == "Tako")
+        {
+            collision.GetComponent<TakoHakase>().LifeChange(false);
+        }
     }
 }

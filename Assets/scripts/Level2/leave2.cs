@@ -9,8 +9,8 @@ public class leave2 : MonoBehaviour {
         if (collision.tag == "Player")
         {
             collision.GetComponent<CharacterControl2>().LifeChange(true);
-            Destroy(gameObject);
-            
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
 
         }
     }

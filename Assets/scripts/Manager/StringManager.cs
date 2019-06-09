@@ -43,7 +43,7 @@ public class StringManager {
 public class GlobalVar {
     public static Vector3 defaultPosLevel1 = new Vector3(130f, -25f, 0f);
     public static Vector3 defaultPosLevel2 = new Vector3(-54.3f, 1.9f,0f);
-    public static Vector3 defaultPosLevel3 = new Vector3(0f,0f,0f);
+    public static Vector3 defaultPosLevel3 = new Vector3(-179.5f, -2.57f, 0f);
 
 
 }
