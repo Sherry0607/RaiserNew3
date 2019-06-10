@@ -12,18 +12,18 @@ public class Boss02 : MonoBehaviour
     public GameObject[] SickleLight;
     public Transform[] SickleLightPos; //刀光坐标
     public GameObject Smoke;
-    public bool dadianti;
 
     public GameObject BossLife;
     public UnityEngine.UI.Image LifeImage;
     public float waitingTime;
+    public GameObject Feather;
     
 
     [HideInInspector]
     public int SharpIns;
     [HideInInspector]
     public bool EnterBossStage;
-
+    [HideInInspector]
     public int Boss02Index;
     GameObject Player;
     bool PlayerAttack; //玩家是否在做攻击动作
@@ -48,7 +48,7 @@ public class Boss02 : MonoBehaviour
         Hp = 10;
         Daoguang = true;
         Stage03 = true;
-        dadianti = false;
+        Feather.SetActive(false);
     }
 
     // Update is called once per frame
@@ -199,7 +199,6 @@ public class Boss02 : MonoBehaviour
         if (PlayerAttack && collision.tag == "chanzi" && BossSprite.activeSelf)
         {
             Hp--;
-            dadianti = true;
             LifeImage.fillAmount = Hp / 10.0f;
         }
         if (Hp == 0)  //boss死亡
@@ -212,9 +211,10 @@ public class Boss02 : MonoBehaviour
                 Dead = true;
             }
             Destroy(gameObject,0.2f);
-            //BossSprite.SetActive(false);
+            Feather.transform.position = transform.position;
+            Feather.SetActive(true);
             BossLife.SetActive(false);
-            
+            Buxiaohui.Instance.b_Wuyaren = true;
             GetComponent<Boss02>().enabled = false;
         }
     }
@@ -246,12 +246,10 @@ public class Boss02 : MonoBehaviour
     void BossDisappear()
     {
         BossSprite.SetActive(false);
-        
     }
 
     void BossAppear()
     {
         BossSprite.SetActive(true);
     }
-
 }

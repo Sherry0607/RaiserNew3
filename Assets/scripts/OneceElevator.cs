@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OneceElevator : MonoBehaviour {
     public float ElevatorSpeed;
-    [HideInInspector]
+    //[HideInInspector]
     public bool m_MoveDown;
 
     float PlayerGravity;
