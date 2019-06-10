@@ -51,13 +51,36 @@ public class GameMeunUI : MonoBehaviour {
         SceneManager.LoadScene("cover");
     }
 
-    public void OnReStartBtnClick()
+    public void OnReStart1BtnClick()
     {
         //Time.timeScale = 1;
         //Application.LoadLevel("Game");
         GameManager.Instence.isPlay = true;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("level1");
     }
 
-    
+    public void OnReStart2BtnClick()
+    {
+        //Time.timeScale = 1;
+        //Application.LoadLevel("Game");
+        GameManager.Instence.isPlay = true;
+        SceneManager.LoadScene("level2");
+    }
+
+    public void OnReStart3BtnClick()
+    {
+        //Time.timeScale = 1;
+        //Application.LoadLevel("Game");
+        GameManager.Instence.isPlay = true;
+        SceneManager.LoadScene("library");
+    }
+
+    public void OnReStart4BtnClick()
+    {
+        //Time.timeScale = 1;
+        //Application.LoadLevel("Game");
+        GameManager.Instence.isPlay = true;
+        SceneManager.LoadScene("level3");
+    }
+
 }

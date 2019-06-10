@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour {
                 break;
         }
         pos.x = PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name + StringManager.Save_PlayerPosX, pos.x);
-        pos.y = PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name + StringManager.Save_PlayerPosY, pos.y) + 1.5F;
+        pos.y = PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name + StringManager.Save_PlayerPosY, pos.y) + 0.1F;
         pos.z = PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name + StringManager.Save_PlayerPosZ, pos.z);
 
         return pos;
