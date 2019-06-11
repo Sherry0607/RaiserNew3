@@ -8,6 +8,9 @@ public class Buxiaohui : MonoBehaviour {
     public bool b_Xiaojiangshi;
     public bool b_Wuyaren;
     public bool b_Xiaojiejie;
+  //  public bool b_Xiaotrigger;
+  //  public bool b_Wutrigger;
+  //  public bool b_Zhitrigger;
 
     public static Buxiaohui Instance;
 

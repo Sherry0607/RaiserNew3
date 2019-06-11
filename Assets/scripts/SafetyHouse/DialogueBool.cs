@@ -15,7 +15,8 @@ public class DialogueBool : MonoBehaviour {
         {
             if (this.gameObject.name == "DialogueTrigger33")
             {
-                Buxiaohui.Instance.b_Xiaojiangshi = true;
+               Buxiaohui.Instance.b_Xiaojiangshi = true;
+                
             }
         }
     }
