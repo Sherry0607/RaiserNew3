@@ -18,7 +18,7 @@ public class ToLevel4Door : MonoBehaviour
     private void Start()
     {
         BlackAlpha.delayTime = 10f;
-        PlayerPrefs.SetInt(StringManager.Save_Level1DoorOpen, 0);
+        PlayerPrefs.SetInt(StringManager.Save_Leve21DoorOpen, 0);
     }
 
     void StartGame()
@@ -30,7 +30,7 @@ public class ToLevel4Door : MonoBehaviour
     private void ToLevel01()
     {
 
-        SceneManager.LoadScene("level4");   //这个也是转换场景的代码，我建议你用这个，因为你的那个过时了，没准会有问题。记得加黑屏的效果
+        SceneManager.LoadScene("library");   //这个也是转换场景的代码，我建议你用这个，因为你的那个过时了，没准会有问题。记得加黑屏的效果
     }
 
     private void ShowMask()
@@ -45,7 +45,7 @@ public class ToLevel4Door : MonoBehaviour
         if (collision.tag.Contains(StringManager.TAG_PLAYER))
         {
             isDoorNear = true;
-            if (PlayerPrefs.GetInt(StringManager.Save_Level1DoorOpen) == 5)
+            if (PlayerPrefs.GetInt(StringManager.Save_Leve21DoorOpen) == 1)
             {
                 haveKeyObj.SetActive(false);
                 noHaveKeyObj.SetActive(false);
@@ -53,8 +53,8 @@ public class ToLevel4Door : MonoBehaviour
             }
             else
             {
-                haveKeyObj.SetActive(BackPacktemDataManager.Instance.IsHaveKey());
-                noHaveKeyObj.SetActive(!BackPacktemDataManager.Instance.IsHaveKey());
+                haveKeyObj.SetActive(BackPacktemDataManager.Instance.IsHaveGoldKey());
+                noHaveKeyObj.SetActive(!BackPacktemDataManager.Instance.IsHaveGoldKey());
             }
         }
     }
@@ -65,7 +65,7 @@ public class ToLevel4Door : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (PlayerPrefs.GetInt(StringManager.Save_Level1DoorOpen) == 5)
+                if (PlayerPrefs.GetInt(StringManager.Save_Leve21DoorOpen) == 1)
                     //  UnityEngine.SceneManagement.SceneManager.LoadScene("library");
                     StartGame();
 

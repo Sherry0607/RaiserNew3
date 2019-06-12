@@ -31,6 +31,7 @@ public class StringManager {
 
     //--------------------------save key-------------------------------------------------------
     public const string Save_Level1DoorOpen = "Level1DoorOpen";
+    public const string Save_Leve21DoorOpen = "Level2DoorOpen";
 
     public const string Save_PlayerPosX = "PlayerPosX";
     public const string Save_PlayerPosY = "PlayerPosY";

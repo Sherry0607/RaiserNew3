@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class startscene : MonoBehaviour {
 
     //两个功能按钮
-    public Button btnStart;
+    //public Button btnStart;
     public Button btnExit;
     public Button btnAbout;
     public Button btnAbout1;
@@ -24,7 +24,7 @@ public class startscene : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //按钮点击处理事件
-        btnStart.onClick.AddListener(PlayGame);
+        //btnStart.onClick.AddListener(PlayGame);
         btnExit.onClick.AddListener(ExitGame);
         btnAbout.onClick.AddListener(AboutButton);
         btnAbout1.onClick.AddListener(About1Button);
@@ -32,10 +32,10 @@ public class startscene : MonoBehaviour {
         btnAbout3.onClick.AddListener(About3Button);
     }
 	
-	// Update is called once per frame
-	void Update () {
+	//// Update is called once per frame
+	//void Update () {
        
-    }
+ //   }
 
 
     //退出游戏
@@ -44,12 +44,12 @@ public class startscene : MonoBehaviour {
         Application.Quit();
     }
 
-    //开始游戏
-    public void PlayGame() {
-       // Debug.Log("play game");
-        Application.LoadLevel("savehouse");
+    ////开始游戏
+    //public void PlayGame() {
+    //   // Debug.Log("play game");
+    //    Application.LoadLevel("savehouse");
        
-    }
+    //}
 
     //About界面
     public void AboutButton()

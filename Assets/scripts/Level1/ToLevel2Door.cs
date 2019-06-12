@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class ToLevel2Door : MonoBehaviour {
 
     public static bool isDoorNear;
@@ -51,8 +52,8 @@ public class ToLevel2Door : MonoBehaviour {
                 
             }
             else {
-                haveKeyObj.SetActive(BackPacktemDataManager.Instance.IsHaveKey());
-                noHaveKeyObj.SetActive(!BackPacktemDataManager.Instance.IsHaveKey());
+                haveKeyObj.SetActive(BackPacktemDataManager.Instance.IsHaveSilverKey());
+                noHaveKeyObj.SetActive(!BackPacktemDataManager.Instance.IsHaveSilverKey());
             }
         }
     }
@@ -78,8 +79,6 @@ public class ToLevel2Door : MonoBehaviour {
         {
             isDoorNear = false;
         }
-
-
     }
 
 }

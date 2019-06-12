@@ -37,15 +37,30 @@ public class BackPackItemDetail : MonoBehaviour {
     {
 
         //物品钥匙（ID 是 1） 
-        if (itemID == 1) {
+        if (itemID == 1)
+        {
             //1是否在门附近  2是否未打开门
-            if(ToLevel2Door.isDoorNear && PlayerPrefs.GetInt(StringManager.Save_Level1DoorOpen) == 0)
+            if (ToLevel2Door.isDoorNear && PlayerPrefs.GetInt(StringManager.Save_Level1DoorOpen) == 0)
             {
                 PlayerPrefs.SetInt(StringManager.Save_Level1DoorOpen, 1);
                 BackPacktemDataManager.Instance.UseItem(itemID);
                 SetInfoState(false);
                 GameManager.Instence.OnClosedPackageClick();
             }
+        }
+        //物品钥匙（ID 是 5） 
+        else if (itemID == 5)
+        {
+
+            //1是否在门附近  2是否未打开门
+            if (ToLevel4Door.isDoorNear && PlayerPrefs.GetInt(StringManager.Save_Leve21DoorOpen) == 0)
+            {
+                PlayerPrefs.SetInt(StringManager.Save_Leve21DoorOpen, 1);
+                BackPacktemDataManager.Instance.UseItem(itemID);
+                SetInfoState(false);
+                GameManager.Instence.OnClosedPackageClick();
+            }
+
         }
     }
 

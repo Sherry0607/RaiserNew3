@@ -96,10 +96,10 @@ public class BackPacktemDataManager
 
 
     /// <summary>
-    /// 背包中是否有钥匙
+    /// 背包中是否有银色钥匙
     /// </summary>
     /// <returns></returns>
-    public bool IsHaveKey() {
+    public bool IsHaveSilverKey() {
         for (int i = 0; i < BackPackItemList.Count; i++)
         {
             if (BackPackItemList[i].ItemID == 1)
@@ -107,9 +107,23 @@ public class BackPacktemDataManager
         }
         return false;
 
-
     }
 
+
+    /// <summary>
+    /// 背包中是否有金色钥匙
+    /// </summary>
+    /// <returns></returns>
+    public bool IsHaveGoldKey()
+    {
+        for (int i = 0; i < BackPackItemList.Count; i++)
+        {
+            if (BackPackItemList[i].ItemID == 5)
+                return true;
+        }
+        return false;
+
+    }
 
     /// <summary>
     /// 使用物品
@@ -121,12 +135,16 @@ public class BackPacktemDataManager
         {
             if (itemID == BackPackItemList[i].ItemID) {
                 BackPackItemList[i].ItemCount -= count;
+            
+                //当物品全部消耗，从背包中删除掉
+            if (BackPackItemList[i].ItemCount<= 0)
+                BackPackItemList.Remove(BackPackItemList[i]);
+                
                 SaveBackPackData();
                 return;
             }
         }
-
+        
     }
-
-
+    
 }
