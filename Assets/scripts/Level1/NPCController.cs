@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour {
 
+    public Shell shells;
     public Transform shell;
     public float moveSpeed;
     public float chaseSpeed;
@@ -60,12 +61,19 @@ public class NPCController : MonoBehaviour {
     /// <summary>
     /// meet target , and chase target.
     /// </summary>
-     private void ChaseTarget()
+    private void ChaseTarget()
+    {
+        if (shells.Enemy != null)
         {
             if (Vector3.Distance(shell.position, moveTargetPos) >= 3)
                 shell.position = Vector3.MoveTowards(shell.position, moveTargetPos, chaseSpeed * Time.deltaTime);
-
         }
+        else
+        {
+            if (Vector3.Distance(shell.position, moveTargetPos) >= 1.5f)
+                shell.position = Vector3.MoveTowards(shell.position, moveTargetPos, chaseSpeed * Time.deltaTime);
+        }
+    }
 
 
 

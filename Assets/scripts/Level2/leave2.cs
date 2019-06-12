@@ -13,8 +13,12 @@ public class leave2 : MonoBehaviour {
             GetComponent<AudioSource>().Play();
             collision.GetComponent<CharacterControl2>().LifeChange(true);
             GetComponent<BoxCollider2D>().enabled = false;
-            Destroy(Leaf);
-            Destroy(gameObject, 0.3f);
+            Invoke("LeafDisappear", 0.3f);
         }
+    }
+
+    void LeafDisappear()
+    {
+        Leaf.SetActive(false);
     }
 }

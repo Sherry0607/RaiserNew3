@@ -16,13 +16,8 @@ public class Shell : MonoBehaviour {
     public bool Attack = true; //人打小怪
     AnimatorStateInfo stateInfo;
 
-
-    private List<SpriteRenderer> spriteRendererList;
-
-
     void Start()
     {
-       
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -51,10 +46,13 @@ public class Shell : MonoBehaviour {
 
         if (trap_hp == 0)
         {//小怪死亡
-            gameObject.SetActive(false);
-            GameObject a = Instantiate(smoke, transform.position, transform.rotation) as GameObject;
-            Destroy(a, 1.6f);
-            Destroy(Enemy.gameObject, 1.7f);
+            if (Enemy!=null)
+            {
+                gameObject.SetActive(false);
+                GameObject a = Instantiate(smoke, transform.position, transform.rotation) as GameObject;
+                Destroy(a, 1.6f);
+                Destroy(Enemy.gameObject, 1.7f);
+            }
         }
     }
 

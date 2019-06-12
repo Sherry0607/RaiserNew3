@@ -82,7 +82,7 @@ public class BossPlayer : MonoBehaviour
                 a = Instantiate(FlowerSpawn, FlowerSpawnPos.position, FlowerSpawnPos.rotation);
                 Destroy(a, 5f);
                 Flower = false;
-                Invoke("ResetFlower", 5f);
+                Invoke("ResetFlower", 8f);
             }
         }
         if (Input.GetMouseButton(1))

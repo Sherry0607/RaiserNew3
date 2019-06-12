@@ -8,7 +8,7 @@ public class MachineFish : MonoBehaviour {
     public int Hp;
     public GameObject Smoke;
     public GameObject m_MachineFish;
-    //public SpriteRenderer[] Sprites;
+    public Boss03 boss03;
 
     bool GhostAttack = true;
     bool GhostHurt = true;
@@ -23,6 +23,7 @@ public class MachineFish : MonoBehaviour {
         Player = GameObject.FindGameObjectWithTag("Player");
         PlayerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         OriginalHp = Hp;
+        boss03 = GameObject.FindGameObjectWithTag("Boss03").GetComponent<Boss03>();
     }
 
     // Update is called once per frame
@@ -32,6 +33,12 @@ public class MachineFish : MonoBehaviour {
         if (stateInfo.normalizedTime >= 0.95f && stateInfo.IsName("attack") && !GhostHurt) //attack播放完毕后幽灵可再次受到攻击
         {
             GhostHurt = true;
+        }
+
+        if (boss03.Hp <= 0)
+        {
+            Hp = 0;
+            LifeChange_Ghost();
         }
     }
 
@@ -59,20 +66,12 @@ public class MachineFish : MonoBehaviour {
         {
             GhostHurt = false;
             Invoke("LifeChange_Ghost", 0.1f);//在0.4 秒后 开始进行伤害处理
-            //LifeChange_Ghost();
         }
     }
 
     void LifeChange_Ghost()
     {
         --Hp;
-
-        //foreach (var ghostSprite in Sprites)
-        //{
-        //    ghostSprite.color = new Color(0.3207547f, 0.3207547f, 0.3207547f, 1);
-        //}
-        //Invoke("ResetColor1", 0.5f);
-
         if (Hp <= 0)
         {//小怪死亡
             m_MachineFish.SetActive(false);
@@ -81,14 +80,6 @@ public class MachineFish : MonoBehaviour {
             Destroy(m_MachineFish, 1.7f);
         }
     }
-
-    //void ResetColor1()
-    //{
-    //    foreach (var ghostSprite in Sprites)
-    //    {
-    //        ghostSprite.color = new Color(1, 1, 1, 1);
-    //    }
-    //}
     void ResetAttack()
     {
         GhostAttack = true;

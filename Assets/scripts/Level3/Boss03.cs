@@ -7,9 +7,10 @@ public class Boss03 : MonoBehaviour {
     public GameObject WheelSpawn;
     public Transform WheelSpawnPos;
     public GameObject FishSpawn;
-    [HideInInspector]
+    //[HideInInspector]
     public int Hp;
-
+    public GameObject After;
+    public GameObject Player;
     public GameObject BossLife;
     public UnityEngine.UI.Image LifeImage;
 
@@ -28,11 +29,14 @@ public class Boss03 : MonoBehaviour {
         m_Animator = GetComponent<Animator>();
         Stage01 = true;
         Hp = 100;
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+        After.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
+
         LifeImage.fillAmount = Hp / 100.0f;
+        Life();
 
         switch (Index)
         {
@@ -141,5 +145,16 @@ public class Boss03 : MonoBehaviour {
     {
         Stage03 = true;
         Stage02 = false;
+    }
+
+    void Life()
+    {
+        if (Hp <= 0)  //boss死亡
+        {
+            After.SetActive(true);
+            gameObject.SetActive(false);
+            BossLife.SetActive(false);
+            Player.SetActive(false);
+        }
     }
 }

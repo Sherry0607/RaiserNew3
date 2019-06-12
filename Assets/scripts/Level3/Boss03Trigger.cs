@@ -10,6 +10,9 @@ public class Boss03Trigger : MonoBehaviour {
     public GameObject cam2;//走廊
     public GameObject LifeImage;
 
+    [HideInInspector]
+    public bool TriggerOn;
+
     // Use this for initialization
     void Start () {
         cam1.SetActive(false);
@@ -27,6 +30,7 @@ public class Boss03Trigger : MonoBehaviour {
             SkyWall[1].SetActive(true);
             cam1.SetActive(true);
             cam2.SetActive(false);
+            TriggerOn = true;
         }
     }
 
