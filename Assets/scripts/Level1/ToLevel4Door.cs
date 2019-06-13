@@ -30,7 +30,7 @@ public class ToLevel4Door : MonoBehaviour
     private void ToLevel01()
     {
 
-        SceneManager.LoadScene("library");   //这个也是转换场景的代码，我建议你用这个，因为你的那个过时了，没准会有问题。记得加黑屏的效果
+        SceneManager.LoadScene("level3");   //这个也是转换场景的代码，我建议你用这个，因为你的那个过时了，没准会有问题。记得加黑屏的效果
     }
 
     private void ShowMask()

@@ -1,0 +1,23 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DialogueBool1 : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            if (this.gameObject.name == "DialogueTrigger22")
+            {
+               Buxiaohui.Instance.b_Xiaojiejie = true;
+                
+            }
+        }
+    }
+}
