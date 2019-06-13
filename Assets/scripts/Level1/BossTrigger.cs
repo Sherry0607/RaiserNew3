@@ -14,12 +14,15 @@ public class BossTrigger : MonoBehaviour {
     public ScreenFadeIn BlackAlpha;
 
     public GameObject music;
+    public Animator zhayanobj;
+   
 
     GameObject Player;
 	// Use this for initialization
 	void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
-	}
+        zhayanobj.enabled = false;
+    }
 
 
     void OnTriggerEnter2D(Collider2D col)
@@ -36,7 +39,8 @@ public class BossTrigger : MonoBehaviour {
             wall.SetActive(true);
             BlackAlpha.ScreenFade();
             Invoke("ChangeCamera", 1.6f);
-			Destroy(gameObject,2f);
+			Destroy(gameObject,3f);
+            Invoke("zhayan", 2.8f);
         }
     }
 
@@ -53,5 +57,10 @@ public class BossTrigger : MonoBehaviour {
         music.SetActive(false);
         Boss1.m_EnterStage = true;
         Boss2.m_EnterStage = true;
+    }
+
+    void zhayan()
+    {
+        zhayanobj.enabled = true;
     }
 }

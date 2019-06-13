@@ -31,6 +31,7 @@ public class InstantiateLeaf : MonoBehaviour {
         if (!Leaf.activeSelf)
         {
             Leaf.SetActive(true);
+            Leaf.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 }

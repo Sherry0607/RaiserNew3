@@ -24,12 +24,15 @@ public class Boss03 : MonoBehaviour {
     AnimatorStateInfo stateInfo;
     GameObject Spawn;
 
+    public GameObject video;
+
     // Use this for initialization
     void Start () {
         m_Animator = GetComponent<Animator>();
         Stage01 = true;
         Hp = 100;
         After.SetActive(false);
+        video.SetActive(false);
     }
 
     // Update is called once per frame
@@ -155,6 +158,8 @@ public class Boss03 : MonoBehaviour {
             gameObject.SetActive(false);
             BossLife.SetActive(false);
             Player.SetActive(false);
+            video.SetActive(true);
+            Destroy(video, 9f);
         }
     }
 }

@@ -10,6 +10,7 @@ public class Boss03Trigger : MonoBehaviour {
     public GameObject cam2;//走廊
     public GameObject LifeImage;
 
+    public bool TriggerOnn;
     [HideInInspector]
     public bool TriggerOn;
 
@@ -19,9 +20,9 @@ public class Boss03Trigger : MonoBehaviour {
         cam2.SetActive(true);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if (collision.tag == "Player")
+        if (TriggerOnn)
         {
             Boss03.Index = 1;
             LifeImage.SetActive(true);
@@ -31,6 +32,21 @@ public class Boss03Trigger : MonoBehaviour {
             cam1.SetActive(true);
             cam2.SetActive(false);
             TriggerOn = true;
+            TriggerOnn = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            //Boss03.Index = 1;
+            //LifeImage.SetActive(true);
+            //GetComponent<BoxCollider2D>().enabled = false;
+            //SkyWall[0].SetActive(true);
+            //SkyWall[1].SetActive(true);
+            //cam1.SetActive(true);
+            //cam2.SetActive(false);
+            //TriggerOn = true;
         }
     }
 

@@ -28,7 +28,7 @@ public class CharacterControl2 : MonoBehaviour
     public bool Movement;
     public int life;
     public List<GameObject> lifeImg;
-    //public GameObject smoke;
+    public GameObject smoke;
 
     [SerializeField]
     private GameObject smokePrefab;             //二段跳的粒子特效

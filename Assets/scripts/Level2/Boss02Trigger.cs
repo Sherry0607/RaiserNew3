@@ -63,7 +63,7 @@ public class Boss02Trigger : MonoBehaviour {
         cam2.SetActive(true);
         Boss02.SetActive(true);
         BossLifeUI.SetActive(true);
-        //smoke.smoke.SetActive(false);
+        smoke.smoke.SetActive(false);
     }
     void ChangeCamera2() //Boss凉了之后的切换
     {

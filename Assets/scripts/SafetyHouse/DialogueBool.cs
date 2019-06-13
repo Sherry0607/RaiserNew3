@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialogueBool : MonoBehaviour {
 
+    public GameObject xiaojiangshi;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +18,7 @@ public class DialogueBool : MonoBehaviour {
             if (this.gameObject.name == "DialogueTrigger33")
             {
                Buxiaohui.Instance.b_Xiaojiangshi = true;
-                
+                xiaojiangshi.GetComponent<Animator>().SetBool("fear", false);
             }
         }
     }

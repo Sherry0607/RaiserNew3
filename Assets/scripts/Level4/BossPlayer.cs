@@ -22,6 +22,7 @@ public class BossPlayer : MonoBehaviour
     bool FlowerAttack;
     bool SharpAttack;
     bool Flower;
+    public int Index;
 
     // Use this for initialization
     void Start()
@@ -48,9 +49,9 @@ public class BossPlayer : MonoBehaviour
 
             if (!IsTouchedUI()) //攻击
             {
-                if( Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if(FlowerAttack || SharpAttack)
+                    if (FlowerAttack || SharpAttack)
                     {
                         m_animator.SetBool("Attack", true);
                     }
@@ -71,7 +72,7 @@ public class BossPlayer : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) && FlowerAttack)
+        if (Input.GetMouseButton(0) && FlowerAttack && Index == 0)
             Attack1();
 
         if (!FlowerAttack && Flower)
@@ -85,10 +86,11 @@ public class BossPlayer : MonoBehaviour
                 Invoke("ResetFlower", 8f);
             }
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0) && Index == 1)
         {
-            if(SharpSpawn1.Sharp1 && SharpSpawn2.Sharp2)
+            if (SharpSpawn1.Sharp1 && SharpSpawn2.Sharp2)
             {
+                print("bbbbb");
                 Attack2();
             }
         }
@@ -102,17 +104,26 @@ public class BossPlayer : MonoBehaviour
 
     void Attack2() //花刺
     {
+        print("aaaaa");
         SharpSpawn1.InstantiateSharps = 1;
         SharpSpawn2.InstantiateSharps = 3;
         SharpSpawn1.Sharp1 = false;
         SharpSpawn2.Sharp2 = false;
-         SharpAttack = false;
+        SharpAttack = false;
+        Invoke("ResetSharp", 2f);
     }
 
     void ResetFlower()
     {
         FlowerAttack = true;
+        Index = 1;
     }
+
+    void ResetSharp()
+    {
+        Index = 0;
+    }
+
     /// <summary>
     /// 是否鼠标放在 UI上
     /// </summary>
