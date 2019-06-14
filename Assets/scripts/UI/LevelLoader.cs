@@ -36,6 +36,10 @@ public class LevelLoader : MonoBehaviour {
     //}
 
     public void ShowLoadingScreen() {
+
+        GameManager.Instence.ResetPlayerPos();
+        BackPacktemDataManager.Instance.ClearPackageItem();
+
         loadingScreen.SetActive(true);
     }
 }

@@ -146,5 +146,14 @@ public class BackPacktemDataManager
         }
         
     }
-    
+
+    /// <summary>
+    /// 清空背包内的物品
+    /// </summary>
+    public void ClearPackageItem() {
+        BackPackItemList.Clear();
+        SaveBackPackData();
+
+    }
+
 }

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class DialogueBool1 : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +11,8 @@ public class DialogueBool1 : MonoBehaviour {
         {
             if (this.gameObject.name == "DialogueTrigger22")
             {
-               Buxiaohui.Instance.b_Xiaojiejie = true;
+              if(Buxiaohui.Instance != null)
+                Buxiaohui.Instance.b_Xiaojiejie = true;
                 
             }
         }

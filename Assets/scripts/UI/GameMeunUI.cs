@@ -64,9 +64,13 @@ public class GameMeunUI : MonoBehaviour {
         //Application.LoadLevel("Game");
         //GameManager.Instence.isPlay = true;
         //SceneManager.LoadScene("level1");  
+        //Player.position = new Vector3(18.6f, -24.4f, 0f);
+        //GameManager.Instence.isPlay = true;
         GameMenuPanel.SetActive(false);
-        Player.position = new Vector3(18.6f, -24.4f, 0f);
-        GameManager.Instence.isPlay = true;
+
+        GameManager.Instence.SavePlayerPos(GlobalVar.defaultPosLevel1);
+        BackPacktemDataManager.Instance.ClearPackageItem();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 
@@ -74,24 +78,39 @@ public class GameMeunUI : MonoBehaviour {
     {
         //Time.timeScale = 1;
         //Application.LoadLevel("Game");
-        GameManager.Instence.isPlay = true;
-        SceneManager.LoadScene("level2");
+        //GameManager.Instence.isPlay = true;
+        //SceneManager.LoadScene("level2");
+        GameMenuPanel.SetActive(false);
+
+        GameManager.Instence.SavePlayerPos(GlobalVar.defaultPosLevel2);
+        BackPacktemDataManager.Instance.ClearPackageItem();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     public void OnReStart3BtnClick()
     {
         //Time.timeScale = 1;
         //Application.LoadLevel("Game");
-        GameManager.Instence.isPlay = true;
-        SceneManager.LoadScene("library");
+        //GameManager.Instence.isPlay = true;
+        //SceneManager.LoadScene("library");
+        GameMenuPanel.SetActive(false);
+
+        GameManager.Instence.SavePlayerPos(GlobalVar.defaultPosLevel3);
+        BackPacktemDataManager.Instance.ClearPackageItem();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnReStart4BtnClick()
     {
         //Time.timeScale = 1;
         //Application.LoadLevel("Game");
-        GameManager.Instence.isPlay = true;
-        SceneManager.LoadScene("level3");
+        //GameManager.Instence.isPlay = true;
+        //SceneManager.LoadScene("level3");
+
+        GameMenuPanel.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
 }

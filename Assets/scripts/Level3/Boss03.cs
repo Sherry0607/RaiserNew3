@@ -168,12 +168,13 @@ public class Boss03 : MonoBehaviour {
 
 
     private void ShowDialogue() {
-        GameObject.Find("DialogueTrigger11 (4)").GetComponent<BoxCollider2D>().enabled = true;
+        if(GameObject.Find("DialogueTrigger11 (4)") != null)
+            GameObject.Find("DialogueTrigger11 (4)").GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public void Finall() {
 
-        Invoke("ShowAfter",1f);
+        Invoke("ShowAfter",0f);
         gameObject.SetActive(false);
         BossLife.SetActive(false);
         Player.SetActive(false);

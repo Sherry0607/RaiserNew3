@@ -62,6 +62,19 @@ public class BackPackItemDetail : MonoBehaviour {
             }
 
         }
+        //物品羽毛（ID 是 4） 
+        //物品灯笼草（ID 是 6） 
+        else if (itemID == 4 || itemID == 6) {
+            if (LittleSisterController.isPlayerNear)
+            {
+                BackPacktemDataManager.Instance.UseItem(itemID);
+                SetInfoState(false);
+                GameManager.Instence.OnClosedPackageClick();
+            }
+        }
+
+
+
     }
 
 

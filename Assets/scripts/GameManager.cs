@@ -76,6 +76,25 @@ public class GameManager : MonoBehaviour {
 
 
     /// <summary>
+    /// 重置所有关卡中的player的位置存档
+    /// </summary>
+    public void ResetPlayerPos()
+    {
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level1 + StringManager.Save_PlayerPosX, GlobalVar.defaultPosLevel1.x);
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level1 + StringManager.Save_PlayerPosY, GlobalVar.defaultPosLevel1.y);
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level1 + StringManager.Save_PlayerPosZ, GlobalVar.defaultPosLevel1.z);
+
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level2 + StringManager.Save_PlayerPosX, GlobalVar.defaultPosLevel2.x);
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level2 + StringManager.Save_PlayerPosY, GlobalVar.defaultPosLevel2.y);
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level2 + StringManager.Save_PlayerPosZ, GlobalVar.defaultPosLevel2.z);
+
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level3 + StringManager.Save_PlayerPosX, GlobalVar.defaultPosLevel3.x);
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level3 + StringManager.Save_PlayerPosY, GlobalVar.defaultPosLevel3.y);
+        PlayerPrefs.SetFloat(StringManager.LEVEL_level3 + StringManager.Save_PlayerPosZ, GlobalVar.defaultPosLevel3.z);
+    }
+
+
+    /// <summary>
     /// 获取player 的位置存档信息
     /// </summary>
     /// <returns></returns>

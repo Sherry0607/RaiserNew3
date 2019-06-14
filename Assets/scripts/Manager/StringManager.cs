@@ -25,9 +25,10 @@ public class StringManager {
 
 
     //--------------------------tag-------------------------------------------------------
-    public const string TAG_PLAYER = "Player";
+    public const string TAG_PLAYER = "Player"; 
+    public const string TAG_LittleSister = "LittleSister"; 
 
-    
+
 
     //--------------------------save key-------------------------------------------------------
     public const string Save_Level1DoorOpen = "Level1DoorOpen";
@@ -43,7 +44,7 @@ public class StringManager {
 
 public class GlobalVar {
     public static Vector3 defaultPosLevel1 = new Vector3(130f, -25f, 0f);
-    public static Vector3 defaultPosLevel2 = new Vector3(-54.3f, 1.9f,0f);
+    public static Vector3 defaultPosLevel2 = new Vector3(-76.82f, 1.9f,0f);
     public static Vector3 defaultPosLevel3 = new Vector3(-179.5f, -2.57f, 0f);
 
 
