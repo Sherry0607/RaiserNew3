@@ -20,6 +20,7 @@ public class startscene : MonoBehaviour {
     public GameObject About2;
     public GameObject About3;
 
+    public GameObject video_openning;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +31,7 @@ public class startscene : MonoBehaviour {
         btnAbout1.onClick.AddListener(About1Button);
         btnAbout2.onClick.AddListener(About2Button);
         btnAbout3.onClick.AddListener(About3Button);
+        video_openning.SetActive(false);
     }
 	
 	//// Update is called once per frame
@@ -83,5 +85,10 @@ public class startscene : MonoBehaviour {
         coversence.SetActive(true);
         coverbutton.SetActive(true);
 
+    }
+
+    public void playvideo()
+    {
+        video_openning.SetActive(true);
     }
 }
