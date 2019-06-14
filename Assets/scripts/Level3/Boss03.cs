@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss03 : MonoBehaviour {
 
+  
+
     public GameObject WheelSpawn;
     public Transform WheelSpawnPos;
     public GameObject FishSpawn;
@@ -160,10 +162,14 @@ public class Boss03 : MonoBehaviour {
         if (Hp <= 0)  //boss死亡
         {
             m_Animator.enabled = false;
-            GameObject.Find("DialogueTrigger11 (4)").GetComponent<BoxCollider2D>().enabled = true;
+            Invoke("ShowDialogue", 2f);
         }
     }
 
+
+    private void ShowDialogue() {
+        GameObject.Find("DialogueTrigger11 (4)").GetComponent<BoxCollider2D>().enabled = true;
+    }
 
     public void Finall() {
 
