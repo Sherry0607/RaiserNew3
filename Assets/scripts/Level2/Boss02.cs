@@ -205,16 +205,19 @@ public class Boss02 : MonoBehaviour
         {
             if (!Dead)
             {
-                GameObject a;
-                a = Instantiate(Smoke, transform.position, Smoke.transform.rotation);
-                Destroy(a, 1.6f);
                 Dead = true;
+                GameObject a = Instantiate(Smoke, transform.position, Smoke.transform.rotation);
+                Destroy(a, 1.6f);
+
             }
             Destroy(gameObject,0.2f);
             Feather.transform.position = transform.position;
             Feather.SetActive(true);
             BossLife.SetActive(false);
-            Buxiaohui.Instance.b_Wuyaren = true;
+
+            if(Buxiaohui.Instance != null)
+                Buxiaohui.Instance.b_Wuyaren = true;
+
             GetComponent<Boss02>().enabled = false;
         }
     }
