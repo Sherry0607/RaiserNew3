@@ -10,11 +10,18 @@ public class GameMeunUI : MonoBehaviour {
     private GameObject GameMenuPanel;
     private GameManager gameManager;
 
+    private Transform Player;
+    //public GameObject savepoint1;
+    //public GameObject savepoint2;
+    //public GameObject savepoint3;
+    //public GameObject savepoint4;
+
 
     // Use this for initialization
     void Start () {
         //  HideAllPanel();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 	
 	// Update is called once per frame
@@ -55,8 +62,12 @@ public class GameMeunUI : MonoBehaviour {
     {
         //Time.timeScale = 1;
         //Application.LoadLevel("Game");
+        //GameManager.Instence.isPlay = true;
+        //SceneManager.LoadScene("level1");  
+        GameMenuPanel.SetActive(false);
+        Player.position = new Vector3(18.6f, -24.4f, 0f);
         GameManager.Instence.isPlay = true;
-        SceneManager.LoadScene("level1");
+
     }
 
     public void OnReStart2BtnClick()

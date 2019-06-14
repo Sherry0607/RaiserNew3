@@ -39,7 +39,7 @@ public class Boss03 : MonoBehaviour {
     void FixedUpdate () {
 
         LifeImage.fillAmount = Hp / 100.0f;
-        Life();
+        //Life();
 
         switch (Index)
         {
@@ -150,16 +150,35 @@ public class Boss03 : MonoBehaviour {
         Stage02 = false;
     }
 
+    public void ReduceBlood(int reduce = 1) {//减血
+        Hp -= reduce;
+        Life();
+    }
+
     void Life()
     {
         if (Hp <= 0)  //boss死亡
         {
-            After.SetActive(true);
-            gameObject.SetActive(false);
-            BossLife.SetActive(false);
-            Player.SetActive(false);
-            video.SetActive(true);
-            Destroy(video, 9f);
+            m_Animator.enabled = false;
+            GameObject.Find("DialogueTrigger11 (4)").GetComponent<BoxCollider2D>().enabled = true;
         }
     }
+
+
+    public void Finall() {
+
+        Invoke("ShowAfter",1f);
+        gameObject.SetActive(false);
+        BossLife.SetActive(false);
+        Player.SetActive(false);
+        video.SetActive(true);
+        Destroy(video, 9f);
+    }
+
+
+    private void ShowAfter() {
+        After.SetActive(true);
+
+    }
+
 }

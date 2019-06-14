@@ -73,6 +73,14 @@ public class DialogueController : MonoBehaviour
             currentDialogueIndex = 0;
             gameObject.SetActive(false);
             GameManager.Instence.isPlay = true;
+            if (dialogueFileName == "story 88" &&  UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "level3")
+            {
+                GameObject.Find("电梯章鱼").GetComponent<diantizhangyu>().enabled = true;
+            }else
+             if (dialogueFileName == "story 99" && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "level3")
+            {
+                GameObject.Find("Boss相关/BOSS3").GetComponent<Boss03>().Finall();
+            }
         }
         Dialogue();
     }

@@ -26,7 +26,7 @@ public class BossHurt : MonoBehaviour {
     {
         if (PlayerAttack && collision.tag == "chanzi" && Boss03Trigger.TriggerOn)
         {
-            boss03.Hp--;
+            boss03.ReduceBlood();
             print(boss03.Hp);
         }
     }
