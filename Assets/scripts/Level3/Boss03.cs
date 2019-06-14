@@ -161,7 +161,13 @@ public class Boss03 : MonoBehaviour {
     {
         if (Hp <= 0)  //boss死亡
         {
-            m_Animator.enabled = false;
+            //m_Animator.enabled = false;
+            m_Animator.SetBool("zuo", false);
+            m_Animator.SetBool("you", false);
+            m_Animator.SetBool("duqi", false);
+            m_Animator.SetBool("danmu", false);
+            m_Animator.SetBool("jiqiyu", false);
+            m_Animator.Play("BOSS3-wait", 0,0);
             Invoke("ShowDialogue", 2f);
         }
     }
@@ -174,8 +180,8 @@ public class Boss03 : MonoBehaviour {
 
     public void Finall() {
 
-        Invoke("ShowAfter",0f);
-        gameObject.SetActive(false);
+        Invoke("DelayHide", 1f);
+        After.SetActive(true);
         BossLife.SetActive(false);
         Player.SetActive(false);
         video.SetActive(true);
@@ -183,8 +189,8 @@ public class Boss03 : MonoBehaviour {
     }
 
 
-    private void ShowAfter() {
-        After.SetActive(true);
+    private void DelayHide() {
+        gameObject.SetActive(false);
 
     }
 

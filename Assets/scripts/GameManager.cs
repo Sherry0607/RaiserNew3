@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
                 if (go == null)
                 {
                     go = new GameObject(StringManager.GO_GameManager);
+                    instence = go.AddComponent<GameManager>();
                     DontDestroyOnLoad(go);
                 }
                 instence = go.GetComponent<GameManager>();
