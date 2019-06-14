@@ -15,6 +15,7 @@ public class BossAI : MonoBehaviour
     public GameObject wall;
     public ScreenFadeIn BlackAlpha; //黑幕
     public GameObject music;
+    public GameObject XiaoJiangShi;
 
     void Awake()
     {
@@ -44,6 +45,7 @@ public class BossAI : MonoBehaviour
             Invoke("ChangeCamera", 1.6f);
             wall.SetActive(false);
             music.SetActive(true);
+            XiaoJiangShi.GetComponent<Animator>().SetBool("fear", false);
         }
     }
 

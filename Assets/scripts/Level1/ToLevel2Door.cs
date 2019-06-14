@@ -65,8 +65,9 @@ public class ToLevel2Door : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (PlayerPrefs.GetInt(StringManager.Save_Level1DoorOpen) == 1)
-                    //  UnityEngine.SceneManagement.SceneManager.LoadScene("library");
-                    StartGame();
+                    GetComponent<AudioSource>().Play();
+                //  UnityEngine.SceneManagement.SceneManager.LoadScene("library");
+                StartGame();
 
             }
         }

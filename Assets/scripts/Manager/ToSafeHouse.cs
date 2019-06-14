@@ -20,6 +20,7 @@ public class ToSafeHouse : MonoBehaviour {
         {
             
             Application.LoadLevel("savehouse");
+            GetComponent<AudioSource>().Play();
 
         }
 

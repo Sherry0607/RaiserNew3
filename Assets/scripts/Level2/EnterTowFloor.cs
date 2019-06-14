@@ -22,6 +22,7 @@ public class EnterTowFloor : MonoBehaviour {
             if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 && !isEnter)
             {
+                GetComponent<AudioSource>().Play();
                 isEnter = true;
                 BlackAlpha.ScreenFade();
                 Invoke("ChangeCameraEnterTowFloor", BlackAlpha.fadeTime + 0.5f);

@@ -29,6 +29,7 @@ public class SafeHouse : MonoBehaviour {
             if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                  && !isEnter)
             {
+                GetComponent<AudioSource>().Play();
                 isEnter = true;
                 BlackAlpha.ScreenFade();
                 Invoke("ChangeCamera", BlackAlpha.fadeTime+0.5f);
